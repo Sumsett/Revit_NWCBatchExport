@@ -33,8 +33,7 @@
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\FormMain.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "NWCBatchExport\\FormMain.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T11:30:16.227Z",
-              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+              "WhenOpened": "2024-10-10T11:30:16.227Z"
             },
             {
               "$type": "Document",
@@ -46,8 +45,7 @@
               "RelativeToolTip": "NWCBatchExport\\FormMain.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T10:26:10.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-10T10:26:10.53Z"
             },
             {
               "$type": "Document",
@@ -57,7 +55,7 @@
               "RelativeDocumentMoniker": "NWCBatchExport\\Class1.cs",
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\Class1.cs",
               "RelativeToolTip": "NWCBatchExport\\Class1.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwD8AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAgwFkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-30T14:19:14.631Z",
               "EditorCaption": ""
