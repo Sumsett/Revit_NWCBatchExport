@@ -97,12 +97,5 @@ namespace RevitFormTest
             return Result.Succeeded;
 
         }
-
-
-        public void Test1()
-        {
-
-
-        }
     }
 }
