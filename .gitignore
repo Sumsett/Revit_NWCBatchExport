@@ -131,7 +131,4 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
-/.vs
-/.vs
-/.vs/NWCBatchExport/v17
-/.vs/NWCBatchExport
+/.vs/*
