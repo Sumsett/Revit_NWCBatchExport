@@ -2,9 +2,6 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using NWCBatchExport;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace RevitFormTest
 {
@@ -25,6 +22,9 @@ namespace RevitFormTest
 
 
             //TaskDialog.Show("Готово", "Экспортированные файлы:\n");
+
+
+
 
 
             return Result.Succeeded;

@@ -3,19 +3,7 @@
   "WorkspaceRootPath": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|c:\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\04. github\\revit_nwcbatchexport\\nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\exporttonwc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\exporttonwc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|c:\\\u043F\u0440\u043E\u0435\u043A\u0442\u044B\\04. github\\revit_nwcbatchexport\\nwcbatchexport\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,6 +13,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\nwcbatchexport\\exporttonwc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4C621BC0-3AC0-46A3-ABEC-31046911FA49}|NWCBatchExport\\NWCBatchExport.csproj|solutionrelative:nwcbatchexport\\exporttonwc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "ExportToNWC.cs",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\ExportToNWC.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\ExportToNWC.cs",
@@ -50,20 +50,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "FormMain.cs",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\FormMain.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\FormMain.cs",
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\FormMain.cs",
               "RelativeToolTip": "NWCBatchExport\\FormMain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T15:34:02.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T15:34:02.693Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "FormMain.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\FormMain.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\FormMain.cs",
@@ -74,39 +73,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Data.cs",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\Data.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\Data.cs",
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\Data.cs",
               "RelativeToolTip": "NWCBatchExport\\Data.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T15:21:55.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "MainMetod.cs",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\MainMetod.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\MainMetod.cs",
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\MainMetod.cs",
               "RelativeToolTip": "NWCBatchExport\\MainMetod.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBcAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-24T14:21:32.408Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Main.cs",
               "DocumentMoniker": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\Main.cs",
               "RelativeDocumentMoniker": "NWCBatchExport\\Main.cs",
               "ToolTip": "C:\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B\\04. GitHUB\\Revit_NWCBatchExport\\NWCBatchExport\\Main.cs",
               "RelativeToolTip": "NWCBatchExport\\Main.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBoAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T14:19:14.631Z"
+              "WhenOpened": "2024-09-30T14:19:14.631Z",
+              "EditorCaption": ""
             }
           ]
         }
