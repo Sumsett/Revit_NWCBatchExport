@@ -1,78 +1,56 @@
 ﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.Creation;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Electrical;
 using Autodesk.Revit.UI;
 using RevitFormTest;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows.Forms;
 
 namespace NWCBatchExport
 {
     public partial class FormMain : System.Windows.Forms.Form
     {
-        UIApplication uiapplocal;
-        Document doclocal;
-
-        public FormMain(UIApplication application)
+        public FormMain()
         {
             InitializeComponent();
 
-
-            
+            textBox1.Text = _Data.NameOfExportedView;
+            //label1.Text = _Data.NameOfExportedView;
+            textBoxPathRvt.Text = _Data.PathToRVT;
+            textBoxPathNWC.Text = _Data.PathToNWC;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            _Data.NameOfExportedView = textBox1.Text;
+            _Data.PathToNWC = textBoxPathNWC.Text;
+            _Data.PathToRVT = textBoxPathRvt.Text;
+
+            _SettingsAndOpeningFile.Body();
+
+            textBox4.Text = _Data.Log;
 
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Autodesk.Revit.DB.Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
-            string Path = @"C:\Users\E.Popov\Desktop\qqqq\wwwww\Проект1.rvt";
-            uiapplocal.OpenAndActivateDocument(Path);
+            WorksetTable worksetTable = document.GetWorksetTable();
+            WorksetId activeId = worksetTable.GetActiveWorksetId();
 
-            StartClass aaa = new StartClass();
-        
-            label1.Text = "aaa";
-            //Export();
+            var aaaa = worksetTable.GetWorkset(activeId).Kind;
+            //var aaaa = worksetTable.GetWorkset(activeId).;
 
-        }
+            // get the current visibility
+            //WorksetVisibility visibility = view.GetWorksetVisibility(worksetId);
 
-
-        void Export()
-        {
-
-            FilteredElementCollector collector = new FilteredElementCollector(doclocal);
-            ICollection<Element> views = collector.OfClass(typeof(Autodesk.Revit.DB.View)).ToElements();
-
-
-            ElementId selectedView = null;
-
-            foreach (Element view in views)
-            {
-                if (view.Name == "Уровень 1")
-                {
-                    selectedView = view.Id;
-                    break;
-                }
-            }
-
-            //Настроить настройки экспорта
-            NavisworksExportOptions options = new NavisworksExportOptions
-            {
-                ExportScope = NavisworksExportScope.View,
-                ViewId = selectedView
-            };
-
-            label1.Text = doclocal.Title + " - " + selectedView;
-
-            string path = @"C:\Users\E.Popov\Desktop\qqqq";
-            doclocal.Export(path, doclocal.Title, options);
-
-            TaskDialog.Show("Готово", "Файлы экспортированны");
-
+            TaskDialog.Show("aaaa", aaaa.ToString());
         }
     }
 }
