@@ -1,14 +1,6 @@
-﻿using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.Creation;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Electrical;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using RevitFormTest;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Windows.Forms;
 
 namespace NWCBatchExport
 {
@@ -33,6 +25,9 @@ namespace NWCBatchExport
             _SettingsAndOpeningFile.Body();
 
             textBox4.Text = _Data.Log;
+
+
+
 
 
         }
