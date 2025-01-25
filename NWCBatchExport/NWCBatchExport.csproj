@@ -62,8 +62,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="RevitAPI2019">
-      <Version>19.2.20.24</Version>
+    <PackageReference Include="RevitAPI2020">
+      <Version>20.2.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
