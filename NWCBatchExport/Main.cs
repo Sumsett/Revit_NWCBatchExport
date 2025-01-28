@@ -6,8 +6,6 @@ using NWCBatchExport;
 namespace RevitFormTest
 {
     [Transaction(TransactionMode.Manual)]
-    [Regeneration(RegenerationOption.Manual)]
-
     public class StartClass : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)

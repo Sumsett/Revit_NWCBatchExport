@@ -138,3 +138,5 @@ _NCrunch*
 /.vs
 /.vss
 /.vs
+MigrationBackup/
+*/.vs/
