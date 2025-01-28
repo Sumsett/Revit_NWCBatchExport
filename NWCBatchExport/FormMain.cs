@@ -25,11 +25,6 @@ namespace NWCBatchExport
             _SettingsAndOpeningFile.Body();
 
             textBox4.Text = _Data.Log;
-
-
-
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)

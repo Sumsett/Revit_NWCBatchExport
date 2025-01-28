@@ -18,12 +18,7 @@ namespace RevitFormTest
             FormMain formMain = new FormMain();
             formMain.ShowDialog();
 
-
-            //TaskDialog.Show("Готово", "Экспортированные файлы:\n");
-
-
             return Result.Succeeded;
-
         }
     }
 }

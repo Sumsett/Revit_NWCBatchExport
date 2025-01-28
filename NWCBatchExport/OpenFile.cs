@@ -24,6 +24,7 @@ namespace NWCBatchExport
 
         static public void OpenFileWithoutShowing(string dir, ExternalCommandData commandData)
         {
+            //Второй способ открытия без показа проекта пользователю
             Document doc = commandData.Application.Application.OpenDocumentFile(dir);
         }
 

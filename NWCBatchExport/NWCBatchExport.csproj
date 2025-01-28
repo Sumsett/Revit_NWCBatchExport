@@ -25,7 +25,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="RevitAPI2020">
-			<Version>20.2.1.1</Version>
+			<Version>*</Version>
 		</PackageReference>
 	</ItemGroup>
 	

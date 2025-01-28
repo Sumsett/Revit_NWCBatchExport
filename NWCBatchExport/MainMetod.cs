@@ -19,6 +19,7 @@ namespace NWCBatchExport
 
                 OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
                 Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
+
                 _Export.toNWC(document);
 
                 _Data.Log += document.PathName;

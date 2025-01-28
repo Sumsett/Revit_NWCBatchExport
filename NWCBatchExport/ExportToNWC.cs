@@ -7,7 +7,6 @@ namespace NWCBatchExport
     {
         public static void toNWC(Document document)
         {
-
             FilteredElementCollector collector = new FilteredElementCollector(document);
             ICollection<Element> views = collector.OfClass(typeof(View)).ToElements();
 
@@ -50,10 +49,6 @@ namespace NWCBatchExport
 
                 document.Export(pathOut, fileName, options);
             }
-
-
         }
-
-
     }
 }
