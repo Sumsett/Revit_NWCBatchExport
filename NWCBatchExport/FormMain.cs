@@ -22,7 +22,7 @@ namespace NWCBatchExport
             _Data.PathToNWC = textBoxPathNWC.Text;
             _Data.PathToRVT = textBoxPathRvt.Text;
 
-            _SettingsAndOpeningFile.Body();
+            _SettingsAndOpeningFile.ExportNWC();
 
             textBox4.Text = _Data.Log;
         }
@@ -41,6 +41,16 @@ namespace NWCBatchExport
             //WorksetVisibility visibility = view.GetWorksetVisibility(worksetId);
 
             TaskDialog.Show("aaaa", aaaa.ToString());
+        }
+
+        private void button_RemovingLinks_Click(object sender, EventArgs e)
+        {
+            _Data.PathToNWC = textBoxPathNWC.Text;
+            _Data.PathToRVT = textBoxPathRvt.Text;
+
+            _SettingsAndOpeningFile.RemovingAllLinks();
+
+            textBox4.Text = _Data.Log;
         }
     }
 }
