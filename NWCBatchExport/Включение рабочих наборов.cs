@@ -3,40 +3,13 @@ using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using View = Autodesk.Revit.DB.View;
 
 namespace NWCBatchExport
 {
-    public partial class FormMain : System.Windows.Forms.Form
+    internal class Class1
     {
-        public FormMain()
+        static public void AAAA()
         {
-            InitializeComponent();
-
-            textBox1.Text = _Data.NameOfExportedView;
-            //label1.Text = _Data.NameOfExportedView;
-            textBoxPathRvt.Text = _Data.PathToRVT;
-            textBoxPathNWC.Text = _Data.PathToNWC;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            _Data.NameOfExportedView = textBox1.Text;
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRvt.Text;
-
-            _SettingsAndOpeningFile.ExportNWC();
-
-            textBox4.Text = _Data.Log;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            _Data.NameOfExportedView = textBox1.Text;
-
-            Class1.AAAA();
-            /*
             // Получаем доступ к текущему документу и приложению
             //UIApplication uiApp = commandData.Application;
             //UIDocument uiDoc = uiApp.ActiveUIDocument;
@@ -57,7 +30,7 @@ namespace NWCBatchExport
             // Проверяем, найден ли вид
             if (targetView == null)
             {
-                textBox4.Text  += $"Вид с именем '{targetViewName}' не найден.";
+                TaskDialog.Show("Успех", $"Вид с именем '{targetViewName}' не найден.");
             }
 
             // Получаем все рабочие наборы в документе
@@ -67,34 +40,21 @@ namespace NWCBatchExport
                 .ToList();
 
             // Начинаем транзакцию для изменения видимости
-            using (Transaction trans = new Transaction(doc, "Show All Worksets"))
+            using (Transaction trans = new Transaction(doc, "Включение всех рабочих наборов"))
             {
                 trans.Start();
 
-                // Включаем видимость всех рабочих наборов в целевом виде
+                // Включаем видимость всех рабочих наборов
                 foreach (Workset workset in worksets)
                 {
-                        targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
+                    targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
                 }
 
                 trans.Commit();
             }
 
             TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");
-            */
-            
-        }
 
-        private void button_RemovingLinks_Click(object sender, EventArgs e)
-        {
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRvt.Text;
-            _Data.NameOfExportedView = textBox1.Text;
-
-
-            _SettingsAndOpeningFile.RemovingAllLinks();
-
-            textBox4.Text = _Data.Log;
         }
     }
 }

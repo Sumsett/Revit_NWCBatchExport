@@ -19,6 +19,7 @@ namespace NWCBatchExport
                 if (oldDoc != null)
                     oldDoc.Close(false);
 
+                Class1.AAAA();
                 _Export.toNWC(document);
 
                 oldDoc = document;
