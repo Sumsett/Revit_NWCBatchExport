@@ -9,8 +9,9 @@ using System.Xml.Linq;
 namespace NWCBatchExport
 {
     [Transaction(TransactionMode.Manual)]
-    public class RemoveLinksCommand : IExternalCommand
+    public class RemoveLinksCommand 
     {
+        /*
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             // Получаем приложение и документ
@@ -89,7 +90,7 @@ namespace NWCBatchExport
                 return Result.Failed;
             }
         }
-
+        */
         public static void AAA(Document document)
         {
             // Получаем приложение и документ

@@ -1,5 +1,4 @@
 ﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using System.IO;
 
 namespace NWCBatchExport
@@ -14,13 +13,15 @@ namespace NWCBatchExport
 
             foreach (string dir in dirs)
             {
-                if (oldDoc != null)
-                    oldDoc.Close(false);
-
                 OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
                 Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
+                if (oldDoc != null)
+                    oldDoc.Close(false);
+
                 _Export.toNWC(document);
+
+                oldDoc = document;
 
                 _Data.Log += document.PathName;
             }
@@ -34,13 +35,15 @@ namespace NWCBatchExport
 
             foreach (string dir in dirs)
             {
-                if (oldDoc != null)
-                    oldDoc.Close(false);
-
                 OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
                 Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
+                if (oldDoc != null)
+                    oldDoc.Close(false);
+
                 RemoveLinksCommand.AAA(document);
+
+                oldDoc = document;
 
                 _Data.Log += document.PathName + "\n";
             }
