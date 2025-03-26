@@ -49,6 +49,5 @@ namespace NWCBatchExport
                 _Data.Log += document.PathName + "\n";
             }
         }
-
     }
 }
