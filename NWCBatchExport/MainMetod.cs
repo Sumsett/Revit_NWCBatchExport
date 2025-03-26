@@ -26,6 +26,7 @@ namespace NWCBatchExport
 
                 _Data.Log += document.PathName;
             }
+
         }
 
         static public void RemovingAllLinks()
