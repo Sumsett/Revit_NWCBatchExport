@@ -1,8 +1,10 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using NWCBatchExport.Сторонние_решения;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using View = Autodesk.Revit.DB.View;
 
@@ -33,56 +35,31 @@ namespace NWCBatchExport
 
         private void button2_Click(object sender, EventArgs e)
         {
-            _Data.NameOfExportedView = textBox1.Text;
-
-            Class1.AAAA();
-            /*
-            // Получаем доступ к текущему документу и приложению
-            //UIApplication uiApp = commandData.Application;
-            //UIDocument uiDoc = uiApp.ActiveUIDocument;
-            //Document doc = uiDoc.Document;
-
             Document doc = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
+            ICollection<Element> walls = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Walls).WhereElementIsNotElementType().ToElements();
+            ICollection<Element> floors = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Floors).WhereElementIsNotElementType().ToElements();
+            ICollection<Element> structuralFoundation = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralFoundation).WhereElementIsNotElementType().ToElements();
+            ICollection<Element> columns = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Columns).WhereElementIsNotElementType().ToElements();
+            ICollection<Element> structuralColumns = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralColumns).WhereElementIsNotElementType().ToElements();
+            ICollection<Element> structuralFraming = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralFraming).WhereElementIsNotElementType().ToElements();
 
-            // Имя вида, который мы ищем
-            string targetViewName = _Data.NameOfExportedView;
-
-            // Находим вид по имени
-            View targetView = new FilteredElementCollector(doc)
-                .OfClass(typeof(View))
-                .Cast<View>()
-                .FirstOrDefault(v => v.Name.Equals(targetViewName, StringComparison.OrdinalIgnoreCase));
-
-            // Проверяем, найден ли вид
-            if (targetView == null)
-            {
-                textBox4.Text  += $"Вид с именем '{targetViewName}' не найден.";
-            }
-
-            // Получаем все рабочие наборы в документе
-            IList<Workset> worksets = new FilteredWorksetCollector(doc)
-                .OfKind(WorksetKind.UserWorkset)
-                .ToWorksets()
-                .ToList();
-
-            // Начинаем транзакцию для изменения видимости
-            using (Transaction trans = new Transaction(doc, "Show All Worksets"))
+            using (Transaction trans = new Transaction(doc, "Update Workset Parameter"))
             {
                 trans.Start();
 
-                // Включаем видимость всех рабочих наборов в целевом виде
-                foreach (Workset workset in worksets)
-                {
-                        targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
-                }
+                Class112.AAA(doc, walls);
+                Class112.AAA(doc, floors);
+                Class112.AAA(doc, structuralFoundation);
+                Class112.AAA(doc, columns);
+                Class112.AAA(doc, structuralColumns);
+                Class112.AAA(doc, structuralFraming);
+
 
                 trans.Commit();
             }
 
-            TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");
-            */
-            
+
         }
 
         private void button_RemovingLinks_Click(object sender, EventArgs e)

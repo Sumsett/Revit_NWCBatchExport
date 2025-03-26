@@ -122,11 +122,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(196, 401);
+            this.button2.Location = new System.Drawing.Point(155, 418);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(167, 23);
             this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
+            this.button2.Text = "Заполнение параметра";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

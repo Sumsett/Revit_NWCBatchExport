@@ -53,7 +53,7 @@ namespace NWCBatchExport
                 trans.Commit();
             }
 
-            TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");
+            //TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");
 
         }
     }
