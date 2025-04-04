@@ -27,6 +27,7 @@ namespace NWCBatchExport
             _Data.NameOfExportedView = textBox1.Text;
             _Data.PathToNWC = textBoxPathNWC.Text;
             _Data.PathToRVT = textBoxPathRvt.Text;
+            _Data.UnloadingRoomGeometry = checkBox1.Checked;
 
             _SettingsAndOpeningFile.ExportNWC();
 

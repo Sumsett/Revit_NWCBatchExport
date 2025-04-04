@@ -37,7 +37,7 @@ namespace NWCBatchExport
                     ViewId = selectedView,
 
                     ConvertLinkedCADFormats = false,
-                    ExportRoomGeometry = false
+                    ExportRoomGeometry = _Data.UnloadingRoomGeometry
                 };
 
 

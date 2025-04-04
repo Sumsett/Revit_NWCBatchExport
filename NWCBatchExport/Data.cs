@@ -13,5 +13,8 @@ namespace NWCBatchExport
         public static string PathToNWC { get; set; }
         public static string Log { get; set; }
 
+        //=== Настройки выгрузки ===
+        public static bool UnloadingRoomGeometry { get; set; }
+
     }
 }
