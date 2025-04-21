@@ -16,7 +16,6 @@ namespace NWCBatchExport
             InitializeComponent();
 
             textBox1.Text = _Data.NameOfExportedView;
-            //label1.Text = _Data.NameOfExportedView;
             textBoxPathRvt.Text = _Data.PathToRVT;
             textBoxPathNWC.Text = _Data.PathToNWC;
         }
@@ -30,7 +29,7 @@ namespace NWCBatchExport
 
             _SettingsAndOpeningFile.ExportNWC();
 
-            textBox4.Text = _Data.Log;
+            richTextBox1.Text = _Data.Log;
         }
 
 
@@ -43,7 +42,7 @@ namespace NWCBatchExport
 
             _SettingsAndOpeningFile.RemovingAllLinks();
 
-            textBox4.Text = _Data.Log;
+            richTextBox1.Text = _Data.Log;
         }
 
         private void button_openRvtFolder_Click(object sender, EventArgs e)

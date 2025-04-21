@@ -35,17 +35,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPathNWC = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_RemovingLinks = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.button_openRvtFolder = new System.Windows.Forms.Button();
             this.button_openNwcFolder = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(15, 576);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(397, 23);
@@ -56,6 +58,8 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(15, 30);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(397, 20);
@@ -73,6 +77,8 @@
             // 
             // textBoxPathRvt
             // 
+            this.textBoxPathRvt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPathRvt.Location = new System.Drawing.Point(15, 80);
             this.textBoxPathRvt.Name = "textBoxPathRvt";
             this.textBoxPathRvt.Size = new System.Drawing.Size(307, 20);
@@ -100,18 +106,12 @@
             // 
             // textBoxPathNWC
             // 
+            this.textBoxPathNWC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPathNWC.Location = new System.Drawing.Point(15, 130);
             this.textBoxPathNWC.Name = "textBoxPathNWC";
             this.textBoxPathNWC.Size = new System.Drawing.Size(307, 20);
             this.textBoxPathNWC.TabIndex = 8;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(15, 180);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(397, 338);
-            this.textBox4.TabIndex = 9;
             // 
             // label1
             // 
@@ -125,6 +125,8 @@
             // 
             // button_RemovingLinks
             // 
+            this.button_RemovingLinks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button_RemovingLinks.Location = new System.Drawing.Point(15, 547);
             this.button_RemovingLinks.Name = "button_RemovingLinks";
             this.button_RemovingLinks.Size = new System.Drawing.Size(397, 23);
@@ -135,6 +137,7 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(15, 524);
             this.checkBox1.Name = "checkBox1";
@@ -145,6 +148,7 @@
             // 
             // button_openRvtFolder
             // 
+            this.button_openRvtFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_openRvtFolder.Location = new System.Drawing.Point(328, 79);
             this.button_openRvtFolder.Name = "button_openRvtFolder";
             this.button_openRvtFolder.Size = new System.Drawing.Size(84, 23);
@@ -155,6 +159,7 @@
             // 
             // button_openNwcFolder
             // 
+            this.button_openNwcFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_openNwcFolder.Location = new System.Drawing.Point(328, 129);
             this.button_openNwcFolder.Name = "button_openNwcFolder";
             this.button_openNwcFolder.Size = new System.Drawing.Size(84, 23);
@@ -163,17 +168,31 @@
             this.button_openNwcFolder.UseVisualStyleBackColor = true;
             this.button_openNwcFolder.Click += new System.EventHandler(this.button_openNwcFolder_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.BulletIndent = 5;
+            this.richTextBox1.Location = new System.Drawing.Point(15, 180);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(397, 338);
+            this.richTextBox1.TabIndex = 16;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.WordWrap = false;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 611);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button_openNwcFolder);
             this.Controls.Add(this.button_openRvtFolder);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button_RemovingLinks);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBoxPathNWC);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -181,6 +200,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.MinimumSize = new System.Drawing.Size(440, 650);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Пакетный экспорт NWC";
@@ -198,12 +218,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPathNWC;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_RemovingLinks;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button button_openRvtFolder;
         private System.Windows.Forms.Button button_openNwcFolder;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
