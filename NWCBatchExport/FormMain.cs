@@ -1,6 +1,5 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.Сторонние_решения;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,34 +33,6 @@ namespace NWCBatchExport
             textBox4.Text = _Data.Log;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Document doc = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
-
-            ICollection<Element> walls = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Walls).WhereElementIsNotElementType().ToElements();
-            ICollection<Element> floors = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Floors).WhereElementIsNotElementType().ToElements();
-            ICollection<Element> structuralFoundation = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralFoundation).WhereElementIsNotElementType().ToElements();
-            ICollection<Element> columns = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_Columns).WhereElementIsNotElementType().ToElements();
-            ICollection<Element> structuralColumns = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralColumns).WhereElementIsNotElementType().ToElements();
-            ICollection<Element> structuralFraming = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_StructuralFraming).WhereElementIsNotElementType().ToElements();
-
-            using (Transaction trans = new Transaction(doc, "Update Workset Parameter"))
-            {
-                trans.Start();
-
-                Class112.AAA(doc, walls);
-                Class112.AAA(doc, floors);
-                Class112.AAA(doc, structuralFoundation);
-                Class112.AAA(doc, columns);
-                Class112.AAA(doc, structuralColumns);
-                Class112.AAA(doc, structuralFraming);
-
-
-                trans.Commit();
-            }
-
-
-        }
 
         private void button_RemovingLinks_Click(object sender, EventArgs e)
         {
@@ -73,6 +44,22 @@ namespace NWCBatchExport
             _SettingsAndOpeningFile.RemovingAllLinks();
 
             textBox4.Text = _Data.Log;
+        }
+
+        private void button_openRvtFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxPathRvt.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void button_openNwcFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxPathNWC.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
     }
 }
