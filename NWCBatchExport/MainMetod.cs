@@ -24,7 +24,7 @@ namespace NWCBatchExport
 
                 oldDoc = document;
 
-                _Data.Log += document.PathName;
+                _Data.Log += document.PathName + "\n";
             }
 
         }
