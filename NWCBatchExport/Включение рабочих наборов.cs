@@ -1,8 +1,8 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 
 namespace NWCBatchExport
 {
@@ -27,11 +27,11 @@ namespace NWCBatchExport
                 .Cast<View>()
                 .FirstOrDefault(v => v.Name.Equals(targetViewName, StringComparison.OrdinalIgnoreCase));
 
-            // Проверяем, найден ли вид
-            if (targetView == null)
-            {
-                TaskDialog.Show("Успех", $"Вид с именем '{targetViewName}' не найден.");
-            }
+            //// Проверяем, найден ли вид
+            //if (targetView == null)
+            //{
+            //    TaskDialog.Show("Успех", $"Вид с именем '{targetViewName}' не найден.");
+            //}
 
             // Получаем все рабочие наборы в документе
             IList<Workset> worksets = new FilteredWorksetCollector(doc)
@@ -39,18 +39,22 @@ namespace NWCBatchExport
                 .ToWorksets()
                 .ToList();
 
-            // Начинаем транзакцию для изменения видимости
-            using (Transaction trans = new Transaction(doc, "Включение всех рабочих наборов"))
+
+            if (targetView != null)
             {
-                trans.Start();
-
-                // Включаем видимость всех рабочих наборов
-                foreach (Workset workset in worksets)
+                // Начинаем транзакцию для изменения видимости
+                using (Transaction trans = new Transaction(doc, "Включение всех рабочих наборов"))
                 {
-                    targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
-                }
+                    trans.Start();
 
-                trans.Commit();
+                    // Включаем видимость всех рабочих наборов
+                    foreach (Workset workset in worksets)
+                    {
+                        targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
+                    }
+
+                    trans.Commit();
+                }
             }
 
             //TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");

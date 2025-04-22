@@ -25,7 +25,7 @@ namespace NWCBatchExport
 
             if (selectedView == null)
             {
-                _Data.Log += $"****Не найден вид {nameView}**** " + document.Title + "\n";
+                _Data.Log += $"-    Не найден вид {nameView}    ";
             }
 
             if (selectedView != null)

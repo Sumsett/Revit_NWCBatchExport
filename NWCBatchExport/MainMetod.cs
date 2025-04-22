@@ -24,7 +24,7 @@ namespace NWCBatchExport
 
                 oldDoc = document;
 
-                _Data.Log += document.PathName + "\n";
+                _Data.Log += document.Title + "\n";
             }
 
         }
@@ -47,7 +47,7 @@ namespace NWCBatchExport
 
                 oldDoc = document;
 
-                _Data.Log += document.PathName + "\n";
+                _Data.Log += document.Title + "\n";
             }
         }
     }
