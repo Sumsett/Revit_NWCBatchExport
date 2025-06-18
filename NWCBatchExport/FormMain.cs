@@ -47,6 +47,9 @@ namespace NWCBatchExport
 
         private void button_openRvtFolder_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.SelectedPath = "";
+            folderBrowserDialog1.SelectedPath = textBoxPathRvt.Text;
+
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxPathRvt.Text = folderBrowserDialog1.SelectedPath;
@@ -55,6 +58,9 @@ namespace NWCBatchExport
 
         private void button_openNwcFolder_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.SelectedPath = "";
+            folderBrowserDialog1.SelectedPath = textBoxPathNWC.Text;
+
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 textBoxPathNWC.Text = folderBrowserDialog1.SelectedPath;
