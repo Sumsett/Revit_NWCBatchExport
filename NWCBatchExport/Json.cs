@@ -1,0 +1,77 @@
+﻿using System.IO;
+using System.Reflection;
+using Autodesk.Revit.UI;
+using Newtonsoft.Json;
+
+namespace NWCBatchExport
+{
+    public class Json
+    {
+        //Указываем путь до Json.
+        //Json храниться по пути сборки + доп папка NWCBatchExport.
+        static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        static string jsonFolder = Path.Combine(assemblyFolder, "NWCBatchExport");
+        static string pathToJson = Path.Combine(jsonFolder, "Data.json");
+
+        public static void CreateJson(string path)
+        {
+            //В случае если нет папки NWCBatchExport, то создаем ее.
+            //Либо если есть, просто создаем ее.
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+                File.Create(Path.Combine(path, "Data.json"));
+            }
+
+            else
+            {
+                File.Create(Path.Combine(path, "Data.json"));
+            }
+        }
+
+        public static void ReadingJson()
+        {
+            //Если есть Json, то читаем его. Либо создаем новый, если его нет.
+            if (File.Exists(pathToJson))
+            {
+                //Читаем и десериализуем данные.
+                var text = File.ReadAllText(pathToJson);
+                _SavedJson savedParameters = new _SavedJson();
+                savedParameters = JsonConvert.DeserializeObject<_SavedJson>(text);
+
+                //Записываем в Data значения переменных.
+                _Data.NameOfExportedView = savedParameters.NameOfExportedView;
+                _Data.PathToRVT = savedParameters.PathToRVT;
+                _Data.PathToNWC = savedParameters.PathToNWC;
+            }
+
+            else
+            {
+                try
+                {
+                    CreateJson(jsonFolder);
+                    TaskDialog.Show("Предупреждение", "Файл создан");
+                }
+                catch
+                {
+                    TaskDialog.Show("Предупреждение", "Не удалось создать Json");
+                }
+            }
+        }
+
+        public static void WriteJson(_SavedJson savedParameters)
+        {
+            //Сериализуем данные, и записываем в существующий файл, если Json cуществует
+            if (File.Exists(pathToJson))
+            {
+                string text = JsonConvert.SerializeObject(savedParameters, Formatting.Indented);
+                File.WriteAllText(pathToJson, text);
+            }
+
+            else
+            {
+                TaskDialog.Show("Предупреждение", "Не удалось записать Json");
+            }
+        }
+    }
+}

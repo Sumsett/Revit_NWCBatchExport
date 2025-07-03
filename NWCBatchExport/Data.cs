@@ -17,4 +17,10 @@ namespace NWCBatchExport
         public static bool UnloadingRoomGeometry { get; set; }
 
     }
+    public class _SavedJson
+    {
+        public string NameOfExportedView { get; set; }
+        public string PathToRVT { get; set; }
+        public string PathToNWC { get; set; }
+    }
 }

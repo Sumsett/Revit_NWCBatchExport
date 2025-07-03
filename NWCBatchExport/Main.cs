@@ -10,10 +10,9 @@ namespace RevitFormTest
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+            Json.ReadingJson();
+
             _Data.ExternalCommandData = commandData;
-            _Data.NameOfExportedView = "Navisworks";
-            _Data.PathToRVT = @"C:\Work\ExportNWC\RVT";
-            _Data.PathToNWC = @"C:\Work\ExportNWC\NWC";
 
             FormMain formMain = new FormMain();
             formMain.ShowDialog();

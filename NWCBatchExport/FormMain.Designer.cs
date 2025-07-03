@@ -31,7 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxPathRvt = new System.Windows.Forms.TextBox();
+            this.textBoxPathRVT = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPathNWC = new System.Windows.Forms.TextBox();
@@ -42,6 +42,8 @@
             this.button_openRvtFolder = new System.Windows.Forms.Button();
             this.button_openNwcFolder = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button_savedJson = new System.Windows.Forms.Button();
+            this.button_loadJson = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -75,14 +77,14 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Название вида для экспорта";
             // 
-            // textBoxPathRvt
+            // textBoxPathRVT
             // 
-            this.textBoxPathRvt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxPathRVT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxPathRvt.Location = new System.Drawing.Point(15, 80);
-            this.textBoxPathRvt.Name = "textBoxPathRvt";
-            this.textBoxPathRvt.Size = new System.Drawing.Size(307, 20);
-            this.textBoxPathRvt.TabIndex = 5;
+            this.textBoxPathRVT.Location = new System.Drawing.Point(15, 80);
+            this.textBoxPathRVT.Name = "textBoxPathRVT";
+            this.textBoxPathRVT.Size = new System.Drawing.Size(307, 20);
+            this.textBoxPathRVT.TabIndex = 5;
             // 
             // label3
             // 
@@ -175,18 +177,40 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.BulletIndent = 5;
-            this.richTextBox1.Location = new System.Drawing.Point(15, 180);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 241);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(397, 338);
+            this.richTextBox1.Size = new System.Drawing.Size(397, 277);
             this.richTextBox1.TabIndex = 16;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
+            // 
+            // button_savedJson
+            // 
+            this.button_savedJson.Location = new System.Drawing.Point(92, 156);
+            this.button_savedJson.Name = "button_savedJson";
+            this.button_savedJson.Size = new System.Drawing.Size(75, 23);
+            this.button_savedJson.TabIndex = 17;
+            this.button_savedJson.Text = "Сохранить";
+            this.button_savedJson.UseVisualStyleBackColor = true;
+            this.button_savedJson.Click += new System.EventHandler(this.button_savedJson_Click);
+            // 
+            // button_loadJson
+            // 
+            this.button_loadJson.Location = new System.Drawing.Point(188, 156);
+            this.button_loadJson.Name = "button_loadJson";
+            this.button_loadJson.Size = new System.Drawing.Size(75, 23);
+            this.button_loadJson.TabIndex = 18;
+            this.button_loadJson.Text = "Загрузить";
+            this.button_loadJson.UseVisualStyleBackColor = true;
+            this.button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 611);
+            this.Controls.Add(this.button_loadJson);
+            this.Controls.Add(this.button_savedJson);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button_openNwcFolder);
             this.Controls.Add(this.button_openRvtFolder);
@@ -196,7 +220,7 @@
             this.Controls.Add(this.textBoxPathNWC);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBoxPathRvt);
+            this.Controls.Add(this.textBoxPathRVT);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
@@ -214,7 +238,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxPathRvt;
+        private System.Windows.Forms.TextBox textBoxPathRVT;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPathNWC;
@@ -225,5 +249,7 @@
         private System.Windows.Forms.Button button_openRvtFolder;
         private System.Windows.Forms.Button button_openNwcFolder;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button_savedJson;
+        private System.Windows.Forms.Button button_loadJson;
     }
 }

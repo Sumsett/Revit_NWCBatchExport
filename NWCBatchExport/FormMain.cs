@@ -1,11 +1,7 @@
-﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Controls;
+﻿using System;
 using System.Windows.Forms;
-using View = Autodesk.Revit.DB.View;
+using Newtonsoft.Json;
+
 
 namespace NWCBatchExport
 {
@@ -16,7 +12,7 @@ namespace NWCBatchExport
             InitializeComponent();
 
             textBox1.Text = _Data.NameOfExportedView;
-            textBoxPathRvt.Text = _Data.PathToRVT;
+            textBoxPathRVT.Text = _Data.PathToRVT;
             textBoxPathNWC.Text = _Data.PathToNWC;
         }
 
@@ -24,7 +20,8 @@ namespace NWCBatchExport
         {
             _Data.NameOfExportedView = textBox1.Text;
             _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRvt.Text;
+            _Data.PathToRVT = textBoxPathRVT.Text;
+
             _Data.UnloadingRoomGeometry = checkBox1.Checked;
 
             _SettingsAndOpeningFile.ExportNWC();
@@ -36,7 +33,7 @@ namespace NWCBatchExport
         private void button_RemovingLinks_Click(object sender, EventArgs e)
         {
             _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRvt.Text;
+            _Data.PathToRVT = textBoxPathRVT.Text;
             _Data.NameOfExportedView = textBox1.Text;
 
 
@@ -48,11 +45,11 @@ namespace NWCBatchExport
         private void button_openRvtFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = "";
-            folderBrowserDialog1.SelectedPath = textBoxPathRvt.Text;
+            folderBrowserDialog1.SelectedPath = textBoxPathRVT.Text;
 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBoxPathRvt.Text = folderBrowserDialog1.SelectedPath;
+                textBoxPathRVT.Text = folderBrowserDialog1.SelectedPath;
             }
         }
 
@@ -65,6 +62,27 @@ namespace NWCBatchExport
             {
                 textBoxPathNWC.Text = folderBrowserDialog1.SelectedPath;
             }
+        }
+
+        private void button_savedJson_Click(object sender, EventArgs e)
+        {
+            _SavedJson aaa = new _SavedJson
+            {
+                NameOfExportedView = textBox1.Text,
+                PathToNWC = textBoxPathNWC.Text,
+                PathToRVT = textBoxPathRVT.Text
+            };
+
+            Json.WriteJson( aaa );
+        }
+
+        private void button_loadJson_Click(object sender, EventArgs e)
+        {
+            Json.ReadingJson();
+
+            textBox1.Text = _Data.NameOfExportedView;
+            textBoxPathRVT.Text = _Data.PathToRVT;
+            textBoxPathNWC.Text = _Data.PathToNWC;
         }
     }
 }
