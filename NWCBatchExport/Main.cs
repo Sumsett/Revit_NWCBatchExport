@@ -23,7 +23,7 @@ namespace RevitFormTest
             return Result.Succeeded;
         }
 
-        private void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
+        private async void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
         {
             //TaskDialog.Show("Открыт документ", args5.DialogId);
             switch (e)
@@ -41,10 +41,10 @@ namespace RevitFormTest
                     break;
 
                 //НЕ РАБОТАЕТ ИЗ РЕВИТ АПИ, НУЖЕН ВИН АПИ
-                //case DialogBoxShowingEventArgs args3:
-                //    if (args3.DialogId == "Dialog_Revit_DocWarnDialog")
-                //        args3.OverrideResult(0);
-                //    break;
+                case DialogBoxShowingEventArgs args3:
+                    if (args3.DialogId == "Dialog_Revit_DocWarnDialog")
+                        await Win32Api.ClickOk();
+                    break;
 
                 default:
                     return;
