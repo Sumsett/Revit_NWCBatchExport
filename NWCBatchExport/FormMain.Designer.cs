@@ -196,7 +196,7 @@
             // 
             // button_loadJson
             // 
-            this.button_loadJson.Location = new System.Drawing.Point(188, 156);
+            this.button_loadJson.Location = new System.Drawing.Point(173, 156);
             this.button_loadJson.Name = "button_loadJson";
             this.button_loadJson.Size = new System.Drawing.Size(75, 23);
             this.button_loadJson.TabIndex = 18;

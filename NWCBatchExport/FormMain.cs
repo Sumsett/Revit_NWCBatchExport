@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 
@@ -14,6 +15,8 @@ namespace NWCBatchExport
             textBox1.Text = _Data.NameOfExportedView;
             textBoxPathRVT.Text = _Data.PathToRVT;
             textBoxPathNWC.Text = _Data.PathToNWC;
+
+            label1.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

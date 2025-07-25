@@ -1,6 +1,5 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.DB.Events;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using NWCBatchExport;
@@ -26,28 +25,33 @@ namespace RevitFormTest
 
         private void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
         {
-            //e.OverrideResult(1);
-            //TaskDialogShowingEventArgs args5 = e as TaskDialogShowingEventArgs;
             //TaskDialog.Show("Открыт документ", args5.DialogId);
             switch (e)
             {
-                // (Konrad) Dismiss Unresolved References pop-up.
                 case TaskDialogShowingEventArgs args2:
+
+                    //Не удается найти связь Revit/AutoCAD
                     if (args2.DialogId == "TaskDialog_Unresolved_References")
                         args2.OverrideResult(1002);
+
+                    //Отсутсвует сторонне средство (Плагин)
+                    else if (args2.DialogId == "TaskDialog_Missing_Third_Party_Updaters" || args2.DialogId == "TaskDialog_Missing_Third_Party_Updater")
+                        args2.OverrideResult(1);
+
                     break;
+
+                //НЕ РАБОТАЕТ ИЗ РЕВИТ АПИ, НУЖЕН ВИН АПИ
+                //case DialogBoxShowingEventArgs args3:
+                //    if (args3.DialogId == "Dialog_Revit_DocWarnDialog")
+                //        args3.OverrideResult(0);
+                //    break;
+
                 default:
                     return;
             }
 
         }
 
-        private void Application_DocumentOpened(object sender, DocumentOpenedEventArgs e)
-        {
-            //throw new System.NotImplementedException();
-            Document doc = e.Document;
-            //string docName = System.IO.Path.GetFileNameWithoutExtension(doc.PathName);
-            //TaskDialog.Show("Открыт документ", $"Был открыт документ: {docName}");    
-        }
+
     }
 }
