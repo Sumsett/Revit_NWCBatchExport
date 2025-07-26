@@ -12,11 +12,6 @@ namespace NWCBatchExport.Доп_классы_для_отладки
         {
             loggingToFile?.Invoke(fileName, message);
         }
-
-        public static void Logger_loggingToFile(string fileName, string message)
-        {
-            _Data.Log += $"{DateTime.Now.ToString("[dd.MM.yyyy] [HH:mm]")} | [{fileName}] | {message}\n";
-        }
     }
 
 }

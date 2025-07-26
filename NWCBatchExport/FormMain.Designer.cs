@@ -178,9 +178,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.BulletIndent = 5;
-            this.richTextBox1.Location = new System.Drawing.Point(15, 350);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 189);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(397, 168);
+            this.richTextBox1.Size = new System.Drawing.Size(397, 329);
             this.richTextBox1.TabIndex = 16;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
@@ -207,9 +207,9 @@
             // 
             // button_Test
             // 
-            this.button_Test.Location = new System.Drawing.Point(337, 221);
+            this.button_Test.Location = new System.Drawing.Point(328, 156);
             this.button_Test.Name = "button_Test";
-            this.button_Test.Size = new System.Drawing.Size(75, 23);
+            this.button_Test.Size = new System.Drawing.Size(84, 23);
             this.button_Test.TabIndex = 19;
             this.button_Test.Text = "button2";
             this.button_Test.UseVisualStyleBackColor = true;

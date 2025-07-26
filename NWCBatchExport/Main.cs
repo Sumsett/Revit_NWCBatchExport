@@ -15,7 +15,7 @@ namespace RevitFormTest
         {
             Json.ReadingJson();
             commandData.Application.DialogBoxShowing += Application_DocumentOpened;
-            Logger.loggingToFile += Logger.Logger_loggingToFile;
+            Logger.loggingToFile += Logger_loggingToFile;
 
 
             _Data.ExternalCommandData = commandData;
@@ -24,12 +24,17 @@ namespace RevitFormTest
             formMain.ShowDialog();
 
             commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-            Logger.loggingToFile -= Logger.Logger_loggingToFile;
+            Logger.loggingToFile -= Logger_loggingToFile;
             return Result.Succeeded;
         }
 
+        //Событие логирования
+        private void Logger_loggingToFile(string fileName, string message)
+        {
+            _Data.Log += $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
+        }
 
-
+        //События по отлову и закрытию предупреждений Revit
         private async void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
         {
             //TaskDialog.Show("Открыт документ", args5.DialogId);

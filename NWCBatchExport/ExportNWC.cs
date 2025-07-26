@@ -35,7 +35,7 @@ namespace NWCBatchExport
                 stopwatch.Stop();
 
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
-                Logger.Log(document.Title, $"Время открытия и экспорта: {time}");
+                Logger.Log(document.Title, $"Время открытия и экспорта {time} (мин/сек)");
             }
         }
 
