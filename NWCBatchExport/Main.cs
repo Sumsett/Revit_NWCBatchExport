@@ -1,8 +1,10 @@
-﻿using Autodesk.Revit.Attributes;
+﻿using System;
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using NWCBatchExport;
+using NWCBatchExport.Доп_классы_для_отладки;
 
 namespace RevitFormTest
 {
@@ -13,6 +15,8 @@ namespace RevitFormTest
         {
             Json.ReadingJson();
             commandData.Application.DialogBoxShowing += Application_DocumentOpened;
+            Logger.loggingToFile += Logger.Logger_loggingToFile;
+
 
             _Data.ExternalCommandData = commandData;
 
@@ -20,8 +24,11 @@ namespace RevitFormTest
             formMain.ShowDialog();
 
             commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
+            Logger.loggingToFile -= Logger.Logger_loggingToFile;
             return Result.Succeeded;
         }
+
+
 
         private async void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -26,8 +27,10 @@ namespace NWCBatchExport
             _Data.PathToRVT = textBoxPathRVT.Text;
 
             _Data.UnloadingRoomGeometry = checkBox1.Checked;
-
+            
+            //Основной метод. Открытие файла, настройка вида, экспорт NWC
             _SettingsAndOpeningFile.ExportNWC();
+
 
             richTextBox1.Text = _Data.Log;
         }
@@ -86,6 +89,11 @@ namespace NWCBatchExport
             textBox1.Text = _Data.NameOfExportedView;
             textBoxPathRVT.Text = _Data.PathToRVT;
             textBoxPathNWC.Text = _Data.PathToNWC;
+        }
+
+        private void button_Test_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

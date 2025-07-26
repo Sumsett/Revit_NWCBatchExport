@@ -1,5 +1,7 @@
-﻿using Autodesk.Revit.DB;
+﻿using System.Diagnostics;
 using System.IO;
+using Autodesk.Revit.DB;
+using NWCBatchExport.Доп_классы_для_отладки;
 
 namespace NWCBatchExport
 {
@@ -11,22 +13,30 @@ namespace NWCBatchExport
 
             Document oldDoc = null;
 
+
             foreach (string dir in dirs)
             {
+                //Запуск таймера
+                Stopwatch stopwatch = Stopwatch.StartNew();
+
+                //Открытие документа
                 OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
                 Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
                 if (oldDoc != null)
                     oldDoc.Close(false);
 
-                Class1.AAAA();
+                Worksets.EnableAll();
                 _Export.toNWC(document);
 
                 oldDoc = document;
 
-                _Data.Log += document.Title + "\n";
-            }
+                //Остановка таймера и логирование значения
+                stopwatch.Stop();
 
+                string time = stopwatch.Elapsed.ToString("mm\\:ss");
+                Logger.Log(document.Title, $"Время открытия и экспорта: {time}");
+            }
         }
 
         static public void RemovingAllLinks()

@@ -6,9 +6,9 @@ using Autodesk.Revit.UI;
 
 namespace NWCBatchExport
 {
-    internal class Class1
+    internal class Worksets
     {
-        static public void AAAA()
+        static public void EnableAll()
         {
             // Получаем доступ к текущему документу и приложению
             //UIApplication uiApp = commandData.Application;

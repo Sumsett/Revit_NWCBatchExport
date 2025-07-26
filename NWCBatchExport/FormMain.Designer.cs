@@ -44,6 +44,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button_savedJson = new System.Windows.Forms.Button();
             this.button_loadJson = new System.Windows.Forms.Button();
+            this.button_Test = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -177,9 +178,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.BulletIndent = 5;
-            this.richTextBox1.Location = new System.Drawing.Point(15, 241);
+            this.richTextBox1.Location = new System.Drawing.Point(15, 350);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(397, 277);
+            this.richTextBox1.Size = new System.Drawing.Size(397, 168);
             this.richTextBox1.TabIndex = 16;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
@@ -204,11 +205,22 @@
             this.button_loadJson.UseVisualStyleBackColor = true;
             this.button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
             // 
+            // button_Test
+            // 
+            this.button_Test.Location = new System.Drawing.Point(337, 221);
+            this.button_Test.Name = "button_Test";
+            this.button_Test.Size = new System.Drawing.Size(75, 23);
+            this.button_Test.TabIndex = 19;
+            this.button_Test.Text = "button2";
+            this.button_Test.UseVisualStyleBackColor = true;
+            this.button_Test.Click += new System.EventHandler(this.button_Test_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 611);
+            this.Controls.Add(this.button_Test);
             this.Controls.Add(this.button_loadJson);
             this.Controls.Add(this.button_savedJson);
             this.Controls.Add(this.richTextBox1);
@@ -251,5 +263,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button_savedJson;
         private System.Windows.Forms.Button button_loadJson;
+        private System.Windows.Forms.Button button_Test;
     }
 }
