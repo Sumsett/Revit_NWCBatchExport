@@ -31,7 +31,11 @@ namespace RevitFormTest
         //Событие логирования
         private void Logger_loggingToFile(string fileName, string message)
         {
-            _Data.Log += $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
+            var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
+            //_Data.Log += $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
+            _Data.Log += messageOut;
+
+            Logger.RecordingDebugLog(messageOut);
         }
 
         //События по отлову и закрытию предупреждений Revit

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using Autodesk.Revit.DB;
 using Newtonsoft.Json;
+using NWCBatchExport.Доп_классы_для_отладки;
 
 
 namespace NWCBatchExport
@@ -93,7 +96,10 @@ namespace NWCBatchExport
 
         private void button_Test_Click(object sender, EventArgs e)
         {
-
+            //Logger.RecordingDebugLog("ффффф");
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var fullPath = Path.Combine(documentsPath, "log.txt");
+            Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
         }
     }
 }
