@@ -1,5 +1,7 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NWCBatchExport
 {
@@ -25,7 +27,7 @@ namespace NWCBatchExport
 
             if (selectedView == null)
             {
-                _Data.Log += $"-    Не найден вид {nameView}    ";
+                Logger.Log(document.Title, $"Не найден вид {nameView}");
             }
 
             if (selectedView != null)

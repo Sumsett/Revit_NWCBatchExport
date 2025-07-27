@@ -45,13 +45,27 @@
             this.button_savedJson = new System.Windows.Forms.Button();
             this.button_loadJson = new System.Windows.Forms.Button();
             this.button_Test = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button_CheckingOpenDocuments = new System.Windows.Forms.Button();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(15, 576);
+            this.button1.Location = new System.Drawing.Point(15, 676);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(397, 23);
             this.button1.TabIndex = 0;
@@ -122,15 +136,15 @@
             this.label1.Location = new System.Drawing.Point(12, 160);
             this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Отчет";
+            this.label1.Text = "Версия";
             // 
             // button_RemovingLinks
             // 
             this.button_RemovingLinks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_RemovingLinks.Location = new System.Drawing.Point(15, 547);
+            this.button_RemovingLinks.Location = new System.Drawing.Point(15, 647);
             this.button_RemovingLinks.Name = "button_RemovingLinks";
             this.button_RemovingLinks.Size = new System.Drawing.Size(397, 23);
             this.button_RemovingLinks.TabIndex = 12;
@@ -142,7 +156,7 @@
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(15, 524);
+            this.checkBox1.Location = new System.Drawing.Point(6, 23);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(203, 17);
             this.checkBox1.TabIndex = 13;
@@ -173,21 +187,24 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.BulletIndent = 5;
-            this.richTextBox1.Location = new System.Drawing.Point(15, 189);
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(397, 329);
+<<<<<<< HEAD
+            this.richTextBox1.Size = new System.Drawing.Size(383, 266);
+=======
+            this.richTextBox1.Size = new System.Drawing.Size(383, 369);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
             this.richTextBox1.TabIndex = 16;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
             // 
             // button_savedJson
             // 
-            this.button_savedJson.Location = new System.Drawing.Point(92, 156);
+            this.button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_savedJson.Location = new System.Drawing.Point(215, 25);
             this.button_savedJson.Name = "button_savedJson";
             this.button_savedJson.Size = new System.Drawing.Size(75, 23);
             this.button_savedJson.TabIndex = 17;
@@ -197,7 +214,8 @@
             // 
             // button_loadJson
             // 
-            this.button_loadJson.Location = new System.Drawing.Point(173, 156);
+            this.button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_loadJson.Location = new System.Drawing.Point(296, 25);
             this.button_loadJson.Name = "button_loadJson";
             this.button_loadJson.Size = new System.Drawing.Size(75, 23);
             this.button_loadJson.TabIndex = 18;
@@ -207,26 +225,142 @@
             // 
             // button_Test
             // 
-            this.button_Test.Location = new System.Drawing.Point(328, 156);
+            this.button_Test.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Test.Location = new System.Drawing.Point(296, 19);
             this.button_Test.Name = "button_Test";
-            this.button_Test.Size = new System.Drawing.Size(84, 23);
+            this.button_Test.Size = new System.Drawing.Size(75, 23);
             this.button_Test.TabIndex = 19;
-            this.button_Test.Text = "button2";
+            this.button_Test.Text = "Открыть";
             this.button_Test.UseVisualStyleBackColor = true;
             this.button_Test.Click += new System.EventHandler(this.button_Test_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+<<<<<<< HEAD
+            this.tabControl1.Location = new System.Drawing.Point(15, 343);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(397, 298);
+=======
+            this.tabControl1.Location = new System.Drawing.Point(15, 240);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(397, 401);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
+            this.tabControl1.TabIndex = 20;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.richTextBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+<<<<<<< HEAD
+            this.tabPage1.Size = new System.Drawing.Size(389, 272);
+=======
+            this.tabPage1.Size = new System.Drawing.Size(389, 375);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "Логи";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+<<<<<<< HEAD
+            this.tabPage2.Size = new System.Drawing.Size(389, 272);
+=======
+            this.tabPage2.Size = new System.Drawing.Size(389, 375);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Настройки";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Location = new System.Drawing.Point(6, 138);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(377, 46);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Настройки экспорта NWC";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.button_Test);
+            this.groupBox2.Location = new System.Drawing.Point(6, 72);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(377, 60);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Открыть логи";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button_savedJson);
+            this.groupBox1.Controls.Add(this.button_loadJson);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(377, 60);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Сохранение в Json";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(15, 182);
+            this.button2.Name = "button2";
+<<<<<<< HEAD
+            this.button2.Size = new System.Drawing.Size(307, 23);
+=======
+            this.button2.Size = new System.Drawing.Size(397, 23);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Открыть файлы";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button_CheckingOpenDocuments
+            // 
+            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(15, 211);
+            this.button_CheckingOpenDocuments.Name = "button_CheckingOpenDocuments";
+<<<<<<< HEAD
+            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(307, 23);
+=======
+            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(397, 23);
+>>>>>>> 928837a (Тестовая верстия для отладки 02)
+            this.button_CheckingOpenDocuments.TabIndex = 22;
+            this.button_CheckingOpenDocuments.Text = "Проверить открытые документы";
+            this.button_CheckingOpenDocuments.UseVisualStyleBackColor = true;
+            this.button_CheckingOpenDocuments.Click += new System.EventHandler(this.button_CheckingOpenDocuments_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 611);
-            this.Controls.Add(this.button_Test);
-            this.Controls.Add(this.button_loadJson);
-            this.Controls.Add(this.button_savedJson);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(424, 711);
+            this.Controls.Add(this.button_CheckingOpenDocuments);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_openNwcFolder);
             this.Controls.Add(this.button_openRvtFolder);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button_RemovingLinks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPathNWC);
@@ -236,10 +370,17 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.MinimumSize = new System.Drawing.Size(440, 650);
+            this.MinimumSize = new System.Drawing.Size(440, 750);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Пакетный экспорт NWC";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +405,13 @@
         private System.Windows.Forms.Button button_savedJson;
         private System.Windows.Forms.Button button_loadJson;
         private System.Windows.Forms.Button button_Test;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_CheckingOpenDocuments;
     }
 }

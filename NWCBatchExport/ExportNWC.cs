@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using Autodesk.Revit.DB;
-using NWCBatchExport.Доп_классы_для_отладки;
 
 namespace NWCBatchExport
 {
@@ -12,7 +11,6 @@ namespace NWCBatchExport
             string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
 
             Document oldDoc = null;
-
 
             foreach (string dir in dirs)
             {
@@ -26,7 +24,7 @@ namespace NWCBatchExport
                 if (oldDoc != null)
                     oldDoc.Close(false);
 
-                Worksets.EnableAll();
+                Worksets.EnableAll(document);
                 _Export.toNWC(document);
 
                 oldDoc = document;
@@ -59,12 +57,10 @@ namespace NWCBatchExport
 
                 oldDoc = document;
 
-                //_Data.Log += document.Title + "\n";
                 //Остановка таймера и логирование значения
                 stopwatch.Stop();
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
                 Logger.Log(document.Title, $"Удаление связей {time} (мин/сек)");
-
             }
         }
     }
