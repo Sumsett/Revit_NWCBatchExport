@@ -33,14 +33,16 @@ namespace NWCBatchExport
 
                 //Остановка таймера и логирование значения
                 stopwatch.Stop();
-
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
-                Logger.Log(document.Title, $"Время открытия и экспорта {time} (мин/сек)");
+                Logger.Log(document.Title, $"Экспорт в NWC {time} (мин/сек)");
             }
         }
 
         static public void RemovingAllLinks()
         {
+            //Запуск таймера
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
 
             Document oldDoc = null;
@@ -57,7 +59,12 @@ namespace NWCBatchExport
 
                 oldDoc = document;
 
-                _Data.Log += document.Title + "\n";
+                //_Data.Log += document.Title + "\n";
+                //Остановка таймера и логирование значения
+                stopwatch.Stop();
+                string time = stopwatch.Elapsed.ToString("mm\\:ss");
+                Logger.Log(document.Title, $"Удаление связей {time} (мин/сек)");
+
             }
         }
     }

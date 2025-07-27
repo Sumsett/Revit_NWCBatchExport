@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Autodesk.Revit.DB;
-using Newtonsoft.Json;
 using NWCBatchExport.Доп_классы_для_отладки;
 
 
@@ -30,9 +28,17 @@ namespace NWCBatchExport
             _Data.PathToRVT = textBoxPathRVT.Text;
 
             _Data.UnloadingRoomGeometry = checkBox1.Checked;
-            
+
+            //Запуск таймера
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             //Основной метод. Открытие файла, настройка вида, экспорт NWC
             _SettingsAndOpeningFile.ExportNWC();
+
+            //Остановка таймера и логирование значения
+            stopwatch.Stop();
+            string time = stopwatch.Elapsed.ToString("mm\\:ss");
+            Logger.Log("Все файлы", $"Общее время экспорта в NWC {time} (мин/сек)\n");
 
 
             richTextBox1.Text = _Data.Log;
@@ -45,8 +51,18 @@ namespace NWCBatchExport
             _Data.PathToRVT = textBoxPathRVT.Text;
             _Data.NameOfExportedView = textBox1.Text;
 
+            //Запуск таймера
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
 
             _SettingsAndOpeningFile.RemovingAllLinks();
+
+            //Остановка таймера и логирование значения
+            stopwatch.Stop();
+            string time = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
+
+            //var sss = DateTime.Now.ToString("HH:mm:ss");
+            Logger.Log("Все файлы", $"Общее время удаления всех связей {time} (часы/мин/сек)\n");
 
             richTextBox1.Text = _Data.Log;
         }
@@ -82,7 +98,7 @@ namespace NWCBatchExport
                 PathToRVT = textBoxPathRVT.Text
             };
 
-            Json.WriteJson( aaa );
+            Json.WriteJson(aaa);
         }
 
         private void button_loadJson_Click(object sender, EventArgs e)
