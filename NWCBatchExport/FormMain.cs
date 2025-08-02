@@ -4,15 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-<<<<<<< HEAD
-using Autodesk.Revit.Creation;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.Доп_классы_для_отладки;
-=======
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
->>>>>>> 928837a (Тестовая верстия для отладки 02)
 
 
 namespace NWCBatchExport
@@ -125,13 +118,9 @@ namespace NWCBatchExport
 
         private void button2_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
-=======
             Stopwatch stopwatchAll = Stopwatch.StartNew();
             string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
 
->>>>>>> 928837a (Тестовая верстия для отладки 02)
             foreach (string dir in dirs)
             {
                 //Запуск таймера
@@ -140,34 +129,16 @@ namespace NWCBatchExport
                 //Открытие документа
                 OpenFile.OpenFileWithoutShowing(dir, _Data.ExternalCommandData);
 
-<<<<<<< HEAD
-                //Остановка таймера и логирование значения
-                stopwatch.Stop();
-                string time = stopwatch.Elapsed.ToString("mm\\:ss");
-
-                string fileName = Path.GetFileNameWithoutExtension(dir);
-                Logger.Log(fileName, $"Не явное открытие документа {time} (мин/сек)");
-                richTextBox1.Text = _Data.Log;
-
-                //----------------------------------
-=======
->>>>>>> 928837a (Тестовая верстия для отладки 02)
                 UIApplication uiApp = _Data.ExternalCommandData.Application;
                 DocumentSet documents = uiApp.Application.Documents;
 
                 foreach (Autodesk.Revit.DB.Document doc in documents)
                 {
-<<<<<<< HEAD
-=======
                     Worksets.EnableAll(doc);
->>>>>>> 928837a (Тестовая верстия для отладки 02)
                     _Export.toNWC(doc);
                     doc.Close(false);
                 }
 
-<<<<<<< HEAD
-            }
-=======
                 //Остановка таймера и логирование значения
                 stopwatch.Stop();
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
@@ -179,7 +150,6 @@ namespace NWCBatchExport
             string timeAll = stopwatchAll.Elapsed.ToString("hh\\:mm\\:ss");
 
             Logger.Log("Все файлы", $"Неявное открытие файлов {timeAll} (часы/мин/сек)\n");
->>>>>>> 928837a (Тестовая верстия для отладки 02)
         }
 
         private void button_CheckingOpenDocuments_Click(object sender, EventArgs e)
@@ -194,14 +164,11 @@ namespace NWCBatchExport
             }
 
             TaskDialog.Show("Открытые документы", string.Join("\n", documentNames));
-<<<<<<< HEAD
-=======
 
             foreach (Autodesk.Revit.DB.Document doc in documents)
             {
                 doc.Close(false);
             }
->>>>>>> 928837a (Тестовая верстия для отладки 02)
         }
     }
 }

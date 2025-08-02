@@ -14,7 +14,7 @@ namespace RevitFormTest
         {
             Json.ReadingJson();
             commandData.Application.DialogBoxShowing += Application_DocumentOpened;
-            NWCBatchExport.Logger.LoggingToFile += LoggerOut;
+            Logger.LoggingToFile += LoggerOut;
 
 
             _Data.ExternalCommandData = commandData;
@@ -23,7 +23,7 @@ namespace RevitFormTest
             formMain.ShowDialog();
 
             commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-            NWCBatchExport.Logger.LoggingToFile -= LoggerOut;
+            Logger.LoggingToFile -= LoggerOut;
             return Result.Succeeded;
         }
 
@@ -31,13 +31,9 @@ namespace RevitFormTest
         private void LoggerOut(string fileName, string message)
         {
             var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
-<<<<<<< HEAD
-            _Data.Log += messageOut;
-=======
->>>>>>> 928837a (Тестовая верстия для отладки 02)
 
             Logger.textBoxForLog.Text += messageOut;
-            NWCBatchExport.Logger.RecordingDebugLog(messageOut);
+            Logger.RecordingDebugLog(messageOut);
         }
 
         //События по отлову и закрытию предупреждений Revit
