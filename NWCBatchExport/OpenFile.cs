@@ -22,7 +22,6 @@ namespace NWCBatchExport
             //Настройки для открытия
             OpenOptions openOptions = new OpenOptions();
             openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets; //Отсоединение от центральной модели
-            openOptions.OpenForeignOption = OpenForeignOption.Open;
 
             //Открытие файла без показа пользователю
             FilePath filePath = new FilePath(dir);

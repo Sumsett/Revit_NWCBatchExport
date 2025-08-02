@@ -10,9 +10,9 @@ namespace NWCBatchExport
     public class Logger
     {
         /// <summary>
-        /// Сохраняем текствое окно, для обновления информации через событие.
+        /// Сохраняем текстовое окно, для обновления информации через событие.
         /// </summary>
-        public static RichTextBox textBoxForLog { get; set; }
+        public static RichTextBox textBoxForLog { private get; set; }
 
         /// <summary>
         /// Событие, которое при обращении к методу Log формирует сообщение и записывает логи.
@@ -30,10 +30,10 @@ namespace NWCBatchExport
         }
 
         /// <summary>
-        /// Записывае строку в файл логов.
+        /// Записывает строку в файл логов.
         /// </summary>
         /// <param name="messageToRecord">Сообщение для записи</param>
-        public static void RecordingDebugLog(string messageToRecord)
+        private static void RecordingDebugLog(string messageToRecord)
         {
             //Получаем путь для логов
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -48,6 +48,21 @@ namespace NWCBatchExport
                 TaskDialog.Show("Предупреждение", $"Не удалось записать в тестовой лог по пути {documentsPath}");
             }
         }
+
+        /// <summary>
+        /// Событие легирования
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="message"></param>
+        //Событие логирования
+        public static void LoggerOut(string fileName, string message)
+        {
+            var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
+
+            textBoxForLog.Text += messageOut;
+            RecordingDebugLog(messageOut);
+        }
+
     }
 
 }

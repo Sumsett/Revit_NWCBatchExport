@@ -39,10 +39,17 @@ namespace NWCBatchExport
                 _SavedJson savedParameters = new _SavedJson();
                 savedParameters = JsonConvert.DeserializeObject<_SavedJson>(text);
 
-                //Записываем в Data значения переменных.
-                _Data.NameOfExportedView = savedParameters.NameOfExportedView;
-                _Data.PathToRVT = savedParameters.PathToRVT;
-                _Data.PathToNWC = savedParameters.PathToNWC;
+                try
+                {
+                    //Записываем в Data значения переменных.
+                    _Data.NameOfExportedView = savedParameters.NameOfExportedView;
+                    _Data.PathToRVT = savedParameters.PathToRVT;
+                    _Data.PathToNWC = savedParameters.PathToNWC;
+                }
+                catch
+                {
+                    TaskDialog.Show("Предупреждение", "Не удалось прочитать файл. Либо файл пуст, либо данные были повреждены");
+                }
             }
 
             else

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Threading;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Events;
 using NWCBatchExport;
+using NWCBatchExport.Обращения_к_Ревит;
 
 namespace RevitFormTest
 {
@@ -13,21 +15,43 @@ namespace RevitFormTest
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Json.ReadingJson();
-            commandData.Application.DialogBoxShowing += Application_DocumentOpened;
-            Logger.LoggingToFile += LoggerOut;
+            //commandData.Application.DialogBoxShowing += Application_DocumentOpened;
+            Logger.LoggingToFile += Logger.LoggerOut;
 
+
+            //-------------------
+            ExternalEventExample handler = new ExternalEventExample();
+            ExternalEvent exEvent = ExternalEvent.Create(handler);
+            _Data.handler = handler;
+            _Data.exEvent = exEvent;
 
             _Data.ExternalCommandData = commandData;
+            //--------------
+            Thread thread = new Thread(() =>
+            {
+                FormMain formMain = new FormMain();
+                formMain.Closed += (s, e) =>
+                {
+                    //commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
+                    Logger.LoggingToFile -= Logger.LoggerOut;
+                };
+                formMain.ShowDialog();
 
-            FormMain formMain = new FormMain();
-            formMain.ShowDialog();
+                // Необходимо для работы WPF окна
+                System.Windows.Threading.Dispatcher.Run();
+            });
 
-            commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-            Logger.LoggingToFile -= LoggerOut;
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.IsBackground = true;
+            thread.Start();
+            //--------------
+
             return Result.Succeeded;
         }
 
+        #region События
         //Событие логирования
+        /*
         private void LoggerOut(string fileName, string message)
         {
             var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
@@ -63,9 +87,8 @@ namespace RevitFormTest
                 default:
                     return;
             }
-
         }
-
-
+        */
+        #endregion
     }
 }

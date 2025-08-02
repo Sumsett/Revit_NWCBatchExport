@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using NWCBatchExport.Обращения_к_Ревит;
 
 namespace NWCBatchExport
 {
@@ -13,6 +14,9 @@ namespace NWCBatchExport
 
         //=== Настройки выгрузки ===
         public static bool UnloadingRoomGeometry { get; set; }
+        //=== Тест
+        public static ExternalEvent exEvent { get; set; }
+        public static ExternalEventExample handler { get; set; }
 
     }
     public class _SavedJson

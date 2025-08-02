@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -154,6 +154,11 @@ namespace NWCBatchExport
 
         private void button_CheckingOpenDocuments_Click(object sender, EventArgs e)
         {
+            button_CheckingOpenDocuments.Enabled = false;
+            _Data.exEvent.Raise();
+
+
+            /*
             UIApplication uiApp = _Data.ExternalCommandData.Application;
             DocumentSet documents = uiApp.Application.Documents;
 
@@ -169,6 +174,8 @@ namespace NWCBatchExport
             {
                 doc.Close(false);
             }
+            */
+
         }
     }
 }

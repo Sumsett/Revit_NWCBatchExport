@@ -200,7 +200,7 @@
             // button_savedJson
             // 
             this.button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_savedJson.Location = new System.Drawing.Point(323, 25);
+            this.button_savedJson.Location = new System.Drawing.Point(215, 19);
             this.button_savedJson.Name = "button_savedJson";
             this.button_savedJson.Size = new System.Drawing.Size(75, 23);
             this.button_savedJson.TabIndex = 17;
@@ -211,7 +211,7 @@
             // button_loadJson
             // 
             this.button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_loadJson.Location = new System.Drawing.Point(404, 25);
+            this.button_loadJson.Location = new System.Drawing.Point(296, 19);
             this.button_loadJson.Name = "button_loadJson";
             this.button_loadJson.Size = new System.Drawing.Size(75, 23);
             this.button_loadJson.TabIndex = 18;
@@ -222,7 +222,7 @@
             // button_Test
             // 
             this.button_Test.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Test.Location = new System.Drawing.Point(404, 19);
+            this.button_Test.Location = new System.Drawing.Point(296, 19);
             this.button_Test.Name = "button_Test";
             this.button_Test.Size = new System.Drawing.Size(75, 23);
             this.button_Test.TabIndex = 19;
@@ -262,7 +262,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(497, 375);
+            this.tabPage2.Size = new System.Drawing.Size(389, 375);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Location = new System.Drawing.Point(6, 138);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(485, 46);
+            this.groupBox3.Size = new System.Drawing.Size(377, 46);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Настройки экспорта NWC";
@@ -286,7 +286,7 @@
             this.groupBox2.Controls.Add(this.button_Test);
             this.groupBox2.Location = new System.Drawing.Point(6, 72);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(485, 60);
+            this.groupBox2.Size = new System.Drawing.Size(377, 60);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Открыть логи";
@@ -299,7 +299,7 @@
             this.groupBox1.Controls.Add(this.button_loadJson);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(485, 60);
+            this.groupBox1.Size = new System.Drawing.Size(377, 60);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сохранение в Json";
