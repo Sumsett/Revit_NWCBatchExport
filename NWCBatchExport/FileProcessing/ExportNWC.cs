@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using Autodesk.Revit.DB;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
     internal class _SettingsAndOpeningFile
     {

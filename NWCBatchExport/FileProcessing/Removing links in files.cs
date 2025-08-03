@@ -1,12 +1,13 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Linq;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
     [Transaction(TransactionMode.Manual)]
     public class RemoveLinksCommand 

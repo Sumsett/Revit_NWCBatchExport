@@ -1,9 +1,11 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
     internal class _Export
     {

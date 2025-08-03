@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.UI;
-using NWCBatchExport.Обращения_к_Ревит;
+using NWCBatchExport.RevitEvents;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.DataStorage
 {
     internal class _Data
     {
@@ -14,10 +14,11 @@ namespace NWCBatchExport
 
         //=== Настройки выгрузки ===
         public static bool UnloadingRoomGeometry { get; set; }
-        //=== Тест
+
+        //=== Отладочная передача данных ===
+        //- Экспорт NWC
         public static ExternalEvent exEvent { get; set; }
         public static ExternalEventExample handler { get; set; }
-
     }
     public class _SavedJson
     {

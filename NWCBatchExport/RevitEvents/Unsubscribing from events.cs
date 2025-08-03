@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.UI;
 
-namespace NWCBatchExport.Обращения_к_Ревит
+namespace NWCBatchExport.RevitEvents
 {
     public class UnsubscribeEvents : IExternalEventHandler
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using Autodesk.Revit.UI;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.Events
 {
     public delegate void LoggingToFile(string fileName, string message);
 
@@ -20,7 +20,7 @@ namespace NWCBatchExport
         public static event LoggingToFile LoggingToFile;
 
         /// <summary>
-        /// Формирует сообщение для записи в лог.
+        /// Передает сообщение в обработчик, который формирует финальный вид строки.
         /// </summary>
         /// <param name="fileName">Название файла</param>
         /// <param name="message">Текст сообщения</param>
@@ -50,7 +50,7 @@ namespace NWCBatchExport
         }
 
         /// <summary>
-        /// Событие легирования
+        /// Событие легирования. Формирует итоговую строку сообщения для вывода в файл и на экран.
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="message"></param>
@@ -62,7 +62,5 @@ namespace NWCBatchExport
             textBoxForLog.Text += messageOut;
             RecordingDebugLog(messageOut);
         }
-
     }
-
 }

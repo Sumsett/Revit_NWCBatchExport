@@ -2,19 +2,16 @@
 using System.IO;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
+using NWCBatchExport.FileProcessing;
 
-namespace NWCBatchExport.Обращения_к_Ревит
+namespace NWCBatchExport.RevitEvents
 {
     public class ExternalEventExample : IExternalEventHandler
     {
         public void Execute(UIApplication app)
         {
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    Task.Delay(100).Wait();
-            //    Logger.Log("___", "число: " + i.ToString());
-            //}
-
             Stopwatch stopwatchAll = Stopwatch.StartNew();
             string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
 
@@ -29,7 +26,7 @@ namespace NWCBatchExport.Обращения_к_Ревит
                 UIApplication uiApp = _Data.ExternalCommandData.Application;
                 DocumentSet documents = uiApp.Application.Documents;
 
-                foreach (Autodesk.Revit.DB.Document doc in documents)
+                foreach (Document doc in documents)
                 {
                     Worksets.EnableAll(doc);
                     _Export.toNWC(doc);

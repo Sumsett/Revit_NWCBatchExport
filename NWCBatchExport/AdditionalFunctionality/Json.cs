@@ -2,8 +2,9 @@
 using System.Reflection;
 using Autodesk.Revit.UI;
 using Newtonsoft.Json;
+using NWCBatchExport.DataStorage;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.AdditionalFunctionality
 {
     public class Json
     {
@@ -68,7 +69,7 @@ namespace NWCBatchExport
 
         public static void WriteJson(_SavedJson savedParameters)
         {
-            //Сериализуем данные, и записываем в существующий файл, если Json cуществует
+            //Сериализуем данные, и записываем в существующий файл, если Json существует
             if (File.Exists(pathToJson))
             {
                 string text = JsonConvert.SerializeObject(savedParameters, Formatting.Indented);
