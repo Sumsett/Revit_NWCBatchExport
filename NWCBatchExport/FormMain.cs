@@ -137,9 +137,9 @@ namespace NWCBatchExport
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
                 //Открытие документа
-                OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData);
+                OpenFile.OpenFileWithoutShowing(dir, Data._ExternalCommandData);
 
-                UIApplication uiApp = Data.ExternalCommandData.Application;
+                UIApplication uiApp = Data._ExternalCommandData.Application;
                 DocumentSet documents = uiApp.Application.Documents;
 
                 foreach (Autodesk.Revit.DB.Document doc in documents)
@@ -165,11 +165,11 @@ namespace NWCBatchExport
         private void button_CheckingOpenDocuments_Click(object sender, EventArgs e)
         {
             button_CheckingOpenDocuments.Enabled = false;
-            Data.exEvent.Raise();
-
+            Data.EventExportNWC.Raise();
+            progressBar1.Enabled = false;
 
             /*
-            UIApplication uiApp = Data.ExternalCommandData.Application;
+            UIApplication uiApp = Data._ExternalCommandData.Application;
             DocumentSet documents = uiApp.Application.Documents;
 
             List<string> documentNames = new List<string>();

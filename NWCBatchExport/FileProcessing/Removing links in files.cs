@@ -13,7 +13,7 @@ namespace NWCBatchExport.FileProcessing
     public class RemoveLinksCommand 
     {
         /*
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        public Result Execute(_ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             // Получаем приложение и документ
             UIApplication uiApp = commandData.Application;

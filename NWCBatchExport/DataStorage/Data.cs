@@ -1,11 +1,10 @@
 ﻿using Autodesk.Revit.UI;
-using NWCBatchExport.RevitEvents;
 
 namespace NWCBatchExport.DataStorage
 {
     internal class Data
     {
-        public static ExternalCommandData ExternalCommandData { get; set; }
+        public static ExternalCommandData _ExternalCommandData { get; set; }
 
         #region Данные для интерфейса
         public static string NameOfExportedView { get; set; }
@@ -19,8 +18,9 @@ namespace NWCBatchExport.DataStorage
 
         #region Отладочная передача данных
         //=== Экспорт NWC ===
-        public static ExternalEvent exEvent { get; set; }
-        public static ExternalEventExample handler { get; set; }
+        public static ExternalEvent EventExportNWC { get; set; }
+        public static ExternalEvent UnsubscribeEventsRevit { get; set; }
+        public static ExternalEvent RemovingLinks { get; set; }
         #endregion
     }
 

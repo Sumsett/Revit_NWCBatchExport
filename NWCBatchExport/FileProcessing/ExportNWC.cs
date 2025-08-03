@@ -20,8 +20,8 @@ namespace NWCBatchExport.FileProcessing
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
                 //Открытие документа
-                OpenFile.OpenFileAsUsual(dir, Data.ExternalCommandData);
-                Document document = Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
+                OpenFile.OpenFileAsUsual(dir, Data._ExternalCommandData);
+                Document document = Data._ExternalCommandData.Application.ActiveUIDocument?.Document;
 
                 if (oldDoc != null)
                     oldDoc.Close(false);
@@ -49,8 +49,8 @@ namespace NWCBatchExport.FileProcessing
 
             foreach (string dir in dirs)
             {
-                OpenFile.OpenFileAsUsual(dir, Data.ExternalCommandData);
-                Document document = Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
+                OpenFile.OpenFileAsUsual(dir, Data._ExternalCommandData);
+                Document document = Data._ExternalCommandData.Application.ActiveUIDocument?.Document;
 
                 if (oldDoc != null)
                     oldDoc.Close(false);

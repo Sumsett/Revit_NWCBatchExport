@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NWCBatchExport.Events
+namespace NWCBatchExport.AdditionalFunctionality
 {
     public static class Win32Api
     {

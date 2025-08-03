@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.Revit.UI;
+using NWCBatchExport.Events;
 
 namespace NWCBatchExport.RevitEvents
 {
-    public class UnsubscribeEvents : IExternalEventHandler
+    public class ExternalUnsubscribeEvents : IExternalEventHandler
     {
         public void Execute(UIApplication app)
         {
-            //commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-            //Logger.EventLoggingToFile -= OutLogger;
-
-            TaskDialog.Show("Оповещение", "Произошла отписка от событий");
+            app.DialogBoxShowing -= RevitEventHandler.ApplicationDocumentOpened;
         }
 
         public string GetName()

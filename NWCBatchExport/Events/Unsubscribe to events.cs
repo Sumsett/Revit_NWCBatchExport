@@ -15,6 +15,5 @@ namespace NWCBatchExport.Events
             ExecutionStatus.EventProgressBarTotal -= ExecutionStatus.OutProgressBarTotal;
             ExecutionStatus.EventProgressBarProcessed -= ExecutionStatus.OutProgressBarProcessed;
         }
-
     }
 }

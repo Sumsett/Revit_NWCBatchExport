@@ -12,7 +12,7 @@
             ExecutionStatus.EventButtonsActive += ExecutionStatus.OutButtonsActive;
             ExecutionStatus.EventProgressBarTotal += ExecutionStatus.OutProgressBarTotal;
             ExecutionStatus.EventProgressBarProcessed += ExecutionStatus.OutProgressBarProcessed;
-        }
 
+        }
     }
 }

@@ -8,7 +8,7 @@ using NWCBatchExport.FileProcessing;
 
 namespace NWCBatchExport.RevitEvents
 {
-    public class ExternalEventExample : IExternalEventHandler
+    public class ExternalExportNwc : IExternalEventHandler
     {
         public void Execute(UIApplication app)
         {
@@ -26,7 +26,7 @@ namespace NWCBatchExport.RevitEvents
 
                 Stopwatch stopwatch = Stopwatch.StartNew(); //Запускаем таймер
 
-                OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
+                OpenFile.OpenFileWithoutShowing(dir, Data._ExternalCommandData); //Открываем документ
                 DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
 
                 foreach (Document doc in documents)

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -14,26 +15,31 @@ namespace NWCBatchExport
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
+
             Json.ReadingJson();
             //commandData.Application.DialogBoxShowing += Application_DocumentOpened;
-            //Logger.EventLoggingToFile += Logger.OutLogger;
+            commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
             SubscribeToEvents.All();
 
-            //-------------------
-            ExternalEventExample handler = new ExternalEventExample();
-            ExternalEvent exEvent = ExternalEvent.Create(handler);
-            Data.handler = handler;
-            Data.exEvent = exEvent;
+            #region Создаем внешние события Revit
+            //Экспорт NWC (Полная форма записи)
+            //ExternalExportNwc exportNWC = new ExternalExportNwc();
+            //ExternalEvent eventExportNWC = ExternalEvent.Create(exportNWC);
+            //Data.EventExportNWC = eventExportNWC;
 
-            Data.ExternalCommandData = commandData;
+            //Более компактная
+            Data.EventExportNWC = ExternalEvent.Create(new ExternalExportNwc()); //Экспорт NWC
+            Data.UnsubscribeEventsRevit = ExternalEvent.Create(new ExternalUnsubscribeEvents()); //Отписка от событий
+            #endregion
+
+            Data._ExternalCommandData = commandData;
             //--------------
             Thread thread = new Thread(() =>
             {
                 FormMain formMain = new FormMain();
                 formMain.Closed += (s, e) =>
                 {
-                    //commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-                    //Logger.EventLoggingToFile -= Logger.OutLogger;
+                    Data.UnsubscribeEventsRevit.Raise();
                     UnsubscribeToEvents.CurrentForm();
                 };
                 formMain.ShowDialog();
@@ -47,40 +53,8 @@ namespace NWCBatchExport
             thread.Start();
             //--------------
 
+
             return Result.Succeeded;
         }
-
-        #region События
-        /*
-        //События по отлову и закрытию предупреждений Revit
-        private async void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
-        {
-            //TaskDialog.Show("Открыт документ", args5.DialogId);
-            switch (e)
-            {
-                case TaskDialogShowingEventArgs args2:
-
-                    //Не удается найти связь Revit/AutoCAD
-                    if (args2.DialogId == "TaskDialog_Unresolved_References")
-                        args2.OverrideResult(1002);
-
-                    //Отсутсвует сторонне средство (Плагин)
-                    else if (args2.DialogId == "TaskDialog_Missing_Third_Party_Updaters" || args2.DialogId == "TaskDialog_Missing_Third_Party_Updater")
-                        args2.OverrideResult(1);
-
-                    break;
-
-                //НЕ РАБОТАЕТ ИЗ РЕВИТ АПИ, НУЖЕН ВИН АПИ
-                case DialogBoxShowingEventArgs args3:
-                    if (args3.DialogId == "Dialog_Revit_DocWarnDialog")
-                        await Win32Api.ClickOk();
-                    break;
-
-                default:
-                    return;
-            }
-        }
-        */
-        #endregion
     }
 }
