@@ -37,15 +37,15 @@ namespace NWCBatchExport.AdditionalFunctionality
             {
                 //Читаем и десериализуем данные.
                 var text = File.ReadAllText(pathToJson);
-                _SavedJson savedParameters = new _SavedJson();
-                savedParameters = JsonConvert.DeserializeObject<_SavedJson>(text);
+                SavedJson savedParameters = new SavedJson();
+                savedParameters = JsonConvert.DeserializeObject<SavedJson>(text);
 
                 try
                 {
                     //Записываем в Data значения переменных.
-                    _Data.NameOfExportedView = savedParameters.NameOfExportedView;
-                    _Data.PathToRVT = savedParameters.PathToRVT;
-                    _Data.PathToNWC = savedParameters.PathToNWC;
+                    Data.NameOfExportedView = savedParameters.NameOfExportedView;
+                    Data.PathToRVT = savedParameters.PathToRVT;
+                    Data.PathToNWC = savedParameters.PathToNWC;
                 }
                 catch
                 {
@@ -67,7 +67,7 @@ namespace NWCBatchExport.AdditionalFunctionality
             }
         }
 
-        public static void WriteJson(_SavedJson savedParameters)
+        public static void WriteJson(SavedJson savedParameters)
         {
             //Сериализуем данные, и записываем в существующий файл, если Json существует
             if (File.Exists(pathToJson))

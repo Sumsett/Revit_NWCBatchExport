@@ -2,31 +2,30 @@
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport;
 using NWCBatchExport.AdditionalFunctionality;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.RevitEvents;
 
-namespace RevitFormTest
+namespace NWCBatchExport
 {
     [Transaction(TransactionMode.Manual)]
-    public class StartClass : IExternalCommand
+    public class Main : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Json.ReadingJson();
             //commandData.Application.DialogBoxShowing += Application_DocumentOpened;
-            Logger.LoggingToFile += Logger.LoggerOut;
-
+            //Logger.EventLoggingToFile += Logger.OutLogger;
+            SubscribeToEvents.All();
 
             //-------------------
             ExternalEventExample handler = new ExternalEventExample();
             ExternalEvent exEvent = ExternalEvent.Create(handler);
-            _Data.handler = handler;
-            _Data.exEvent = exEvent;
+            Data.handler = handler;
+            Data.exEvent = exEvent;
 
-            _Data.ExternalCommandData = commandData;
+            Data.ExternalCommandData = commandData;
             //--------------
             Thread thread = new Thread(() =>
             {
@@ -34,7 +33,8 @@ namespace RevitFormTest
                 formMain.Closed += (s, e) =>
                 {
                     //commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-                    Logger.LoggingToFile -= Logger.LoggerOut;
+                    //Logger.EventLoggingToFile -= Logger.OutLogger;
+                    UnsubscribeToEvents.CurrentForm();
                 };
                 formMain.ShowDialog();
 
@@ -51,16 +51,7 @@ namespace RevitFormTest
         }
 
         #region События
-        //Событие логирования
         /*
-        private void LoggerOut(string fileName, string message)
-        {
-            var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
-
-            Logger.textBoxForLog.Text += messageOut;
-            Logger.RecordingDebugLog(messageOut);
-        }
-
         //События по отлову и закрытию предупреждений Revit
         private async void Application_DocumentOpened(object sender, DialogBoxShowingEventArgs e)
         {

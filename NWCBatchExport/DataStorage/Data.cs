@@ -3,24 +3,28 @@ using NWCBatchExport.RevitEvents;
 
 namespace NWCBatchExport.DataStorage
 {
-    internal class _Data
+    internal class Data
     {
         public static ExternalCommandData ExternalCommandData { get; set; }
 
-        //=== Данные для интерфейса ===
+        #region Данные для интерфейса
         public static string NameOfExportedView { get; set; }
         public static string PathToRVT { get; set; }
         public static string PathToNWC { get; set; }
+        #endregion
 
-        //=== Настройки выгрузки ===
+        #region Настройки выгрузки NWC
         public static bool UnloadingRoomGeometry { get; set; }
+        #endregion
 
-        //=== Отладочная передача данных ===
-        //- Экспорт NWC
+        #region Отладочная передача данных
+        //=== Экспорт NWC ===
         public static ExternalEvent exEvent { get; set; }
         public static ExternalEventExample handler { get; set; }
+        #endregion
     }
-    public class _SavedJson
+
+    public class SavedJson
     {
         public string NameOfExportedView { get; set; }
         public string PathToRVT { get; set; }

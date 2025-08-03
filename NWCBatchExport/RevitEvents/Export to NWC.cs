@@ -13,21 +13,25 @@ namespace NWCBatchExport.RevitEvents
         public void Execute(UIApplication app)
         {
             Stopwatch stopwatchAll = Stopwatch.StartNew();
-            string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
+            string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
 
             foreach (string dir in dirs)
             {
-                //Запуск таймера
-                Stopwatch stopwatch = Stopwatch.StartNew();
+                string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
-                //Открытие документа
-                OpenFile.OpenFileWithoutShowing(dir, _Data.ExternalCommandData);
+                //Обновляем информацию в интерфейсе
+                ExecutionStatus.FileName("Обрабатывается файл: " + fileName);
+                ExecutionStatus.ButtonsActive(false);
+                ExecutionStatus.ProgressBarTotal(dirs.Length);
 
-                UIApplication uiApp = _Data.ExternalCommandData.Application;
-                DocumentSet documents = uiApp.Application.Documents;
+                Stopwatch stopwatch = Stopwatch.StartNew(); //Запускаем таймер
+
+                OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
+                DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
 
                 foreach (Document doc in documents)
                 {
+                    //Обрабатываем файлы
                     Worksets.EnableAll(doc);
                     _Export.toNWC(doc);
                     doc.Close(false);
@@ -36,16 +40,19 @@ namespace NWCBatchExport.RevitEvents
                 //Остановка таймера и логирование значения
                 stopwatch.Stop();
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
-                string fileName = Path.GetFileNameWithoutExtension(dir);
-
                 Logger.Log(fileName, $"Не явное открытие документа {time} (мин/сек)");
+
+                //Обновляем информацию для каждого файла
+                ExecutionStatus.ProgressBarProcessed(dirs.Length);
             }
             stopwatchAll.Stop();
             string timeAll = stopwatchAll.Elapsed.ToString("hh\\:mm\\:ss");
 
             Logger.Log("Все файлы", $"Неявное открытие файлов {timeAll} (часы/мин/сек)\n");
 
-
+            //Обновляем данные в интерфейсе после операций
+            ExecutionStatus.FileName("Операция завершена");
+            ExecutionStatus.ButtonsActive(true);
         }
 
         public string GetName()

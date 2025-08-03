@@ -20,22 +20,28 @@ namespace NWCBatchExport
         {
             InitializeComponent();
 
-            textBox1.Text = _Data.NameOfExportedView;
-            textBoxPathRVT.Text = _Data.PathToRVT;
-            textBoxPathNWC.Text = _Data.PathToNWC;
+            textBox1.Text = Data.NameOfExportedView;
+            textBoxPathRVT.Text = Data.PathToRVT;
+            textBoxPathNWC.Text = Data.PathToNWC;
             Logger.textBoxForLog = richTextBox1;
+
+            ExecutionStatus.Label = label_CurrentFile;
+            ExecutionStatus.Button = button1;
+            ExecutionStatus.ProgressBar = progressBar1;
+
+
 
             Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _Data.NameOfExportedView = textBox1.Text;
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRVT.Text;
+            Data.NameOfExportedView = textBox1.Text;
+            Data.PathToNWC = textBoxPathNWC.Text;
+            Data.PathToRVT = textBoxPathRVT.Text;
             richTextBox1.Text = null;
 
-            _Data.UnloadingRoomGeometry = checkBox1.Checked;
+            Data.UnloadingRoomGeometry = checkBox1.Checked;
 
             //Запуск таймера
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -52,9 +58,9 @@ namespace NWCBatchExport
 
         private void button_RemovingLinks_Click(object sender, EventArgs e)
         {
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRVT.Text;
-            _Data.NameOfExportedView = textBox1.Text;
+            Data.PathToNWC = textBoxPathNWC.Text;
+            Data.PathToRVT = textBoxPathRVT.Text;
+            Data.NameOfExportedView = textBox1.Text;
             richTextBox1.Text = null;
 
             //Запуск таймера
@@ -94,7 +100,7 @@ namespace NWCBatchExport
 
         private void button_savedJson_Click(object sender, EventArgs e)
         {
-            _SavedJson aaa = new _SavedJson
+            SavedJson aaa = new SavedJson
             {
                 NameOfExportedView = textBox1.Text,
                 PathToNWC = textBoxPathNWC.Text,
@@ -108,9 +114,9 @@ namespace NWCBatchExport
         {
             Json.ReadingJson();
 
-            textBox1.Text = _Data.NameOfExportedView;
-            textBoxPathRVT.Text = _Data.PathToRVT;
-            textBoxPathNWC.Text = _Data.PathToNWC;
+            textBox1.Text = Data.NameOfExportedView;
+            textBoxPathRVT.Text = Data.PathToRVT;
+            textBoxPathNWC.Text = Data.PathToNWC;
         }
 
         private void button_Test_Click(object sender, EventArgs e)
@@ -123,7 +129,7 @@ namespace NWCBatchExport
         private void button2_Click(object sender, EventArgs e)
         {
             Stopwatch stopwatchAll = Stopwatch.StartNew();
-            string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
+            string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
 
             foreach (string dir in dirs)
             {
@@ -131,9 +137,9 @@ namespace NWCBatchExport
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
                 //Открытие документа
-                OpenFile.OpenFileWithoutShowing(dir, _Data.ExternalCommandData);
+                OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData);
 
-                UIApplication uiApp = _Data.ExternalCommandData.Application;
+                UIApplication uiApp = Data.ExternalCommandData.Application;
                 DocumentSet documents = uiApp.Application.Documents;
 
                 foreach (Autodesk.Revit.DB.Document doc in documents)
@@ -159,11 +165,11 @@ namespace NWCBatchExport
         private void button_CheckingOpenDocuments_Click(object sender, EventArgs e)
         {
             button_CheckingOpenDocuments.Enabled = false;
-            _Data.exEvent.Raise();
+            Data.exEvent.Raise();
 
 
             /*
-            UIApplication uiApp = _Data.ExternalCommandData.Application;
+            UIApplication uiApp = Data.ExternalCommandData.Application;
             DocumentSet documents = uiApp.Application.Documents;
 
             List<string> documentNames = new List<string>();

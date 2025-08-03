@@ -128,7 +128,7 @@ namespace NWCBatchExport.FileProcessing
             bool isCentralModel = doc.IsWorkshared && !doc.IsDetached;
 
             // Сохраняем файл на рабочий стол
-            string desktopPath = _Data.PathToNWC;
+            string desktopPath = Data.PathToNWC;
             string fileName = document.Title + ".rvt";
             if (fileName.Contains("_отсоединено"))
                 fileName = fileName.Replace("_отсоединено", "");

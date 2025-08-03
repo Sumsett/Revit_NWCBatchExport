@@ -16,7 +16,7 @@ namespace NWCBatchExport.FileProcessing
 
             //Найти виды для экспорта
             ElementId selectedView = null;
-            string nameView = _Data.NameOfExportedView;
+            string nameView = Data.NameOfExportedView;
 
             foreach (Element view in views)
             {
@@ -41,11 +41,11 @@ namespace NWCBatchExport.FileProcessing
                     ViewId = selectedView,
 
                     ConvertLinkedCADFormats = false,
-                    ExportRoomGeometry = _Data.UnloadingRoomGeometry
+                    ExportRoomGeometry = Data.UnloadingRoomGeometry
                 };
 
 
-                string pathOut = _Data.PathToNWC;
+                string pathOut = Data.PathToNWC;
 
                 string fileName = document.Title;
                 if (fileName.Contains("_отсоединено"))

@@ -10,7 +10,7 @@ namespace NWCBatchExport.FileProcessing
     {
         static public void ExportNWC()
         {
-            string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
+            string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
 
             Document oldDoc = null;
 
@@ -20,8 +20,8 @@ namespace NWCBatchExport.FileProcessing
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
                 //Открытие документа
-                OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
-                Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
+                OpenFile.OpenFileAsUsual(dir, Data.ExternalCommandData);
+                Document document = Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
                 if (oldDoc != null)
                     oldDoc.Close(false);
@@ -43,14 +43,14 @@ namespace NWCBatchExport.FileProcessing
             //Запуск таймера
             Stopwatch stopwatch = Stopwatch.StartNew();
 
-            string[] dirs = Directory.GetFiles(_Data.PathToRVT, "*.rvt");
+            string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
 
             Document oldDoc = null;
 
             foreach (string dir in dirs)
             {
-                OpenFile.OpenFileAsUsual(dir, _Data.ExternalCommandData);
-                Document document = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
+                OpenFile.OpenFileAsUsual(dir, Data.ExternalCommandData);
+                Document document = Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
 
                 if (oldDoc != null)
                     oldDoc.Close(false);

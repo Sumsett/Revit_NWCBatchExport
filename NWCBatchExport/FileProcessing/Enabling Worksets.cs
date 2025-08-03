@@ -12,7 +12,7 @@ namespace NWCBatchExport.FileProcessing
         static public void EnableAll(Document doc)
         {
             // Имя вида, который мы ищем
-            string viewName = _Data.NameOfExportedView;
+            string viewName = Data.NameOfExportedView;
 
             // Находим вид по имени
             View targetView = new FilteredElementCollector(doc)

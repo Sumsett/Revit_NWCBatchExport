@@ -47,11 +47,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button_CheckingOpenDocuments = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button_CheckingOpenDocuments = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label_CurrentFile = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -260,6 +260,16 @@
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button_CheckingOpenDocuments
+            // 
+            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(6, 219);
+            this.button_CheckingOpenDocuments.Name = "button_CheckingOpenDocuments";
+            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(152, 23);
+            this.button_CheckingOpenDocuments.TabIndex = 22;
+            this.button_CheckingOpenDocuments.Text = "Проверить открытые документы";
+            this.button_CheckingOpenDocuments.UseVisualStyleBackColor = true;
+            this.button_CheckingOpenDocuments.Click += new System.EventHandler(this.button_CheckingOpenDocuments_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -271,6 +281,16 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Настройки экспорта NWC";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(6, 190);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(152, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Открыть файлы";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox2
             // 
@@ -297,26 +317,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Сохранение в Json";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Открыть файлы";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button_CheckingOpenDocuments
-            // 
-            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(6, 219);
-            this.button_CheckingOpenDocuments.Name = "button_CheckingOpenDocuments";
-            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(152, 23);
-            this.button_CheckingOpenDocuments.TabIndex = 22;
-            this.button_CheckingOpenDocuments.Text = "Проверить открытые документы";
-            this.button_CheckingOpenDocuments.UseVisualStyleBackColor = true;
-            this.button_CheckingOpenDocuments.Click += new System.EventHandler(this.button_CheckingOpenDocuments_Click);
-            // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -324,6 +324,7 @@
             this.progressBar1.Location = new System.Drawing.Point(15, 676);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(300, 23);
+            this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 21;
             // 
             // label_CurrentFile
@@ -332,9 +333,9 @@
             this.label_CurrentFile.AutoSize = true;
             this.label_CurrentFile.Location = new System.Drawing.Point(12, 657);
             this.label_CurrentFile.Name = "label_CurrentFile";
-            this.label_CurrentFile.Size = new System.Drawing.Size(119, 13);
+            this.label_CurrentFile.Size = new System.Drawing.Size(225, 13);
             this.label_CurrentFile.TabIndex = 22;
-            this.label_CurrentFile.Text = "Нет открытых файлов";
+            this.label_CurrentFile.Text = "Выберите операцию и нажмите выполнить";
             // 
             // radioButton1
             // 

@@ -12,7 +12,7 @@ namespace NWCBatchExport.RevitEvents
         public void Execute(UIApplication app)
         {
             //commandData.Application.DialogBoxShowing -= Application_DocumentOpened;
-            //Logger.LoggingToFile -= LoggerOut;
+            //Logger.EventLoggingToFile -= OutLogger;
 
             TaskDialog.Show("Оповещение", "Произошла отписка от событий");
         }

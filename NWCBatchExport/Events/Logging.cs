@@ -17,7 +17,7 @@ namespace NWCBatchExport.Events
         /// <summary>
         /// Событие, которое при обращении к методу Log формирует сообщение и записывает логи.
         /// </summary>
-        public static event LoggingToFile LoggingToFile;
+        public static event LoggingToFile EventLoggingToFile;
 
         /// <summary>
         /// Передает сообщение в обработчик, который формирует финальный вид строки.
@@ -26,7 +26,7 @@ namespace NWCBatchExport.Events
         /// <param name="message">Текст сообщения</param>
         public static void Log(string fileName, string message)
         {
-            LoggingToFile?.Invoke(fileName, message);
+            EventLoggingToFile?.Invoke(fileName, message);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace NWCBatchExport.Events
         /// <param name="fileName"></param>
         /// <param name="message"></param>
         //Событие логирования
-        public static void LoggerOut(string fileName, string message)
+        public static void OutLogger(string fileName, string message)
         {
             var messageOut = $"{DateTime.Now.ToString("[dd.MM.yyyy - HH:mm]")} | [{fileName.Replace("_отсоединено", "")}] | {message}\n";
 
