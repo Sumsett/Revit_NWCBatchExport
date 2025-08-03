@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPathNWC = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.button_RemovingLinks = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -53,6 +52,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button_CheckingOpenDocuments = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label_CurrentFile = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -63,13 +66,12 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(15, 676);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(328, 676);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(397, 23);
+            this.button1.Size = new System.Drawing.Size(84, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Экспорт";
+            this.button1.Text = "Выполнить";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -130,23 +132,11 @@
             this.textBoxPathNWC.Size = new System.Drawing.Size(307, 20);
             this.textBoxPathNWC.TabIndex = 8;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 160);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Версия";
-            // 
             // button_RemovingLinks
             // 
-            this.button_RemovingLinks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_RemovingLinks.Location = new System.Drawing.Point(15, 647);
+            this.button_RemovingLinks.Location = new System.Drawing.Point(6, 248);
             this.button_RemovingLinks.Name = "button_RemovingLinks";
-            this.button_RemovingLinks.Size = new System.Drawing.Size(397, 23);
+            this.button_RemovingLinks.Size = new System.Drawing.Size(152, 23);
             this.button_RemovingLinks.TabIndex = 12;
             this.button_RemovingLinks.Text = "Удалить все связи в файлах";
             this.button_RemovingLinks.UseVisualStyleBackColor = true;
@@ -192,7 +182,7 @@
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox1.Location = new System.Drawing.Point(3, 3);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(383, 369);
+            this.richTextBox1.Size = new System.Drawing.Size(383, 441);
             this.richTextBox1.TabIndex = 16;
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
@@ -237,10 +227,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(15, 240);
+            this.tabControl1.Location = new System.Drawing.Point(15, 158);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(397, 401);
+            this.tabControl1.Size = new System.Drawing.Size(397, 473);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
@@ -249,20 +239,23 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(389, 375);
+            this.tabPage1.Size = new System.Drawing.Size(389, 447);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Логи";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button_CheckingOpenDocuments);
             this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.button_RemovingLinks);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(389, 375);
+            this.tabPage2.Size = new System.Drawing.Size(389, 447);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -306,9 +299,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(15, 182);
+            this.button2.Location = new System.Drawing.Point(6, 190);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(397, 23);
+            this.button2.Size = new System.Drawing.Size(152, 23);
             this.button2.TabIndex = 21;
             this.button2.Text = "Открыть файлы";
             this.button2.UseVisualStyleBackColor = true;
@@ -316,26 +309,69 @@
             // 
             // button_CheckingOpenDocuments
             // 
-            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(15, 211);
+            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(6, 219);
             this.button_CheckingOpenDocuments.Name = "button_CheckingOpenDocuments";
-            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(397, 23);
+            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(152, 23);
             this.button_CheckingOpenDocuments.TabIndex = 22;
             this.button_CheckingOpenDocuments.Text = "Проверить открытые документы";
             this.button_CheckingOpenDocuments.UseVisualStyleBackColor = true;
             this.button_CheckingOpenDocuments.Click += new System.EventHandler(this.button_CheckingOpenDocuments_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(15, 676);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(300, 23);
+            this.progressBar1.TabIndex = 21;
+            // 
+            // label_CurrentFile
+            // 
+            this.label_CurrentFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_CurrentFile.AutoSize = true;
+            this.label_CurrentFile.Location = new System.Drawing.Point(12, 657);
+            this.label_CurrentFile.Name = "label_CurrentFile";
+            this.label_CurrentFile.Size = new System.Drawing.Size(119, 13);
+            this.label_CurrentFile.TabIndex = 22;
+            this.label_CurrentFile.Text = "Нет открытых файлов";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(15, 637);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(96, 17);
+            this.radioButton1.TabIndex = 23;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Экспорт NWC";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(117, 637);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(150, 17);
+            this.radioButton2.TabIndex = 24;
+            this.radioButton2.Text = "Удалить все \".rvt\" связи";
+            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 711);
-            this.Controls.Add(this.button_CheckingOpenDocuments);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.label_CurrentFile);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button_openNwcFolder);
             this.Controls.Add(this.button_openRvtFolder);
-            this.Controls.Add(this.button_RemovingLinks);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxPathNWC);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -368,7 +404,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPathNWC;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_RemovingLinks;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
@@ -386,5 +421,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_CheckingOpenDocuments;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label_CurrentFile;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }

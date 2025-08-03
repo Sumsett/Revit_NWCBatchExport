@@ -21,7 +21,7 @@ namespace NWCBatchExport
             textBoxPathNWC.Text = _Data.PathToNWC;
             Logger.textBoxForLog = richTextBox1;
 
-            label1.Text = "Версия: " + Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})";
         }
 
         private void button1_Click(object sender, EventArgs e)
