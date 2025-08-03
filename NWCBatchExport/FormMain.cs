@@ -2,10 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using NWCBatchExport.AdditionalFunctionality;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
@@ -14,24 +11,26 @@ using NWCBatchExport.FileProcessing;
 
 namespace NWCBatchExport
 {
-    public partial class FormMain : System.Windows.Forms.Form
+    public partial class FormMain : Form
     {
         public FormMain()
         {
             InitializeComponent();
 
+            //Загрузка в данных в текстбоксы
             textBox1.Text = Data.NameOfExportedView;
             textBoxPathRVT.Text = Data.PathToRVT;
             textBoxPathNWC.Text = Data.PathToNWC;
-            Logger.textBoxForLog = richTextBox1;
 
+            //Передача данных в обработчики событий
+            Logger.textBoxForLog = richTextBox1;
             ExecutionStatus.Label = label_CurrentFile;
             ExecutionStatus.Button = button1;
             ExecutionStatus.ProgressBar = progressBar1;
 
+            progressBar1.Visible = false; //Отключение прогресс бара
 
-
-            Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})";
+            Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -39,43 +38,24 @@ namespace NWCBatchExport
             Data.NameOfExportedView = textBox1.Text;
             Data.PathToNWC = textBoxPathNWC.Text;
             Data.PathToRVT = textBoxPathRVT.Text;
-            richTextBox1.Text = null;
 
             Data.UnloadingRoomGeometry = checkBox1.Checked;
+            //richTextBox1.Text = null;
 
-            //Запуск таймера
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            if (radioButton1.Checked)
+            {
+                progressBar1.Visible = true;
+                Data.EventExportNWC.Raise();
+            }
 
-            //Основной метод. Открытие файла, настройка вида, экспорт NWC
-            _SettingsAndOpeningFile.ExportNWC();
-
-            //Остановка таймера и логирование значения
-            stopwatch.Stop();
-            string time = stopwatch.Elapsed.ToString("mm\\:ss");
-            Logger.Log("Все файлы", $"Общее время экспорта в NWC {time} (мин/сек)\n");
+            if (radioButton2.Checked)
+            {
+                progressBar1.Visible = true;
+                Data.RemovingLinks.Raise();
+            }
         }
 
-
-        private void button_RemovingLinks_Click(object sender, EventArgs e)
-        {
-            Data.PathToNWC = textBoxPathNWC.Text;
-            Data.PathToRVT = textBoxPathRVT.Text;
-            Data.NameOfExportedView = textBox1.Text;
-            richTextBox1.Text = null;
-
-            //Запуск таймера
-            Stopwatch stopwatch = Stopwatch.StartNew();
-
-
-            _SettingsAndOpeningFile.RemovingAllLinks();
-
-            //Остановка таймера и логирование значения
-            stopwatch.Stop();
-            string time = stopwatch.Elapsed.ToString("hh\\:mm\\:ss");
-
-            Logger.Log("Все файлы", $"Общее время удаления всех связей {time} (часы/мин/сек)\n");
-        }
-
+        #region Выбор папки в проводнике
         private void button_openRvtFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = "";
@@ -87,7 +67,7 @@ namespace NWCBatchExport
             }
         }
 
-        private void button_openNwcFolder_Click(object sender, EventArgs e)
+        private void Button_openNwcFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = "";
             folderBrowserDialog1.SelectedPath = textBoxPathNWC.Text;
@@ -97,8 +77,11 @@ namespace NWCBatchExport
                 textBoxPathNWC.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+        #endregion
 
-        private void button_savedJson_Click(object sender, EventArgs e)
+        #region Кнопки из настроек
+        //Сохранение Json
+        private void Button_savedJson_Click(object sender, EventArgs e)
         {
             SavedJson aaa = new SavedJson
             {
@@ -110,6 +93,7 @@ namespace NWCBatchExport
             Json.WriteJson(aaa);
         }
 
+        //Загрузка Json
         private void button_loadJson_Click(object sender, EventArgs e)
         {
             Json.ReadingJson();
@@ -119,73 +103,18 @@ namespace NWCBatchExport
             textBoxPathNWC.Text = Data.PathToNWC;
         }
 
-        private void button_Test_Click(object sender, EventArgs e)
+        //Открытие Файла лога
+        private void Button_OpenLogFile_Click(object sender, EventArgs e)
         {
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var fullPath = Path.Combine(documentsPath, "log.txt");
             Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
         }
+        #endregion
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button_Tests_Click(object sender, EventArgs e)
         {
-            Stopwatch stopwatchAll = Stopwatch.StartNew();
-            string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
-
-            foreach (string dir in dirs)
-            {
-                //Запуск таймера
-                Stopwatch stopwatch = Stopwatch.StartNew();
-
-                //Открытие документа
-                OpenFile.OpenFileWithoutShowing(dir, Data._ExternalCommandData);
-
-                UIApplication uiApp = Data._ExternalCommandData.Application;
-                DocumentSet documents = uiApp.Application.Documents;
-
-                foreach (Autodesk.Revit.DB.Document doc in documents)
-                {
-                    Worksets.EnableAll(doc);
-                    _Export.toNWC(doc);
-                    doc.Close(false);
-                }
-
-                //Остановка таймера и логирование значения
-                stopwatch.Stop();
-                string time = stopwatch.Elapsed.ToString("mm\\:ss");
-                string fileName = Path.GetFileNameWithoutExtension(dir);
-
-                Logger.Log(fileName, $"Не явное открытие документа {time} (мин/сек)");
-            }
-            stopwatchAll.Stop();
-            string timeAll = stopwatchAll.Elapsed.ToString("hh\\:mm\\:ss");
-
-            Logger.Log("Все файлы", $"Неявное открытие файлов {timeAll} (часы/мин/сек)\n");
-        }
-
-        private void button_CheckingOpenDocuments_Click(object sender, EventArgs e)
-        {
-            button_CheckingOpenDocuments.Enabled = false;
-            Data.EventExportNWC.Raise();
-            progressBar1.Enabled = false;
-
-            /*
-            UIApplication uiApp = Data._ExternalCommandData.Application;
-            DocumentSet documents = uiApp.Application.Documents;
-
-            List<string> documentNames = new List<string>();
-            foreach (Autodesk.Revit.DB.Document doc in documents)
-            {
-                documentNames.Add(doc.Title);
-            }
-
-            TaskDialog.Show("Открытые документы", string.Join("\n", documentNames));
-
-            foreach (Autodesk.Revit.DB.Document doc in documents)
-            {
-                doc.Close(false);
-            }
-            */
-
+            Data.Tests.Raise();
         }
     }
 }

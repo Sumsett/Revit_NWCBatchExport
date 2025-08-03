@@ -4,7 +4,7 @@ namespace NWCBatchExport.DataStorage
 {
     internal class Data
     {
-        public static ExternalCommandData _ExternalCommandData { get; set; }
+        public static ExternalCommandData ExternalCommandData { get; set; }
 
         #region Данные для интерфейса
         public static string NameOfExportedView { get; set; }
@@ -21,6 +21,7 @@ namespace NWCBatchExport.DataStorage
         public static ExternalEvent EventExportNWC { get; set; }
         public static ExternalEvent UnsubscribeEventsRevit { get; set; }
         public static ExternalEvent RemovingLinks { get; set; }
+        public static ExternalEvent Tests { get; set; }
         #endregion
     }
 

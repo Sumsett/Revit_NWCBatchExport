@@ -57,7 +57,10 @@ namespace NWCBatchExport.Events
         {
             ProgressBar.PerformStep();
             if (ProgressBar.Value == ProgressBar.Maximum)
+            { 
                 ProgressBar.Value = 0;
+                ProgressBar.Visible = false;
+            }
         }
     }
 }

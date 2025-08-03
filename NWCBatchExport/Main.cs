@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading;
+﻿using System.Threading;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -17,7 +16,6 @@ namespace NWCBatchExport
         {
 
             Json.ReadingJson();
-            //commandData.Application.DialogBoxShowing += Application_DocumentOpened;
             commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
             SubscribeToEvents.All();
 
@@ -27,12 +25,14 @@ namespace NWCBatchExport
             //ExternalEvent eventExportNWC = ExternalEvent.Create(exportNWC);
             //Data.EventExportNWC = eventExportNWC;
 
-            //Более компактная
+            //Экспорт NWC (Более компактная)
             Data.EventExportNWC = ExternalEvent.Create(new ExternalExportNwc()); //Экспорт NWC
             Data.UnsubscribeEventsRevit = ExternalEvent.Create(new ExternalUnsubscribeEvents()); //Отписка от событий
+            Data.RemovingLinks = ExternalEvent.Create(new ExternalRemovingLinks()); //Удаление связей
+            Data.Tests = ExternalEvent.Create(new ExternalTests()); //Удаление связей
             #endregion
 
-            Data._ExternalCommandData = commandData;
+            Data.ExternalCommandData = commandData;
             //--------------
             Thread thread = new Thread(() =>
             {
@@ -51,8 +51,6 @@ namespace NWCBatchExport
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;
             thread.Start();
-            //--------------
-
 
             return Result.Succeeded;
         }

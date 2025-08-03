@@ -26,7 +26,7 @@ namespace NWCBatchExport.RevitEvents
 
                 Stopwatch stopwatch = Stopwatch.StartNew(); //Запускаем таймер
 
-                OpenFile.OpenFileWithoutShowing(dir, Data._ExternalCommandData); //Открываем документ
+                OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
                 DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
 
                 foreach (Document doc in documents)
@@ -40,7 +40,7 @@ namespace NWCBatchExport.RevitEvents
                 //Остановка таймера и логирование значения
                 stopwatch.Stop();
                 string time = stopwatch.Elapsed.ToString("mm\\:ss");
-                Logger.Log(fileName, $"Не явное открытие документа {time} (мин/сек)");
+                Logger.Log(fileName, $"Экспорт NWC {time} (мин/сек)");
 
                 //Обновляем информацию для каждого файла
                 ExecutionStatus.ProgressBarProcessed(dirs.Length);
@@ -48,7 +48,7 @@ namespace NWCBatchExport.RevitEvents
             stopwatchAll.Stop();
             string timeAll = stopwatchAll.Elapsed.ToString("hh\\:mm\\:ss");
 
-            Logger.Log("Все файлы", $"Неявное открытие файлов {timeAll} (часы/мин/сек)\n");
+            Logger.Log("Все файлы", $"Экспорт NWC {timeAll} (часы/мин/сек)\n");
 
             //Обновляем данные в интерфейсе после операций
             ExecutionStatus.FileName("Операция завершена");

@@ -35,27 +35,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxPathNWC = new System.Windows.Forms.TextBox();
-            this.button_RemovingLinks = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button_openRvtFolder = new System.Windows.Forms.Button();
-            this.button_openNwcFolder = new System.Windows.Forms.Button();
+            this.Button_openRvtFolder = new System.Windows.Forms.Button();
+            this.Button_openNwcFolder = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button_savedJson = new System.Windows.Forms.Button();
-            this.button_loadJson = new System.Windows.Forms.Button();
-            this.button_Test = new System.Windows.Forms.Button();
+            this.Button_OpenLogFile = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button_CheckingOpenDocuments = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label_CurrentFile = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.Button_Tests = new System.Windows.Forms.Button();
+            this.Button_loadJson = new System.Windows.Forms.Button();
+            this.Button_savedJson = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -132,16 +130,6 @@
             this.textBoxPathNWC.Size = new System.Drawing.Size(307, 20);
             this.textBoxPathNWC.TabIndex = 8;
             // 
-            // button_RemovingLinks
-            // 
-            this.button_RemovingLinks.Location = new System.Drawing.Point(6, 248);
-            this.button_RemovingLinks.Name = "button_RemovingLinks";
-            this.button_RemovingLinks.Size = new System.Drawing.Size(152, 23);
-            this.button_RemovingLinks.TabIndex = 12;
-            this.button_RemovingLinks.Text = "Удалить все связи в файлах";
-            this.button_RemovingLinks.UseVisualStyleBackColor = true;
-            this.button_RemovingLinks.Click += new System.EventHandler(this.button_RemovingLinks_Click);
-            // 
             // checkBox1
             // 
             this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -153,27 +141,27 @@
             this.checkBox1.Text = "Выгружать геометрию помещений";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button_openRvtFolder
+            // Button_openRvtFolder
             // 
-            this.button_openRvtFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_openRvtFolder.Location = new System.Drawing.Point(328, 79);
-            this.button_openRvtFolder.Name = "button_openRvtFolder";
-            this.button_openRvtFolder.Size = new System.Drawing.Size(84, 23);
-            this.button_openRvtFolder.TabIndex = 14;
-            this.button_openRvtFolder.Text = "Выбрать";
-            this.button_openRvtFolder.UseVisualStyleBackColor = true;
-            this.button_openRvtFolder.Click += new System.EventHandler(this.button_openRvtFolder_Click);
+            this.Button_openRvtFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_openRvtFolder.Location = new System.Drawing.Point(328, 79);
+            this.Button_openRvtFolder.Name = "Button_openRvtFolder";
+            this.Button_openRvtFolder.Size = new System.Drawing.Size(84, 23);
+            this.Button_openRvtFolder.TabIndex = 14;
+            this.Button_openRvtFolder.Text = "Выбрать";
+            this.Button_openRvtFolder.UseVisualStyleBackColor = true;
+            this.Button_openRvtFolder.Click += new System.EventHandler(this.button_openRvtFolder_Click);
             // 
-            // button_openNwcFolder
+            // Button_openNwcFolder
             // 
-            this.button_openNwcFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_openNwcFolder.Location = new System.Drawing.Point(328, 129);
-            this.button_openNwcFolder.Name = "button_openNwcFolder";
-            this.button_openNwcFolder.Size = new System.Drawing.Size(84, 23);
-            this.button_openNwcFolder.TabIndex = 15;
-            this.button_openNwcFolder.Text = "Выбрать";
-            this.button_openNwcFolder.UseVisualStyleBackColor = true;
-            this.button_openNwcFolder.Click += new System.EventHandler(this.button_openNwcFolder_Click);
+            this.Button_openNwcFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_openNwcFolder.Location = new System.Drawing.Point(328, 129);
+            this.Button_openNwcFolder.Name = "Button_openNwcFolder";
+            this.Button_openNwcFolder.Size = new System.Drawing.Size(84, 23);
+            this.Button_openNwcFolder.TabIndex = 15;
+            this.Button_openNwcFolder.Text = "Выбрать";
+            this.Button_openNwcFolder.UseVisualStyleBackColor = true;
+            this.Button_openNwcFolder.Click += new System.EventHandler(this.Button_openNwcFolder_Click);
             // 
             // richTextBox1
             // 
@@ -187,38 +175,16 @@
             this.richTextBox1.Text = "";
             this.richTextBox1.WordWrap = false;
             // 
-            // button_savedJson
+            // Button_OpenLogFile
             // 
-            this.button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_savedJson.Location = new System.Drawing.Point(215, 19);
-            this.button_savedJson.Name = "button_savedJson";
-            this.button_savedJson.Size = new System.Drawing.Size(75, 23);
-            this.button_savedJson.TabIndex = 17;
-            this.button_savedJson.Text = "Сохранить";
-            this.button_savedJson.UseVisualStyleBackColor = true;
-            this.button_savedJson.Click += new System.EventHandler(this.button_savedJson_Click);
-            // 
-            // button_loadJson
-            // 
-            this.button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_loadJson.Location = new System.Drawing.Point(296, 19);
-            this.button_loadJson.Name = "button_loadJson";
-            this.button_loadJson.Size = new System.Drawing.Size(75, 23);
-            this.button_loadJson.TabIndex = 18;
-            this.button_loadJson.Text = "Загрузить";
-            this.button_loadJson.UseVisualStyleBackColor = true;
-            this.button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
-            // 
-            // button_Test
-            // 
-            this.button_Test.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Test.Location = new System.Drawing.Point(296, 19);
-            this.button_Test.Name = "button_Test";
-            this.button_Test.Size = new System.Drawing.Size(75, 23);
-            this.button_Test.TabIndex = 19;
-            this.button_Test.Text = "Открыть";
-            this.button_Test.UseVisualStyleBackColor = true;
-            this.button_Test.Click += new System.EventHandler(this.button_Test_Click);
+            this.Button_OpenLogFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_OpenLogFile.Location = new System.Drawing.Point(296, 19);
+            this.Button_OpenLogFile.Name = "Button_OpenLogFile";
+            this.Button_OpenLogFile.Size = new System.Drawing.Size(75, 23);
+            this.Button_OpenLogFile.TabIndex = 19;
+            this.Button_OpenLogFile.Text = "Открыть";
+            this.Button_OpenLogFile.UseVisualStyleBackColor = true;
+            this.Button_OpenLogFile.Click += new System.EventHandler(this.Button_OpenLogFile_Click);
             // 
             // tabControl1
             // 
@@ -246,10 +212,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button_CheckingOpenDocuments);
+            this.tabPage2.Controls.Add(this.Button_Tests);
             this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button_RemovingLinks);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -259,16 +223,6 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button_CheckingOpenDocuments
-            // 
-            this.button_CheckingOpenDocuments.Location = new System.Drawing.Point(6, 219);
-            this.button_CheckingOpenDocuments.Name = "button_CheckingOpenDocuments";
-            this.button_CheckingOpenDocuments.Size = new System.Drawing.Size(152, 23);
-            this.button_CheckingOpenDocuments.TabIndex = 22;
-            this.button_CheckingOpenDocuments.Text = "Проверить открытые документы";
-            this.button_CheckingOpenDocuments.UseVisualStyleBackColor = true;
-            this.button_CheckingOpenDocuments.Click += new System.EventHandler(this.button_CheckingOpenDocuments_Click);
             // 
             // groupBox3
             // 
@@ -282,40 +236,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Настройки экспорта NWC";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 190);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(152, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Открыть файлы";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button_Test);
+            this.groupBox2.Controls.Add(this.Button_OpenLogFile);
             this.groupBox2.Location = new System.Drawing.Point(6, 72);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(377, 60);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Открыть логи";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button_savedJson);
-            this.groupBox1.Controls.Add(this.button_loadJson);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 60);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Сохранение в Json";
             // 
             // progressBar1
             // 
@@ -361,6 +292,51 @@
             this.radioButton2.Text = "Удалить все \".rvt\" связи";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
+            // Button_Tests
+            // 
+            this.Button_Tests.Location = new System.Drawing.Point(6, 191);
+            this.Button_Tests.Name = "Button_Tests";
+            this.Button_Tests.Size = new System.Drawing.Size(75, 23);
+            this.Button_Tests.TabIndex = 3;
+            this.Button_Tests.Text = "Тест";
+            this.Button_Tests.UseVisualStyleBackColor = true;
+            this.Button_Tests.Click += new System.EventHandler(this.Button_Tests_Click);
+            // 
+            // Button_loadJson
+            // 
+            this.Button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_loadJson.Location = new System.Drawing.Point(296, 19);
+            this.Button_loadJson.Name = "Button_loadJson";
+            this.Button_loadJson.Size = new System.Drawing.Size(75, 23);
+            this.Button_loadJson.TabIndex = 18;
+            this.Button_loadJson.Text = "Загрузить";
+            this.Button_loadJson.UseVisualStyleBackColor = true;
+            this.Button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
+            // 
+            // Button_savedJson
+            // 
+            this.Button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_savedJson.Location = new System.Drawing.Point(215, 19);
+            this.Button_savedJson.Name = "Button_savedJson";
+            this.Button_savedJson.Size = new System.Drawing.Size(75, 23);
+            this.Button_savedJson.TabIndex = 17;
+            this.Button_savedJson.Text = "Сохранить";
+            this.Button_savedJson.UseVisualStyleBackColor = true;
+            this.Button_savedJson.Click += new System.EventHandler(this.Button_savedJson_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Button_savedJson);
+            this.groupBox1.Controls.Add(this.Button_loadJson);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(377, 60);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Сохранение в Json";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,8 +347,8 @@
             this.Controls.Add(this.label_CurrentFile);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button_openNwcFolder);
-            this.Controls.Add(this.button_openRvtFolder);
+            this.Controls.Add(this.Button_openNwcFolder);
+            this.Controls.Add(this.Button_openRvtFolder);
             this.Controls.Add(this.textBoxPathNWC);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -405,26 +381,24 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxPathNWC;
-        private System.Windows.Forms.Button button_RemovingLinks;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button button_openRvtFolder;
-        private System.Windows.Forms.Button button_openNwcFolder;
+        private System.Windows.Forms.Button Button_openRvtFolder;
+        private System.Windows.Forms.Button Button_openNwcFolder;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button button_savedJson;
-        private System.Windows.Forms.Button button_loadJson;
-        private System.Windows.Forms.Button button_Test;
+        private System.Windows.Forms.Button Button_OpenLogFile;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button_CheckingOpenDocuments;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label label_CurrentFile;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Button Button_Tests;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button Button_savedJson;
+        private System.Windows.Forms.Button Button_loadJson;
     }
 }
