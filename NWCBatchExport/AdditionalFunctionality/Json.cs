@@ -2,8 +2,9 @@
 using System.Reflection;
 using Autodesk.Revit.UI;
 using Newtonsoft.Json;
+using NWCBatchExport.DataStorage;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.AdditionalFunctionality
 {
     public class Json
     {
@@ -36,13 +37,20 @@ namespace NWCBatchExport
             {
                 //Читаем и десериализуем данные.
                 var text = File.ReadAllText(pathToJson);
-                _SavedJson savedParameters = new _SavedJson();
-                savedParameters = JsonConvert.DeserializeObject<_SavedJson>(text);
+                SavedJson savedParameters = new SavedJson();
+                savedParameters = JsonConvert.DeserializeObject<SavedJson>(text);
 
-                //Записываем в Data значения переменных.
-                _Data.NameOfExportedView = savedParameters.NameOfExportedView;
-                _Data.PathToRVT = savedParameters.PathToRVT;
-                _Data.PathToNWC = savedParameters.PathToNWC;
+                try
+                {
+                    //Записываем в Data значения переменных.
+                    Data.NameOfExportedView = savedParameters.NameOfExportedView;
+                    Data.PathToRVT = savedParameters.PathToRVT;
+                    Data.PathToNWC = savedParameters.PathToNWC;
+                }
+                catch
+                {
+                    TaskDialog.Show("Предупреждение", "Не удалось прочитать файл. Либо файл пуст, либо данные были повреждены");
+                }
             }
 
             else
@@ -59,9 +67,9 @@ namespace NWCBatchExport
             }
         }
 
-        public static void WriteJson(_SavedJson savedParameters)
+        public static void WriteJson(SavedJson savedParameters)
         {
-            //Сериализуем данные, и записываем в существующий файл, если Json cуществует
+            //Сериализуем данные, и записываем в существующий файл, если Json существует
             if (File.Exists(pathToJson))
             {
                 string text = JsonConvert.SerializeObject(savedParameters, Formatting.Indented);

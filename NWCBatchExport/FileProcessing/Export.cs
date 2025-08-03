@@ -1,7 +1,11 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
     internal class _Export
     {
@@ -12,7 +16,7 @@ namespace NWCBatchExport
 
             //Найти виды для экспорта
             ElementId selectedView = null;
-            string nameView = _Data.NameOfExportedView;
+            string nameView = Data.NameOfExportedView;
 
             foreach (Element view in views)
             {
@@ -25,7 +29,7 @@ namespace NWCBatchExport
 
             if (selectedView == null)
             {
-                _Data.Log += $"-    Не найден вид {nameView}    ";
+                Logger.Log(document.Title, $"Не найден вид {nameView}");
             }
 
             if (selectedView != null)
@@ -37,11 +41,11 @@ namespace NWCBatchExport
                     ViewId = selectedView,
 
                     ConvertLinkedCADFormats = false,
-                    ExportRoomGeometry = _Data.UnloadingRoomGeometry
+                    ExportRoomGeometry = Data.UnloadingRoomGeometry
                 };
 
 
-                string pathOut = _Data.PathToNWC;
+                string pathOut = Data.PathToNWC;
 
                 string fileName = document.Title;
                 if (fileName.Contains("_отсоединено"))

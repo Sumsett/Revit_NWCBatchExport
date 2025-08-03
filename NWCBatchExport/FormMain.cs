@@ -1,50 +1,61 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+using NWCBatchExport.AdditionalFunctionality;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
+using NWCBatchExport.FileProcessing;
 
 
 namespace NWCBatchExport
 {
-    public partial class FormMain : System.Windows.Forms.Form
+    public partial class FormMain : Form
     {
         public FormMain()
         {
             InitializeComponent();
 
-            textBox1.Text = _Data.NameOfExportedView;
-            textBoxPathRVT.Text = _Data.PathToRVT;
-            textBoxPathNWC.Text = _Data.PathToNWC;
+            //Загрузка в данных в текстбоксы
+            textBox1.Text = Data.NameOfExportedView;
+            textBoxPathRVT.Text = Data.PathToRVT;
+            textBoxPathNWC.Text = Data.PathToNWC;
 
-            label1.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //Передача данных в обработчики событий
+            Logger.textBoxForLog = richTextBox1;
+            ExecutionStatus.Label = label_CurrentFile;
+            ExecutionStatus.Button = button1;
+            ExecutionStatus.ProgressBar = progressBar1;
+
+            progressBar1.Visible = false; //Отключение прогресс бара
+
+            Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            _Data.NameOfExportedView = textBox1.Text;
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRVT.Text;
+            Data.NameOfExportedView = textBox1.Text;
+            Data.PathToNWC = textBoxPathNWC.Text;
+            Data.PathToRVT = textBoxPathRVT.Text;
 
-            _Data.UnloadingRoomGeometry = checkBox1.Checked;
+            Data.UnloadingRoomGeometry = checkBox1.Checked;
+            //richTextBox1.Text = null;
 
-            _SettingsAndOpeningFile.ExportNWC();
+            if (radioButton1.Checked)
+            {
+                progressBar1.Visible = true;
+                Data.EventExportNWC.Raise();
+            }
 
-            richTextBox1.Text = _Data.Log;
+            if (radioButton2.Checked)
+            {
+                progressBar1.Visible = true;
+                Data.RemovingLinks.Raise();
+            }
         }
 
-
-        private void button_RemovingLinks_Click(object sender, EventArgs e)
-        {
-            _Data.PathToNWC = textBoxPathNWC.Text;
-            _Data.PathToRVT = textBoxPathRVT.Text;
-            _Data.NameOfExportedView = textBox1.Text;
-
-
-            _SettingsAndOpeningFile.RemovingAllLinks();
-
-            richTextBox1.Text = _Data.Log;
-        }
-
+        #region Выбор папки в проводнике
         private void button_openRvtFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = "";
@@ -56,7 +67,7 @@ namespace NWCBatchExport
             }
         }
 
-        private void button_openNwcFolder_Click(object sender, EventArgs e)
+        private void Button_openNwcFolder_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.SelectedPath = "";
             folderBrowserDialog1.SelectedPath = textBoxPathNWC.Text;
@@ -66,26 +77,44 @@ namespace NWCBatchExport
                 textBoxPathNWC.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+        #endregion
 
-        private void button_savedJson_Click(object sender, EventArgs e)
+        #region Кнопки из настроек
+        //Сохранение Json
+        private void Button_savedJson_Click(object sender, EventArgs e)
         {
-            _SavedJson aaa = new _SavedJson
+            SavedJson aaa = new SavedJson
             {
                 NameOfExportedView = textBox1.Text,
                 PathToNWC = textBoxPathNWC.Text,
                 PathToRVT = textBoxPathRVT.Text
             };
 
-            Json.WriteJson( aaa );
+            Json.WriteJson(aaa);
         }
 
+        //Загрузка Json
         private void button_loadJson_Click(object sender, EventArgs e)
         {
             Json.ReadingJson();
 
-            textBox1.Text = _Data.NameOfExportedView;
-            textBoxPathRVT.Text = _Data.PathToRVT;
-            textBoxPathNWC.Text = _Data.PathToNWC;
+            textBox1.Text = Data.NameOfExportedView;
+            textBoxPathRVT.Text = Data.PathToRVT;
+            textBoxPathNWC.Text = Data.PathToNWC;
+        }
+
+        //Открытие Файла лога
+        private void Button_OpenLogFile_Click(object sender, EventArgs e)
+        {
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var fullPath = Path.Combine(documentsPath, "log.txt");
+            Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
+        }
+        #endregion
+
+        private void Button_Tests_Click(object sender, EventArgs e)
+        {
+            Data.Tests.Raise();
         }
     }
 }

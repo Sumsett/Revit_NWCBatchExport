@@ -1,12 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
     internal class OpenFile
     {
@@ -24,9 +19,13 @@ namespace NWCBatchExport
 
         static public void OpenFileWithoutShowing(string dir, ExternalCommandData commandData)
         {
-            //Второй способ открытия без показа проекта пользователю
-            Document doc = commandData.Application.Application.OpenDocumentFile(dir);
-        }
+            //Настройки для открытия
+            OpenOptions openOptions = new OpenOptions();
+            openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets; //Отсоединение от центральной модели
 
+            //Открытие файла без показа пользователю
+            FilePath filePath = new FilePath(dir);
+            commandData.Application.Application.OpenDocumentFile(filePath, openOptions);
+        }
     }
 }

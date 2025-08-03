@@ -2,44 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
 
-namespace NWCBatchExport
+namespace NWCBatchExport.FileProcessing
 {
-    internal class Class1
+    internal class Worksets
     {
-        static public void AAAA()
+        static public void EnableAll(Document doc)
         {
-            // Получаем доступ к текущему документу и приложению
-            //UIApplication uiApp = commandData.Application;
-            //UIDocument uiDoc = uiApp.ActiveUIDocument;
-            //Document doc = uiDoc.Document;
-
-            Document doc = _Data.ExternalCommandData.Application.ActiveUIDocument?.Document;
-
-
             // Имя вида, который мы ищем
-            string targetViewName = _Data.NameOfExportedView;
+            string viewName = Data.NameOfExportedView;
 
             // Находим вид по имени
             View targetView = new FilteredElementCollector(doc)
                 .OfClass(typeof(View))
                 .Cast<View>()
-                .FirstOrDefault(v => v.Name.Equals(targetViewName, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefault(v => v.Name.Equals(viewName, StringComparison.OrdinalIgnoreCase));
 
-            //// Проверяем, найден ли вид
-            //if (targetView == null)
-            //{
-            //    TaskDialog.Show("Успех", $"Вид с именем '{targetViewName}' не найден.");
-            //}
+            //Даункастим до 3д вида
+            View3D view3D = (View3D)targetView;
+           
 
             // Получаем все рабочие наборы в документе
             IList<Workset> worksets = new FilteredWorksetCollector(doc)
                 .OfKind(WorksetKind.UserWorkset)
                 .ToWorksets()
                 .ToList();
-
-
+         
             if (targetView != null)
             {
                 // Начинаем транзакцию для изменения видимости
@@ -53,12 +43,16 @@ namespace NWCBatchExport
                         targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
                     }
 
+                    //Отключаем подрезку 3д вида
+                    if (view3D.IsSectionBoxActive == true)
+                    {
+                        view3D.IsSectionBoxActive = false;
+                        Logger.Log(doc.Title, "Включена подрезка 3D вида");
+                    }
+
                     trans.Commit();
                 }
             }
-
-            //TaskDialog.Show("Успех", $"Видимость всех рабочих наборов включена для вида '{targetViewName}'.");
-
         }
     }
 }
