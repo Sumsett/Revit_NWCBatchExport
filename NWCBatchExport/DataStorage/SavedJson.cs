@@ -1,8 +1,8 @@
 ﻿namespace NWCBatchExport.DataStorage;
 
-internal class SavedJson
+public class SavedJson
 {
-    internal string NameOfExportedView { get; set; }
-    internal string PathToRVT { get; set; }
-    internal string PathToNWC { get; set; }
+    public string NameOfExportedView { get; set; }
+    public string PathToRVT { get; set; }
+    public string PathToNWC { get; set; }
 }
