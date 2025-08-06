@@ -5,7 +5,8 @@
 		<Optimize>false</Optimize>
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
-		<TheVersion>1.1.0.0</TheVersion>
+		<TheVersion>1.1.0.4</TheVersion>
+		<LangVersion>latest</LangVersion>
 		<AssemblyVersion>$(TheVersion)</AssemblyVersion>
 		<FileVersion>$(TheVersion)</FileVersion>
 		<Version>$(TheVersion)</Version>

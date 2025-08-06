@@ -1,31 +1,30 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace NWCBatchExport.FileProcessing
+namespace NWCBatchExport.FileProcessing;
+
+internal class OpenFile
 {
-    internal class OpenFile
+    static internal void OpenFileAsUsual(string dir, ExternalCommandData commandData)
     {
-        static public void OpenFileAsUsual(string dir, ExternalCommandData commandData)
-        {
-            //Настройки для открытия
-            OpenOptions openOptions = new OpenOptions();
-            openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets;
-            openOptions.OpenForeignOption = OpenForeignOption.Open;
+        //Настройки для открытия
+        OpenOptions openOptions = new OpenOptions();
+        openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets;
+        openOptions.OpenForeignOption = OpenForeignOption.Open;
 
-            //Открытие файла
-            FilePath filePath = new FilePath(dir);
-            commandData.Application.OpenAndActivateDocument(filePath, openOptions, true);
-        }
+        //Открытие файла
+        FilePath filePath = new FilePath(dir);
+        commandData.Application.OpenAndActivateDocument(filePath, openOptions, true);
+    }
 
-        static public void OpenFileWithoutShowing(string dir, ExternalCommandData commandData)
-        {
-            //Настройки для открытия
-            OpenOptions openOptions = new OpenOptions();
-            openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets; //Отсоединение от центральной модели
+    static internal void OpenFileWithoutShowing(string dir, ExternalCommandData commandData)
+    {
+        //Настройки для открытия
+        OpenOptions openOptions = new OpenOptions();
+        openOptions.DetachFromCentralOption = DetachFromCentralOption.DetachAndPreserveWorksets; //Отсоединение от центральной модели
 
-            //Открытие файла без показа пользователю
-            FilePath filePath = new FilePath(dir);
-            commandData.Application.Application.OpenDocumentFile(filePath, openOptions);
-        }
+        //Открытие файла без показа пользователю
+        FilePath filePath = new FilePath(dir);
+        commandData.Application.Application.OpenDocumentFile(filePath, openOptions);
     }
 }

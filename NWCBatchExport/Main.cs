@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -7,52 +8,64 @@ using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.RevitEvents;
 
-namespace NWCBatchExport
+namespace NWCBatchExport;
+
+[Transaction(TransactionMode.Manual)]
+public class Main : IExternalCommand
 {
-    [Transaction(TransactionMode.Manual)]
-    public class Main : IExternalCommand
+    public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
+        Json.ReadingJson();
+        commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
+        SubscribeToEvents.All();
+
+        #region Создаем внешние события Revit
+        //Экспорт NWC (Полная форма записи)
+        //ExternalExportNwc exportNWC = new ExternalExportNwc();
+        //ExternalEvent eventExportNWC = ExternalEvent.Create(exportNWC);
+        //Data.EventExportNWC = eventExportNWC;
+
+        //(Более компактная)
+        Data.EventExportNWC = ExternalEvent.Create(new ExternalExportNwc()); //Экспорт NWC
+        Data.UnsubscribeEventsRevit = ExternalEvent.Create(new ExternalUnsubscribeEvents()); //Отписка от событий
+        Data.RemovingLinks = ExternalEvent.Create(new ExternalRemovingLinks()); //Удаление связей
+        Data.Tests = ExternalEvent.Create(new ExternalTests()); //Удаление связей
+        #endregion
+
+        Data.ExternalCommandData = commandData;
+        //--------------
+        Thread thread = new Thread(() =>
         {
-
-            Json.ReadingJson();
-            commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
-            SubscribeToEvents.All();
-
-            #region Создаем внешние события Revit
-            //Экспорт NWC (Полная форма записи)
-            //ExternalExportNwc exportNWC = new ExternalExportNwc();
-            //ExternalEvent eventExportNWC = ExternalEvent.Create(exportNWC);
-            //Data.EventExportNWC = eventExportNWC;
-
-            //Экспорт NWC (Более компактная)
-            Data.EventExportNWC = ExternalEvent.Create(new ExternalExportNwc()); //Экспорт NWC
-            Data.UnsubscribeEventsRevit = ExternalEvent.Create(new ExternalUnsubscribeEvents()); //Отписка от событий
-            Data.RemovingLinks = ExternalEvent.Create(new ExternalRemovingLinks()); //Удаление связей
-            Data.Tests = ExternalEvent.Create(new ExternalTests()); //Удаление связей
-            #endregion
-
-            Data.ExternalCommandData = commandData;
-            //--------------
-            Thread thread = new Thread(() =>
+            FormMain formMain = new FormMain();
+            formMain.Closed += (s, e) =>
             {
-                FormMain formMain = new FormMain();
-                formMain.Closed += (s, e) =>
-                {
-                    Data.UnsubscribeEventsRevit.Raise();
-                    UnsubscribeToEvents.CurrentForm();
-                };
-                formMain.ShowDialog();
+                Data.UnsubscribeEventsRevit.Raise();
+                UnsubscribeToEvents.CurrentForm();
+            };
+            formMain.Show();
 
-                // Необходимо для работы WPF окна
-                System.Windows.Threading.Dispatcher.Run();
-            });
+            //Не дает потоку завершится, а ставит его на паузу для ожидания дальнейших действий.
+            System.Windows.Threading.Dispatcher.Run();
+        });
 
+        try
+        {
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;
             thread.Start();
-
-            return Result.Succeeded;
         }
+
+        catch (Exception ex)
+        {
+            TaskDialog.Show("Не удалось создать главное окно", ex.Message); //Предупреждение для пользователя
+
+            //Отписка от событий
+            Data.UnsubscribeEventsRevit.Raise();
+            UnsubscribeToEvents.CurrentForm();
+
+            return Result.Failed;
+        }
+
+        return Result.Succeeded;
     }
 }
