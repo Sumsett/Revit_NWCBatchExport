@@ -1,34 +1,88 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<OutputType>Library</OutputType>
-		<TargetFramework>net48</TargetFramework>
 		<Optimize>false</Optimize>
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
-		<TheVersion>1.1.0.4</TheVersion>
+		<Platforms>x64</Platforms>
+		<TheVersion>1.1.0.5</TheVersion>
 		<LangVersion>latest</LangVersion>
 		<AssemblyVersion>$(TheVersion)</AssemblyVersion>
 		<FileVersion>$(TheVersion)</FileVersion>
 		<Version>$(TheVersion)</Version>
+		<Configurations>D2019;R2019;D2020;R2020;D2025;R2025</Configurations>
 	</PropertyGroup>
+
+	<!--Зависимости ревит-->
+	<ItemGroup Condition="'$(Configuration)' == 'R2019' Or '$(Configuration)' == 'D2019'">
+		<PackageReference Include="RevitAPI2019" Version="19.2.20.24" />
+	</ItemGroup>
 	
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<ItemGroup Condition="'$(Configuration)' == 'R2020' Or '$(Configuration)' == 'D2020'">
+		<PackageReference Include="RevitAPI2020" Version="20.2.1.1" />
+	</ItemGroup>
+	
+	<ItemGroup Condition="'$(Configuration)' == 'R2025' Or '$(Configuration)' == 'D2025'">
+		<PackageReference Include="RevitAPI2025" Version="25.1.0.44" />
+	</ItemGroup>
+
+	<!--конфигурации, зависящие от версии Revit и от версии .Net-->
+	<PropertyGroup Condition="'$(Configuration)' == 'R2019' or '$(Configuration)' == 'D2019' or '$(Configuration)' == 'R2020' or '$(Configuration)' == 'D2020' or '$(Configuration)' == 'R2021' or '$(Configuration)' == 'D2021' or '$(Configuration)' == 'R2022' or '$(Configuration)' == 'D2022' or '$(Configuration)' == 'R2023' or '$(Configuration)' == 'D2023' or '$(Configuration)' == 'R2024' or '$(Configuration)' == 'D2024'">
+		<TargetFramework>net48</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'R2025' or '$(Configuration)' == 'D2025'">
+		<TargetFramework>net8.0-windows10.0.17763</TargetFramework>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'D2019'">
+		<DefineConstants>DEBUG;TRACE;REVIT_2019;REVIT_2019_AND_GREATER</DefineConstants>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
-		<OutputPath>bin\Debug\</OutputPath>
-		<DefineConstants>DEBUG;TRACE</DefineConstants>		
+		<OutDir>.\bin\Debug\2019\</OutDir>
 	</PropertyGroup>
-	
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<PropertyGroup Condition="'$(Configuration)' == 'R2019'">
+		<DefineConstants>TRACE;REVIT_2019;REVIT_2019_AND_GREATER</DefineConstants>
+		<DebugSymbols>false</DebugSymbols>
 		<DebugType>none</DebugType>
-		<OutputPath>bin\Release\</OutputPath>
+		<OutDir>.\bin\Release\2019\</OutDir>
 	</PropertyGroup>
-	
+
+	<PropertyGroup Condition="'$(Configuration)' == 'D2020'">
+		<DefineConstants>DEBUG;TRACE;REVIT_2020;REVIT_2019_AND_GREATER;REVIT_2020_AND_GREATER</DefineConstants>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<OutDir>.\bin\Debug\2020\</OutDir>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'R2020'">
+		<DefineConstants>TRACE;REVIT_2020;REVIT_2019_AND_GREATER;REVIT_2020_AND_GREATER</DefineConstants>
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+		<OutDir>.\bin\Release\2020\</OutDir>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'D2025'">
+		<DefineConstants>DEBUG;TRACE;FORGE_TYPE_ID;REVIT_2025;REVIT_2019_AND_GREATER;REVIT_2020_AND_GREATER;REVIT_2021_AND_GREATER;REVIT_2022_AND_GREATER;REVIT_2023_AND_GREATER;REVIT_2024_AND_GREATER;REVIT_2025_AND_GREATER</DefineConstants>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<OutDir>.\bin\Debug\2025\</OutDir>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'R2025'">
+		<DefineConstants>TRACE;FORGE_TYPE_ID;REVIT_2025;REVIT_2019_AND_GREATER;REVIT_2020_AND_GREATER;REVIT_2021_AND_GREATER;REVIT_2022_AND_GREATER;REVIT_2023_AND_GREATER;REVIT_2024_AND_GREATER;REVIT_2025_AND_GREATER</DefineConstants>
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
+		<OutDir>.\bin\Release\2025\</OutDir>
+	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="RevitAPI2020">
-			<Version>*</Version>
-		</PackageReference>
+	  <None Remove="NWCBatchExport_icons.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ITEM.SDK.Metadata" Version="1.2.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="NWCBatchExport_icons.png" />
 	</ItemGroup>
 	
 </Project>

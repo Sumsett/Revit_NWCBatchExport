@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Autodesk.Revit.DB;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
@@ -37,8 +37,9 @@ internal class Export
             {
                 ExportScope = NavisworksExportScope.View,
                 ViewId = selectedView,
-
+#if REVIT_2020_AND_GREATER
                 ConvertLinkedCADFormats = false,
+#endif  
                 ExportRoomGeometry = Data.UnloadingRoomGeometry
             };
 
