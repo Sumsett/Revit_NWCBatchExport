@@ -14,6 +14,7 @@ public partial class FormMain : Form
     public FormMain()
     {
         InitializeComponent();
+        TopMost = true;
 
         //Загрузка в данных в текстбоксы
         textBox1.Text = Data.NameOfExportedView;
@@ -40,7 +41,7 @@ public partial class FormMain : Form
         Data.PathToRVT = textBoxPathRVT.Text;
 
         Data.UnloadingRoomGeometry = checkBox1.Checked;
-        //richTextBox1.Text = null;
+        Data.DisablingTrims3DView = checkBox2.Checked;
 
         if (radioButton1.Checked)
         {
@@ -114,6 +115,7 @@ public partial class FormMain : Form
 
     private void Button_Tests_Click(object sender, EventArgs e)
     {
+        Data.PathToRVT = textBoxPathRVT.Text;
         Data.Tests.Raise();
     }
 }

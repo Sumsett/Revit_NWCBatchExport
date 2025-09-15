@@ -15,6 +15,7 @@ internal class Data
 
     #region Настройки выгрузки NWC
     internal static bool UnloadingRoomGeometry { get; set; }
+    internal static bool DisablingTrims3DView{ get; set; }
     #endregion
 
     #region Отладочная передача данных

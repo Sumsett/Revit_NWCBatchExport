@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.FileProcessing;
+using System.Collections.Generic;
+using System.IO;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -25,6 +28,12 @@ public class ExternalTests : IExternalEventHandler
 
         TaskDialog.Show("Открытые файлы", message);
         #endregion
+
+        string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
+        foreach (string dir in dirs)
+        {
+            OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
+        }
     }
 
     public string GetName()

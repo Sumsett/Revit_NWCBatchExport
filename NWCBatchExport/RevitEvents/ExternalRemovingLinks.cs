@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
-using System.IO;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.FileProcessing;
+using System.Diagnostics;
+using System.IO;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -13,7 +13,6 @@ public class ExternalRemovingLinks : IExternalEventHandler
     public void Execute(UIApplication app)
     {
         Stopwatch stopwatchAll = Stopwatch.StartNew();
-
         string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
 
         foreach (string dir in dirs)
@@ -21,7 +20,6 @@ public class ExternalRemovingLinks : IExternalEventHandler
             string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
             //Обновляем информацию в интерфейсе
-            ExecutionStatus.FileName("Обрабатывается файл: " + fileName);
             ExecutionStatus.ButtonsActive(false);
             ExecutionStatus.ProgressBarTotal(dirs.Length);
 
@@ -32,8 +30,21 @@ public class ExternalRemovingLinks : IExternalEventHandler
 
             foreach (Document doc in documents)
             {
-                RemoveLinks.AllLinks(doc);
-                doc.Close(false);
+                string docName = string.Empty;
+
+                if (doc.Title.Contains("_отсоединено"))
+                    docName = doc.Title.Replace("_отсоединено", "");
+
+                if (docName != fileName)
+                {
+                    doc.Close(false);
+                }
+                else
+                {
+                    ExecutionStatus.FileName("Обрабатывается файл: " + docName);
+                    RemoveLinks.AllLinks(doc);
+                    doc.Close(false);
+                }
             }
 
             //Остановка таймера и логирование значения

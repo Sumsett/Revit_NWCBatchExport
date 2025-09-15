@@ -11,7 +11,8 @@ internal class Json
     //Указываем путь до Json.
     //Json храниться по пути сборки + доп папка NWCBatchExport.
     static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-    static string jsonFolder = Path.Combine(assemblyFolder, "NWCBatchExport");
+    //static string jsonFolder = Path.Combine(assemblyFolder, "NWCBatchExport");
+    static string jsonFolder = @"C:\GitHub_Repo\Revit_NWCBatchExport\NWCBatchExport\bin\Debug\2019\NWCBatchExport";
     static string pathToJson = Path.Combine(jsonFolder, "Data.json");
 
     internal static void CreateJson(string path)

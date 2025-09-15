@@ -40,7 +40,7 @@ internal class RemoveLinks
         // Проверяем, является ли файл центральной моделью
         bool isCentralModel = document.IsWorkshared && !document.IsDetached;
 
-        // Сохраняем файл на рабочий стол
+        // Сохраняем файл
         string desktopPath = Data.PathToNWC;
         string fileName = document.Title + ".rvt";
         if (fileName.Contains("_отсоединено"))
