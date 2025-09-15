@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NWCBatchExport.DataStorage;
+using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,8 @@ public static class Win32Api
 
     public static async Task ClickOk()
     {
-        const string windowTitle = "Autodesk Revit 2022";
+        //const string windowTitle = "Autodesk Revit 2022";
+        string windowTitle = Data.VersionRevit;
         while (FindWindowByCaption(IntPtr.Zero, windowTitle) == IntPtr.Zero)
         {
             await DelayWork(100);

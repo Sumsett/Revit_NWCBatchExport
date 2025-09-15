@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using System.Runtime.InteropServices;
 
 namespace NWCBatchExport.DataStorage;
 
@@ -22,5 +23,12 @@ internal class Data
     internal static ExternalEvent UnsubscribeEventsRevit { get; set; }
     internal static ExternalEvent RemovingLinks { get; set; }
     internal static ExternalEvent Tests { get; set; }
+    internal static string VersionRevit
+    {
+        get
+        {
+            return ExternalCommandData?.Application.Application.VersionName;
+        }
+    }
     #endregion
 }

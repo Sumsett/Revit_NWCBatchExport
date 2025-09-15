@@ -1,11 +1,11 @@
-﻿using System;
+﻿using NWCBatchExport.AdditionalFunctionality;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using NWCBatchExport.AdditionalFunctionality;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
 
 namespace NWCBatchExport;
 
@@ -29,6 +29,8 @@ public partial class FormMain : Form
         progressBar1.Visible = false; //Отключение прогресс бара
 
         Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
+
+        richTextBox1.Text = Data.VersionRevit;
     }
 
     private void button1_Click(object sender, EventArgs e)
