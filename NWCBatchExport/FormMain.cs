@@ -3,6 +3,7 @@ using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -31,7 +32,10 @@ public partial class FormMain : Form
 
         Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
 
-        richTextBox1.Text = Data.VersionRevit;
+#if TEST
+        BackColor = Color.Thistle;
+        richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n"; 
+#endif
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -43,15 +47,15 @@ public partial class FormMain : Form
         Data.UnloadingRoomGeometry = checkBox1.Checked;
         Data.DisablingTrims3DView = checkBox2.Checked;
 
+        progressBar1.Visible = true;
+
         if (radioButton1.Checked)
         {
-            progressBar1.Visible = true;
             Data.EventExportNWC.Raise();
         }
 
         if (radioButton2.Checked)
         {
-            progressBar1.Visible = true;
             Data.RemovingLinks.Raise();
         }
     }

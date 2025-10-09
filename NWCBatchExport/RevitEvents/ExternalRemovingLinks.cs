@@ -14,6 +14,7 @@ public class ExternalRemovingLinks : IExternalEventHandler
     {
         Stopwatch stopwatchAll = Stopwatch.StartNew();
         string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
+        int currentDocNumber = 0;
 
         foreach (string dir in dirs)
         {
@@ -41,7 +42,9 @@ public class ExternalRemovingLinks : IExternalEventHandler
                 }
                 else
                 {
-                    ExecutionStatus.FileName("Обрабатывается файл: " + docName);
+                    ExecutionStatus.FileName($"Обрабатывается файл: {docName} ({currentDocNumber}/{dirs.Length})");
+                    currentDocNumber++;
+
                     RemoveLinks.AllLinks(doc);
                     doc.Close(false);
                 }
