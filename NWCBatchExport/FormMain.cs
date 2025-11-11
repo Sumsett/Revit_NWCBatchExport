@@ -15,7 +15,6 @@ public partial class FormMain : Form
     public FormMain()
     {
         InitializeComponent();
-        TopMost = true;
 
         //Загрузка в данных в текстбоксы
         textBox1.Text = Data.NameOfExportedView;
@@ -35,6 +34,9 @@ public partial class FormMain : Form
 #if TEST
         BackColor = Color.Thistle;
         richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n"; 
+        #else
+        Button_OpenLogFile.Enabled = false;
+        Button_Tests.Enabled = false;
 #endif
     }
 
@@ -119,7 +121,7 @@ public partial class FormMain : Form
 
     private void Button_Tests_Click(object sender, EventArgs e)
     {
-        Data.PathToRVT = textBoxPathRVT.Text;
-        Data.Tests.Raise();
+        //Data.PathToRVT = textBoxPathRVT.Text;
+        //Data.Tests.Raise();
     }
 }

@@ -21,6 +21,7 @@ public class ExternalRemovingLinks : IExternalEventHandler
             string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
             //Обновляем информацию в интерфейсе
+            ExecutionStatus.FileName($"Обработано: ({currentDocNumber}/{dirs.Length}). Текущий файл: {fileName}");
             ExecutionStatus.ButtonsActive(false);
             ExecutionStatus.ProgressBarTotal(dirs.Length);
 
@@ -42,9 +43,6 @@ public class ExternalRemovingLinks : IExternalEventHandler
                 }
                 else
                 {
-                    ExecutionStatus.FileName($"Обрабатывается файл: {docName} ({currentDocNumber}/{dirs.Length})");
-                    currentDocNumber++;
-
                     RemoveLinks.AllLinks(doc);
                     doc.Close(false);
                 }
@@ -56,6 +54,7 @@ public class ExternalRemovingLinks : IExternalEventHandler
             Logger.Log(fileName, $"Удаление связей {time} (мин/сек)");
 
             //Обновляем информацию для каждого файла
+            currentDocNumber++;
             ExecutionStatus.ProgressBarProcessed(dirs.Length);
         }
         stopwatchAll.Stop();

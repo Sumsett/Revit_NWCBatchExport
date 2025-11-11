@@ -45,10 +45,11 @@ internal class Worksets
 
                 //Отключаем подрезку 3д вида
                 if (view3D.IsSectionBoxActive == true)
-                {
-                    view3D.IsSectionBoxActive = false;
                     Logger.Log(doc.Title, "Включена подрезка 3D вида");
-                }
+                
+                if (view3D.IsSectionBoxActive == true && Data.DisablingTrims3DView == true)
+                    view3D.IsSectionBoxActive = false;
+                
 
                 trans.Commit();
             }

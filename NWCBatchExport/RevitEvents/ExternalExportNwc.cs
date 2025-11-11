@@ -21,11 +21,10 @@ public class ExternalExportNwc : IExternalEventHandler
             string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
             //Обновляем информацию в интерфейсе
-            ExecutionStatus.FileName($"Обрабатывается файл: {fileName} ({currentDocNumber}/{dirs.Length})");
+            ExecutionStatus.FileName($"Обработано: ({currentDocNumber}/{dirs.Length}). Текущий файл: {fileName}");
             ExecutionStatus.ButtonsActive(false);
             ExecutionStatus.ProgressBarTotal(dirs.Length);
-            currentDocNumber++;
-
+            
             Stopwatch stopwatch = Stopwatch.StartNew(); //Запускаем таймер
 
             OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
@@ -46,6 +45,7 @@ public class ExternalExportNwc : IExternalEventHandler
             Logger.Log(fileName, $"Экспорт NWC {time} (мин/сек)");
 
             //Обновляем информацию для каждого файла
+            currentDocNumber++;
             ExecutionStatus.ProgressBarProcessed(dirs.Length);
         }
         stopwatchAll.Stop();
