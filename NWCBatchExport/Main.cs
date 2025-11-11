@@ -19,6 +19,7 @@ public class Main : IExternalCommand
         commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
         SubscribeToEvents.All();
 
+        
         #region Создаем внешние события Revit
         //Экспорт NWC (Полная форма записи)
         //ExternalExportNwc exportNWC = new ExternalExportNwc();
