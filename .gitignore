@@ -140,3 +140,4 @@ _NCrunch*
 /.vs
 MigrationBackup/
 */.vs/
+.idea/
