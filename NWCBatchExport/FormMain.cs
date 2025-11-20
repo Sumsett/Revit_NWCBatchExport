@@ -33,18 +33,26 @@ public partial class FormMain : Form
 
 #if TEST
         BackColor = Color.Thistle;
-        richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n"; 
-        #else
-        Button_OpenLogFile.Enabled = false;
-        Button_Tests.Enabled = false;
+        richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n";
+#else
+        groupBox2.Visible = false;
 #endif
     }
 
     private void button1_Click(object sender, EventArgs e)
     {
         Data.NameOfExportedView = textBox1.Text;
-        Data.PathToNWC = textBoxPathNWC.Text;
         Data.PathToRVT = textBoxPathRVT.Text;
+        //Data.PathToNWC = textBoxPathNWC.Text;
+
+        if (checkBox3.Checked)
+        {
+            Data.PathToNWC = textBoxPathRVT.Text; //Сохраняет в папку с исходным файлом с заменой
+        }
+        else
+        {
+            Data.PathToNWC = textBoxPathNWC.Text; //Сохраняет в указанную папку
+        }
 
         Data.UnloadingRoomGeometry = checkBox1.Checked;
         Data.DisablingTrims3DView = checkBox2.Checked;
@@ -123,5 +131,20 @@ public partial class FormMain : Form
     {
         //Data.PathToRVT = textBoxPathRVT.Text;
         //Data.Tests.Raise();
+    }
+
+    private void checkBox3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBox3.Checked)
+        {
+            textBoxPathNWC.Enabled = false;
+            Button_openNwcFolder.Enabled = false;
+        }
+
+        else
+        {
+            textBoxPathNWC.Enabled = true;
+            Button_openNwcFolder.Enabled = true;
+        }
     }
 }
