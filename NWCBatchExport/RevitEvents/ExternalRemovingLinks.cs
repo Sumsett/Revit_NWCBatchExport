@@ -36,6 +36,8 @@ public class ExternalRemovingLinks : IExternalEventHandler
 
                 if (doc.Title.Contains("_отсоединено"))
                     docName = doc.Title.Replace("_отсоединено", "");
+                else
+                    docName = doc.Title;
 
                 if (docName != fileName)
                 {
