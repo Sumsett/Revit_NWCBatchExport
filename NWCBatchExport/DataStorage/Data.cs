@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using System.Runtime.InteropServices;
 
 namespace NWCBatchExport.DataStorage;
 
@@ -14,6 +15,7 @@ internal class Data
 
     #region Настройки выгрузки NWC
     internal static bool UnloadingRoomGeometry { get; set; }
+    internal static bool DisablingTrims3DView{ get; set; }
     #endregion
 
     #region Отладочная передача данных
@@ -22,5 +24,12 @@ internal class Data
     internal static ExternalEvent UnsubscribeEventsRevit { get; set; }
     internal static ExternalEvent RemovingLinks { get; set; }
     internal static ExternalEvent Tests { get; set; }
+    internal static string VersionRevit
+    {
+        get
+        {
+            return ExternalCommandData?.Application.Application.VersionName;
+        }
+    }
     #endregion
 }

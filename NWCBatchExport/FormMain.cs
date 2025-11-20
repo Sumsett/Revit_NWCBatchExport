@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NWCBatchExport.AdditionalFunctionality;
+using NWCBatchExport.DataStorage;
+using NWCBatchExport.Events;
+using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-using NWCBatchExport.AdditionalFunctionality;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
 
 namespace NWCBatchExport;
 
@@ -29,26 +30,42 @@ public partial class FormMain : Form
         progressBar1.Visible = false; //Отключение прогресс бара
 
         Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
+
+#if TEST
+        BackColor = Color.Thistle;
+        richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n";
+#else
+        groupBox2.Visible = false;
+#endif
     }
 
     private void button1_Click(object sender, EventArgs e)
     {
         Data.NameOfExportedView = textBox1.Text;
-        Data.PathToNWC = textBoxPathNWC.Text;
         Data.PathToRVT = textBoxPathRVT.Text;
+        //Data.PathToNWC = textBoxPathNWC.Text;
+
+        if (checkBox3.Checked)
+        {
+            Data.PathToNWC = textBoxPathRVT.Text; //Сохраняет в папку с исходным файлом с заменой
+        }
+        else
+        {
+            Data.PathToNWC = textBoxPathNWC.Text; //Сохраняет в указанную папку
+        }
 
         Data.UnloadingRoomGeometry = checkBox1.Checked;
-        //richTextBox1.Text = null;
+        Data.DisablingTrims3DView = checkBox2.Checked;
+
+        progressBar1.Visible = true;
 
         if (radioButton1.Checked)
         {
-            progressBar1.Visible = true;
             Data.EventExportNWC.Raise();
         }
 
         if (radioButton2.Checked)
         {
-            progressBar1.Visible = true;
             Data.RemovingLinks.Raise();
         }
     }
@@ -112,6 +129,22 @@ public partial class FormMain : Form
 
     private void Button_Tests_Click(object sender, EventArgs e)
     {
-        Data.Tests.Raise();
+        //Data.PathToRVT = textBoxPathRVT.Text;
+        //Data.Tests.Raise();
+    }
+
+    private void checkBox3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (checkBox3.Checked)
+        {
+            textBoxPathNWC.Enabled = false;
+            Button_openNwcFolder.Enabled = false;
+        }
+
+        else
+        {
+            textBoxPathNWC.Enabled = true;
+            Button_openNwcFolder.Enabled = true;
+        }
     }
 }

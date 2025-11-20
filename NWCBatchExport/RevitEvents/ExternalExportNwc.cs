@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
-using System.IO;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.FileProcessing;
+using System.Diagnostics;
+using System.IO;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -14,20 +14,22 @@ public class ExternalExportNwc : IExternalEventHandler
     {
         Stopwatch stopwatchAll = Stopwatch.StartNew();
         string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
+        int currentDocNumber = 0;
 
         foreach (string dir in dirs)
         {
             string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
             //Обновляем информацию в интерфейсе
-            ExecutionStatus.FileName("Обрабатывается файл: " + fileName);
+            ExecutionStatus.FileName($"Обработано: ({currentDocNumber}/{dirs.Length}). Текущий файл: {fileName}");
             ExecutionStatus.ButtonsActive(false);
             ExecutionStatus.ProgressBarTotal(dirs.Length);
-
+            
             Stopwatch stopwatch = Stopwatch.StartNew(); //Запускаем таймер
 
             OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
             DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
+
 
             foreach (Document doc in documents)
             {
@@ -43,6 +45,7 @@ public class ExternalExportNwc : IExternalEventHandler
             Logger.Log(fileName, $"Экспорт NWC {time} (мин/сек)");
 
             //Обновляем информацию для каждого файла
+            currentDocNumber++;
             ExecutionStatus.ProgressBarProcessed(dirs.Length);
         }
         stopwatchAll.Stop();

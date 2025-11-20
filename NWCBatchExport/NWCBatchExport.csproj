@@ -4,16 +4,16 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
 		<Platforms>x64</Platforms>
-		<TheVersion>1.1.0.5</TheVersion>
+		<TheVersion>1.1.0.10</TheVersion>
 		<LangVersion>latest</LangVersion>
 		<AssemblyVersion>$(TheVersion)</AssemblyVersion>
 		<FileVersion>$(TheVersion)</FileVersion>
 		<Version>$(TheVersion)</Version>
-		<Configurations>D2019;R2019;D2020;R2020;D2025;R2025</Configurations>
+		<Configurations>D2019;R2019;D2020;R2020;D2025;R2025;TEST</Configurations>
 	</PropertyGroup>
 
 	<!--Зависимости ревит-->
-	<ItemGroup Condition="'$(Configuration)' == 'R2019' Or '$(Configuration)' == 'D2019'">
+	<ItemGroup Condition="'$(Configuration)' == 'R2019' Or '$(Configuration)' == 'D2019' Or '$(Configuration)' == 'TEST'">
 		<PackageReference Include="RevitAPI2019" Version="19.2.20.24" />
 	</ItemGroup>
 	
@@ -26,20 +26,29 @@
 	</ItemGroup>
 
 	<!--конфигурации, зависящие от версии Revit и от версии .Net-->
-	<PropertyGroup Condition="'$(Configuration)' == 'R2019' or '$(Configuration)' == 'D2019' or '$(Configuration)' == 'R2020' or '$(Configuration)' == 'D2020' or '$(Configuration)' == 'R2021' or '$(Configuration)' == 'D2021' or '$(Configuration)' == 'R2022' or '$(Configuration)' == 'D2022' or '$(Configuration)' == 'R2023' or '$(Configuration)' == 'D2023' or '$(Configuration)' == 'R2024' or '$(Configuration)' == 'D2024'">
+	<PropertyGroup Condition="'$(Configuration)' == 'R2019' or '$(Configuration)' == 'D2019' or '$(Configuration)' == 'R2020' or '$(Configuration)' == 'D2020' or '$(Configuration)' == 'R2021' or '$(Configuration)' == 'D2021' or '$(Configuration)' == 'R2022' or '$(Configuration)' == 'D2022' or '$(Configuration)' == 'R2023' or '$(Configuration)' == 'D2023' or '$(Configuration)' == 'R2024' or '$(Configuration)' == 'D2024' or '$(Configuration)' == 'TEST'">
 		<TargetFramework>net48</TargetFramework>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)' == 'R2025' or '$(Configuration)' == 'D2025'">
 		<TargetFramework>net8.0-windows10.0.17763</TargetFramework>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
-
+	
+	<!--Другие зависимости-->
+	<PropertyGroup Condition="'$(Configuration)'=='TEST'">
+		<DefineConstants>DEBUG;TRACE;REVIT_2019;REVIT_2019_AND_GREATER;TEST</DefineConstants>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<OutDir>.\bin\Debug\2019\</OutDir>
+	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)' == 'D2019'">
 		<DefineConstants>DEBUG;TRACE;REVIT_2019;REVIT_2019_AND_GREATER</DefineConstants>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
 		<OutDir>.\bin\Debug\2019\</OutDir>
 	</PropertyGroup>
+	
 	<PropertyGroup Condition="'$(Configuration)' == 'R2019'">
 		<DefineConstants>TRACE;REVIT_2019;REVIT_2019_AND_GREATER</DefineConstants>
 		<DebugSymbols>false</DebugSymbols>

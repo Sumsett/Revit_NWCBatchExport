@@ -1,8 +1,9 @@
-﻿using System.IO;
-using System.Reflection;
-using Autodesk.Revit.UI;
+﻿using Autodesk.Revit.UI;
 using Newtonsoft.Json;
 using NWCBatchExport.DataStorage;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace NWCBatchExport.AdditionalFunctionality;
 
@@ -10,8 +11,14 @@ internal class Json
 {
     //Указываем путь до Json.
     //Json храниться по пути сборки + доп папка NWCBatchExport.
+
+#if TEST
+    static string jsonFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+#else
     static string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     static string jsonFolder = Path.Combine(assemblyFolder, "NWCBatchExport");
+#endif
+
     static string pathToJson = Path.Combine(jsonFolder, "Data.json");
 
     internal static void CreateJson(string path)

@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
-using System.IO;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.FileProcessing;
+using System.Diagnostics;
+using System.IO;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -13,15 +13,15 @@ public class ExternalRemovingLinks : IExternalEventHandler
     public void Execute(UIApplication app)
     {
         Stopwatch stopwatchAll = Stopwatch.StartNew();
-
         string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
+        int currentDocNumber = 0;
 
         foreach (string dir in dirs)
         {
             string fileName = Path.GetFileNameWithoutExtension(dir); // Получаем имя файла из папки
 
             //Обновляем информацию в интерфейсе
-            ExecutionStatus.FileName("Обрабатывается файл: " + fileName);
+            ExecutionStatus.FileName($"Обработано: ({currentDocNumber}/{dirs.Length}). Текущий файл: {fileName}");
             ExecutionStatus.ButtonsActive(false);
             ExecutionStatus.ProgressBarTotal(dirs.Length);
 
@@ -32,8 +32,22 @@ public class ExternalRemovingLinks : IExternalEventHandler
 
             foreach (Document doc in documents)
             {
-                RemoveLinks.AllLinks(doc);
-                doc.Close(false);
+                string docName = string.Empty;
+
+                if (doc.Title.Contains("_отсоединено"))
+                    docName = doc.Title.Replace("_отсоединено", "");
+                else
+                    docName = doc.Title;
+
+                if (docName != fileName)
+                {
+                    doc.Close(false);
+                }
+                else
+                {
+                    RemoveLinks.AllLinks(doc);
+                    doc.Close(false);
+                }
             }
 
             //Остановка таймера и логирование значения
@@ -42,6 +56,7 @@ public class ExternalRemovingLinks : IExternalEventHandler
             Logger.Log(fileName, $"Удаление связей {time} (мин/сек)");
 
             //Обновляем информацию для каждого файла
+            currentDocNumber++;
             ExecutionStatus.ProgressBarProcessed(dirs.Length);
         }
         stopwatchAll.Stop();

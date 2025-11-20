@@ -44,16 +44,18 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Button_Tests = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Button_savedJson = new System.Windows.Forms.Button();
+            this.Button_loadJson = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label_CurrentFile = new System.Windows.Forms.Label();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.Button_Tests = new System.Windows.Forms.Button();
-            this.Button_loadJson = new System.Windows.Forms.Button();
-            this.Button_savedJson = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -132,9 +134,8 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 23);
+            this.checkBox1.Location = new System.Drawing.Point(6, 19);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(203, 17);
             this.checkBox1.TabIndex = 13;
@@ -178,11 +179,11 @@
             // Button_OpenLogFile
             // 
             this.Button_OpenLogFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_OpenLogFile.Location = new System.Drawing.Point(296, 19);
+            this.Button_OpenLogFile.Location = new System.Drawing.Point(215, 19);
             this.Button_OpenLogFile.Name = "Button_OpenLogFile";
-            this.Button_OpenLogFile.Size = new System.Drawing.Size(75, 23);
+            this.Button_OpenLogFile.Size = new System.Drawing.Size(156, 23);
             this.Button_OpenLogFile.TabIndex = 19;
-            this.Button_OpenLogFile.Text = "Открыть";
+            this.Button_OpenLogFile.Text = "Открыть логи";
             this.Button_OpenLogFile.UseVisualStyleBackColor = true;
             this.Button_OpenLogFile.Click += new System.EventHandler(this.Button_OpenLogFile_Click);
             // 
@@ -212,9 +213,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.Button_Tests);
-            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.checkBox3);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -224,29 +225,88 @@
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Button_Tests
+            // 
+            this.Button_Tests.Location = new System.Drawing.Point(215, 48);
+            this.Button_Tests.Name = "Button_Tests";
+            this.Button_Tests.Size = new System.Drawing.Size(156, 23);
+            this.Button_Tests.TabIndex = 3;
+            this.Button_Tests.Text = "Тест";
+            this.Button_Tests.UseVisualStyleBackColor = true;
+            this.Button_Tests.Click += new System.EventHandler(this.Button_Tests_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Location = new System.Drawing.Point(6, 138);
+            this.groupBox3.Location = new System.Drawing.Point(6, 72);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(377, 46);
+            this.groupBox3.Size = new System.Drawing.Size(377, 66);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Настройки экспорта NWC";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(6, 42);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(175, 17);
+            this.checkBox2.TabIndex = 14;
+            this.checkBox2.Text = "Отключить подрезку 3D вида";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.Button_Tests);
             this.groupBox2.Controls.Add(this.Button_OpenLogFile);
-            this.groupBox2.Location = new System.Drawing.Point(6, 72);
+            this.groupBox2.Location = new System.Drawing.Point(6, 168);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(377, 60);
+            this.groupBox2.Size = new System.Drawing.Size(377, 82);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Открыть логи";
+            this.groupBox2.Text = "Тест";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.Button_savedJson);
+            this.groupBox1.Controls.Add(this.Button_loadJson);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(377, 60);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Сохраненить пути до файлов";
+            // 
+            // Button_savedJson
+            // 
+            this.Button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_savedJson.Location = new System.Drawing.Point(215, 19);
+            this.Button_savedJson.Name = "Button_savedJson";
+            this.Button_savedJson.Size = new System.Drawing.Size(75, 23);
+            this.Button_savedJson.TabIndex = 17;
+            this.Button_savedJson.Text = "Сохранить";
+            this.Button_savedJson.UseVisualStyleBackColor = true;
+            this.Button_savedJson.Click += new System.EventHandler(this.Button_savedJson_Click);
+            // 
+            // Button_loadJson
+            // 
+            this.Button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_loadJson.Location = new System.Drawing.Point(296, 19);
+            this.Button_loadJson.Name = "Button_loadJson";
+            this.Button_loadJson.Size = new System.Drawing.Size(75, 23);
+            this.Button_loadJson.TabIndex = 18;
+            this.Button_loadJson.Text = "Загрузить";
+            this.Button_loadJson.UseVisualStyleBackColor = true;
+            this.Button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
             // 
             // progressBar1
             // 
@@ -292,50 +352,16 @@
             this.radioButton2.Text = "Удалить все \".rvt\" связи";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // Button_Tests
+            // checkBox3
             // 
-            this.Button_Tests.Location = new System.Drawing.Point(6, 191);
-            this.Button_Tests.Name = "Button_Tests";
-            this.Button_Tests.Size = new System.Drawing.Size(75, 23);
-            this.Button_Tests.TabIndex = 3;
-            this.Button_Tests.Text = "Тест";
-            this.Button_Tests.UseVisualStyleBackColor = true;
-            this.Button_Tests.Click += new System.EventHandler(this.Button_Tests_Click);
-            // 
-            // Button_loadJson
-            // 
-            this.Button_loadJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_loadJson.Location = new System.Drawing.Point(296, 19);
-            this.Button_loadJson.Name = "Button_loadJson";
-            this.Button_loadJson.Size = new System.Drawing.Size(75, 23);
-            this.Button_loadJson.TabIndex = 18;
-            this.Button_loadJson.Text = "Загрузить";
-            this.Button_loadJson.UseVisualStyleBackColor = true;
-            this.Button_loadJson.Click += new System.EventHandler(this.button_loadJson_Click);
-            // 
-            // Button_savedJson
-            // 
-            this.Button_savedJson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Button_savedJson.Location = new System.Drawing.Point(215, 19);
-            this.Button_savedJson.Name = "Button_savedJson";
-            this.Button_savedJson.Size = new System.Drawing.Size(75, 23);
-            this.Button_savedJson.TabIndex = 17;
-            this.Button_savedJson.Text = "Сохранить";
-            this.Button_savedJson.UseVisualStyleBackColor = true;
-            this.Button_savedJson.Click += new System.EventHandler(this.Button_savedJson_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.Button_savedJson);
-            this.groupBox1.Controls.Add(this.Button_loadJson);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 60);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Сохранение в Json";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(12, 145);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(269, 17);
+            this.checkBox3.TabIndex = 3;
+            this.checkBox3.Text = "Сохранить и заменить файлы в исходной папке";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // FormMain
             // 
@@ -358,11 +384,12 @@
             this.Controls.Add(this.button1);
             this.MinimumSize = new System.Drawing.Size(440, 750);
             this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Пакетный экспорт NWC";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -400,5 +427,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button Button_savedJson;
         private System.Windows.Forms.Button Button_loadJson;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
     }
 }

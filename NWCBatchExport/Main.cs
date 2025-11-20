@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading;
-using Autodesk.Revit.Attributes;
+﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using NWCBatchExport.AdditionalFunctionality;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using NWCBatchExport.RevitEvents;
+using System;
+using System.Threading;
 
 namespace NWCBatchExport;
 
@@ -19,6 +19,7 @@ public class Main : IExternalCommand
         commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
         SubscribeToEvents.All();
 
+        
         #region Создаем внешние события Revit
         //Экспорт NWC (Полная форма записи)
         //ExternalExportNwc exportNWC = new ExternalExportNwc();
@@ -33,23 +34,23 @@ public class Main : IExternalCommand
         #endregion
 
         Data.ExternalCommandData = commandData;
-        //--------------
-        Thread thread = new Thread(() =>
-        {
-            FormMain formMain = new FormMain();
-            formMain.Closed += (s, e) =>
-            {
-                Data.UnsubscribeEventsRevit.Raise();
-                UnsubscribeToEvents.CurrentForm();
-            };
-            formMain.Show();
-
-            //Не дает потоку завершится, а ставит его на паузу для ожидания дальнейших действий.
-            System.Windows.Threading.Dispatcher.Run();
-        });
 
         try
         {
+            Thread thread = new Thread(() =>
+            {
+                FormMain formMain = new FormMain();
+                formMain.Closed += (s, e) =>
+                {
+                    Data.UnsubscribeEventsRevit.Raise();
+                    UnsubscribeToEvents.CurrentForm();
+                };
+                formMain.Show();
+
+                //Не дает потоку завершится, а ставит его на паузу для ожидания дальнейших действий.
+                System.Windows.Threading.Dispatcher.Run();
+            });
+
             thread.SetApartmentState(ApartmentState.STA);
             thread.IsBackground = true;
             thread.Start();
