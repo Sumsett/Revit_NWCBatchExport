@@ -8,6 +8,26 @@ internal class RevitEventHandler
     //События по отлову и закрытию предупреждений Revit
     internal static async void ApplicationDocumentOpened(object sender, DialogBoxShowingEventArgs e)
     {
+        //Проверка на дополнительные исключения
+        switch (e)
+        {
+            case TaskDialogShowingEventArgs taskDialogMessage:
+                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {taskDialogMessage.DialogId} | Сообщение - {taskDialogMessage.Message}");
+                break;
+
+            case MessageBoxShowingEventArgs messageBoxMessage:
+                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {messageBoxMessage.DialogId} | Сообщение - {messageBoxMessage.Message}");
+                break;
+
+            case DialogBoxShowingEventArgs dialogBoxMessage:
+                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {dialogBoxMessage.DialogId} | Сообщение - {dialogBoxMessage.DialogId}");
+                break;
+
+            default:
+                Logger.OutLogger("!!!", $"Не обрабатываемая ошибка - {e.ToString()}");
+                return;
+        }
+
         switch (e)
         {
             case TaskDialogShowingEventArgs args2:

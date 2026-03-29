@@ -1,4 +1,5 @@
-﻿using NWCBatchExport.AdditionalFunctionality;
+﻿using Autodesk.Revit.DB;
+using NWCBatchExport.AdditionalFunctionality;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using System;
@@ -6,11 +7,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace NWCBatchExport;
 
-public partial class FormMain : Form
+public partial class FormMain : System.Windows.Forms.Form
 {
     public FormMain()
     {
@@ -32,7 +34,7 @@ public partial class FormMain : Form
         Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
 
 #if TEST
-        BackColor = Color.Thistle;
+        BackColor = System.Drawing.Color.Thistle;
         richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n";
 #else
         groupBox2.Visible = false;
@@ -122,13 +124,33 @@ public partial class FormMain : Form
     private void Button_OpenLogFile_Click(object sender, EventArgs e)
     {
         string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        var fullPath = Path.Combine(documentsPath, "log.txt");
+        var fullPath = System.IO.Path.Combine(documentsPath, "log.txt");
         Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
     }
     #endregion
 
     private void Button_Tests_Click(object sender, EventArgs e)
     {
+        //Запись лога в файл
+        folderBrowserDialog1.SelectedPath = "";
+        folderBrowserDialog1.SelectedPath = textBoxPathNWC.Text;
+
+        if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+        {
+            var pathToFolder = folderBrowserDialog1.SelectedPath;
+            var pathToFile = System.IO.Path.Combine(pathToFolder, $"Log.txt");
+
+            try
+            {
+                File.WriteAllText(pathToFile, richTextBox1.Text);
+                MessageBox.Show("Файл сохранен");
+            }
+            catch
+            {
+                MessageBox.Show("Не удается записать файл лога");
+            }
+        }
+
         //Data.PathToRVT = textBoxPathRVT.Text;
         //Data.Tests.Raise();
     }
