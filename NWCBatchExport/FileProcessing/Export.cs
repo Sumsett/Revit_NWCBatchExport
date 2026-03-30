@@ -27,10 +27,11 @@ internal class Export
 
         if (selectedView == null)
         {
-            Logger.Log(document.Title, $"Не найден вид {nameView}");
+            Logger.Log(document.Title, $"Не найден вид {nameView}. Файл не экспортирован");
+            return;
         }
 
-        if (selectedView != null)
+        else
         {
             //Настроить настройки экспорта
             NavisworksExportOptions options = new NavisworksExportOptions

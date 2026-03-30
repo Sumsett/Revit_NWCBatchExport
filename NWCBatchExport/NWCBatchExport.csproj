@@ -4,7 +4,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
 		<Platforms>x64</Platforms>
-		<TheVersion>1.2.0.11</TheVersion>
+		<TheVersion>1.3.0.14</TheVersion>
 		<LangVersion>latest</LangVersion>
 		<AssemblyVersion>$(TheVersion)</AssemblyVersion>
 		<FileVersion>$(TheVersion)</FileVersion>

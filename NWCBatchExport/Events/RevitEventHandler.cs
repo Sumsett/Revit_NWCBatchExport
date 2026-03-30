@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.UI.Events;
 using NWCBatchExport.AdditionalFunctionality;
+using NWCBatchExport.DataStorage;
 
 namespace NWCBatchExport.Events;
 
@@ -9,23 +10,26 @@ internal class RevitEventHandler
     internal static async void ApplicationDocumentOpened(object sender, DialogBoxShowingEventArgs e)
     {
         //Проверка на дополнительные исключения
-        switch (e)
+        if (Data.ShowRevitWarnings)
         {
-            case TaskDialogShowingEventArgs taskDialogMessage:
-                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {taskDialogMessage.DialogId} | Сообщение - {taskDialogMessage.Message}");
-                break;
+            switch (e)
+            {
+                case TaskDialogShowingEventArgs taskDialogMessage:
+                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {taskDialogMessage.DialogId} | Сообщение - {taskDialogMessage.Message}");
+                    break;
 
-            case MessageBoxShowingEventArgs messageBoxMessage:
-                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {messageBoxMessage.DialogId} | Сообщение - {messageBoxMessage.Message}");
-                break;
+                case MessageBoxShowingEventArgs messageBoxMessage:
+                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {messageBoxMessage.DialogId} | Сообщение - {messageBoxMessage.Message}");
+                    break;
 
-            case DialogBoxShowingEventArgs dialogBoxMessage:
-                Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {dialogBoxMessage.DialogId} | Сообщение - {dialogBoxMessage.DialogId}");
-                break;
+                case DialogBoxShowingEventArgs dialogBoxMessage:
+                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {dialogBoxMessage.DialogId} | Сообщение - {dialogBoxMessage.DialogId}");
+                    break;
 
-            default:
-                Logger.OutLogger("!!!", $"Не обрабатываемая ошибка - {e.ToString()}");
-                return;
+                default:
+                    Logger.OutLogger("!!!", $"Не обрабатываемая ошибка - {e.ToString()}");
+                    return;
+            }
         }
 
         switch (e)
@@ -36,7 +40,7 @@ internal class RevitEventHandler
                 if (args2.DialogId == "TaskDialog_Unresolved_References")
                     args2.OverrideResult(1002);
 
-                //Отсутсвует сторонне средство (Плагин)
+                //Отсутствует сторонне средство (Плагин)
                 else if (args2.DialogId == "TaskDialog_Missing_Third_Party_Updaters" || args2.DialogId == "TaskDialog_Missing_Third_Party_Updater")
                     args2.OverrideResult(1);
 

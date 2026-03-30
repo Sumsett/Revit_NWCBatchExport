@@ -58,6 +58,7 @@ public partial class FormMain : System.Windows.Forms.Form
 
         Data.UnloadingRoomGeometry = checkBox1.Checked;
         Data.DisablingTrims3DView = checkBox2.Checked;
+        Data.ShowRevitWarnings = checkBox4.Checked;
 
         progressBar1.Visible = true;
 
@@ -120,16 +121,8 @@ public partial class FormMain : System.Windows.Forms.Form
         textBoxPathNWC.Text = Data.PathToNWC;
     }
 
-    //Открытие Файла лога
-    private void Button_OpenLogFile_Click(object sender, EventArgs e)
-    {
-        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        var fullPath = System.IO.Path.Combine(documentsPath, "log.txt");
-        Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
-    }
-    #endregion
-
-    private void Button_Tests_Click(object sender, EventArgs e)
+    //Сохранение лога в файл
+    private void button_SaveLogs_Click(object sender, EventArgs e)
     {
         //Запись лога в файл
         folderBrowserDialog1.SelectedPath = "";
@@ -150,10 +143,24 @@ public partial class FormMain : System.Windows.Forms.Form
                 MessageBox.Show("Не удается записать файл лога");
             }
         }
+    }
 
+    //Тестовые функции
+    //Открытие папки с логом
+    private void Button_OpenLogFile_Click(object sender, EventArgs e)
+    {
+        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        var fullPath = System.IO.Path.Combine(documentsPath, "log.txt");
+        Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
+    }
+
+    //Разное для отладки
+    private void Button_Tests_Click(object sender, EventArgs e)
+    {       
         //Data.PathToRVT = textBoxPathRVT.Text;
         //Data.Tests.Raise();
     }
+    #endregion
 
     private void checkBox3_CheckedChanged(object sender, EventArgs e)
     {
@@ -169,4 +176,5 @@ public partial class FormMain : System.Windows.Forms.Form
             Button_openNwcFolder.Enabled = true;
         }
     }
+
 }

@@ -30,7 +30,6 @@ public class ExternalExportNwc : IExternalEventHandler
             OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
             DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
 
-
             foreach (Document doc in documents)
             {
                 //Обрабатываем файлы
