@@ -130,8 +130,9 @@ public partial class FormMain : System.Windows.Forms.Form
 
         if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
         {
+            DateTime now = DateTime.Now;
             var pathToFolder = folderBrowserDialog1.SelectedPath;
-            var pathToFile = System.IO.Path.Combine(pathToFolder, $"Log.txt");
+            var pathToFile = System.IO.Path.Combine(pathToFolder, $"Log {now.ToString("dd.MM.yyyy HH.mm.ss")}.txt");
 
             try
             {

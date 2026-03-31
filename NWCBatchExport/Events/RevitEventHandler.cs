@@ -15,15 +15,15 @@ internal class RevitEventHandler
             switch (e)
             {
                 case TaskDialogShowingEventArgs taskDialogMessage:
-                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {taskDialogMessage.DialogId} | Сообщение - {taskDialogMessage.Message}");
+                    Logger.OutLogger("Ошибка", $"Тип - {e.ToString()} | ID - {taskDialogMessage.DialogId} | Сообщение - {taskDialogMessage.Message.Replace("\r\n", " ").Replace("\n", " ")}");
                     break;
 
                 case MessageBoxShowingEventArgs messageBoxMessage:
-                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {messageBoxMessage.DialogId} | Сообщение - {messageBoxMessage.Message}");
+                    Logger.OutLogger("Ошибка", $"Тип - {e.ToString()} | ID - {messageBoxMessage.DialogId} | Сообщение - {messageBoxMessage.Message.Replace("\r\n", " ").Replace("\n", " ")}");
                     break;
 
                 case DialogBoxShowingEventArgs dialogBoxMessage:
-                    Logger.OutLogger("Ошибка открытия файла", $"Ошибка - {e.ToString()} | ID - {dialogBoxMessage.DialogId} | Сообщение - {dialogBoxMessage.DialogId}");
+                    Logger.OutLogger("Ошибка", $"Тип - {e.ToString()} | ID - {dialogBoxMessage.DialogId} | Сообщение - {dialogBoxMessage.DialogId.Replace("\r\n", " ").Replace("\n", " ")}");
                     break;
 
                 default:
