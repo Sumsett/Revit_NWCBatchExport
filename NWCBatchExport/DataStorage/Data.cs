@@ -17,6 +17,7 @@ internal class Data
     #region Настройки выгрузки NWC
     internal static bool UnloadingRoomGeometry { get; set; }
     internal static bool DisablingTrims3DView{ get; set; }
+    internal static bool DivideFileIntoLevels { get; set; }
     #endregion
 
     #region Настройки плагина

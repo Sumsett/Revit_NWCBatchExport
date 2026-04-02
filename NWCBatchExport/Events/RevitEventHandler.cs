@@ -44,6 +44,10 @@ internal class RevitEventHandler
                 else if (args2.DialogId == "TaskDialog_Missing_Third_Party_Updaters" || args2.DialogId == "TaskDialog_Missing_Third_Party_Updater")
                     args2.OverrideResult(1);
 
+                //Требуется обновление ресурсов перед печатью/экспортом
+                else if (args2.DialogId == "TaskDialog_Update_Resources")
+                    args2.OverrideResult(1001);
+
                 break;
 
             //НЕ РАБОТАЕТ ИЗ РЕВИТ АПИ, НУЖЕН ВИН АПИ

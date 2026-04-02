@@ -41,7 +41,8 @@ internal class Export
 #if REVIT_2020_AND_GREATER
                 ConvertLinkedCADFormats = false,
 #endif  
-                ExportRoomGeometry = Data.UnloadingRoomGeometry
+                ExportRoomGeometry = Data.UnloadingRoomGeometry,
+                DivideFileIntoLevels = Data.DivideFileIntoLevels,
             };
 
 

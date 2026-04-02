@@ -59,6 +59,7 @@ public partial class FormMain : System.Windows.Forms.Form
         Data.UnloadingRoomGeometry = checkBox1.Checked;
         Data.DisablingTrims3DView = checkBox2.Checked;
         Data.ShowRevitWarnings = checkBox4.Checked;
+        Data.DivideFileIntoLevels = checkBox5.Checked;
 
         progressBar1.Visible = true;
 
