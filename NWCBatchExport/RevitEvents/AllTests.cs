@@ -1,9 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.FileProcessing;
-using System.Collections.Generic;
-using System.IO;
+using NWCBatchExport.Events;
+using System.Linq;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -11,29 +9,20 @@ public class ExternalTests : IExternalEventHandler
 {
     public void Execute(UIApplication app)
     {
-        #region поиск открытых документов
-        DocumentSet documents = app.Application.Documents; //Получаем список всех открытых проектов
-        List<string> strings = new List<string>();
+        //Поиск открытых документов
+        DocumentSet documents = app.Application.Documents;
 
-        foreach (Document doc in documents)
-        {
-            strings.Add(doc.Title);
-        }
-        var message = "пусто";
+        var titles = documents.Cast<Document>().Select(d => d.Title).ToList();
+        Logger.Log("Отладка", titles.Count == 0 ? "пусто" : string.Join("\n", titles));
 
-        if (strings.Count > 0)
-        {
-            message = string.Join("\n", strings);
-        }
 
-        TaskDialog.Show("Открытые файлы", message);
-        #endregion
 
-        string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
-        foreach (string dir in dirs)
-        {
-            OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
-        }
+
+        //string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
+        //foreach (string dir in dirs)
+        //{
+        //    OpenFile.OpenFileWithoutShowing(dir, Data.ExternalCommandData); //Открываем документ
+        //}
     }
 
     public string GetName()

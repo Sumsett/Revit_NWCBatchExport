@@ -160,7 +160,7 @@ public partial class FormMain : System.Windows.Forms.Form
     private void Button_Tests_Click(object sender, EventArgs e)
     {       
         //Data.PathToRVT = textBoxPathRVT.Text;
-        //Data.Tests.Raise();
+        Data.Tests.Raise();
     }
     #endregion
 
