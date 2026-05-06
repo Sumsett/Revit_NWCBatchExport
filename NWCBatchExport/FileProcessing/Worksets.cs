@@ -14,23 +14,18 @@ internal class Worksets
         // Имя вида, который мы ищем
         string viewName = Data.NameOfExportedView;
 
-        // Находим вид по имени
-        View targetView = new FilteredElementCollector(doc)
-            .OfClass(typeof(View))
-            .Cast<View>()
-            .FirstOrDefault(v => v.Name.Equals(viewName, StringComparison.OrdinalIgnoreCase));
-
-        //Даункастим до 3д вида
-        View3D view3D = (View3D)targetView;
-
+        //Ищем 3D вид с нужными именем.
+        var view3D = new FilteredElementCollector(doc).OfClass(typeof(View3D))
+            .Cast<View3D>()
+            .Where(x => !x.IsTemplate)
+            .FirstOrDefault(x => x.Name.Equals(viewName, StringComparison.OrdinalIgnoreCase));
 
         // Получаем все рабочие наборы в документе
-        IList<Workset> worksets = new FilteredWorksetCollector(doc)
-            .OfKind(WorksetKind.UserWorkset)
+        IList<Workset> worksets = new FilteredWorksetCollector(doc).OfKind(WorksetKind.UserWorkset)
             .ToWorksets()
             .ToList();
 
-        if (targetView != null)
+        if (view3D != null)
         {
             // Начинаем транзакцию для изменения видимости
             using (Transaction trans = new Transaction(doc, "Включение всех рабочих наборов"))
@@ -40,7 +35,7 @@ internal class Worksets
                 // Включаем видимость всех рабочих наборов
                 foreach (Workset workset in worksets)
                 {
-                    targetView.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
+                    view3D.SetWorksetVisibility(workset.Id, WorksetVisibility.Visible);
                 }
 
                 //Отключаем подрезку 3д вида

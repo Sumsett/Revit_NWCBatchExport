@@ -1,7 +1,8 @@
 using Autodesk.Revit.DB;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace NWCBatchExport.FileProcessing;
 
@@ -9,35 +10,20 @@ internal class Export
 {
     internal static void toNWC(Document document)
     {
-        FilteredElementCollector collector = new FilteredElementCollector(document);
-        ICollection<Element> views = collector.OfClass(typeof(View)).ToElements();
-
-        //Найти виды для экспорта
-        ElementId selectedView = null;
         string nameView = Data.NameOfExportedView;
 
-        foreach (Element view in views)
-        {
-            if (view.Name == nameView)
-            {
-                selectedView = view.Id;
-                break;
-            }
-        }
+        View3D selectedView = new FilteredElementCollector(document).OfClass(typeof(View3D))
+            .Cast<View3D>()
+            .Where(x => !x.IsTemplate)
+            .FirstOrDefault(x => x.Name.Equals(nameView, StringComparison.OrdinalIgnoreCase));
 
-        if (selectedView == null)
-        {
-            Logger.Log(document.Title, $"Не найден вид {nameView}. Файл не экспортирован");
-            return;
-        }
-
-        else
+        if (selectedView != null)
         {
             //Настроить настройки экспорта
             NavisworksExportOptions options = new NavisworksExportOptions
             {
                 ExportScope = NavisworksExportScope.View,
-                ViewId = selectedView,
+                ViewId = selectedView.Id,
 #if REVIT_2020_AND_GREATER
                 ConvertLinkedCADFormats = false,
 #endif  
@@ -53,6 +39,12 @@ internal class Export
                 fileName = fileName.Replace("_отсоединено", "");
 
             document.Export(pathOut, fileName, options);
+        }
+
+        else
+        {
+            Logger.Log(document.Title, $"Не найден вид {nameView}. Файл не экспортирован");
+            return;
         }
     }
 }
