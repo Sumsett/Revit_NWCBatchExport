@@ -5,6 +5,7 @@ using NWCBatchExport.Events;
 using NWCBatchExport.FileProcessing;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace NWCBatchExport.RevitEvents;
 
@@ -15,6 +16,20 @@ public class ExternalRemovingLinks : IExternalEventHandler
         Stopwatch stopwatchAll = Stopwatch.StartNew();
         string[] dirs = Directory.GetFiles(Data.PathToRVT, "*.rvt");
         int currentDocNumber = 0;
+
+        //Проверяем, есть ли открытые файлы
+        var preOpenedDocuments = app.Application.Documents;
+        if (preOpenedDocuments.Size >= 1)
+        {
+            //Обновляем данные в интерфейсе после операций
+            ExecutionStatus.FileName("Операция отменена");
+            ExecutionStatus.ButtonsActive(true);
+
+            TaskDialog.Show("Предупреждение", $"Закройте все открытые файлы, и начните экспорт заново:\n" +
+                $"{string.Join("\n", preOpenedDocuments.Cast<Document>().Select(d => d.Title))}");
+
+            return;
+        }
 
         foreach (string dir in dirs)
         {

@@ -1,4 +1,5 @@
-﻿using NWCBatchExport.AdditionalFunctionality;
+﻿using Autodesk.Revit.DB;
+using NWCBatchExport.AdditionalFunctionality;
 using NWCBatchExport.DataStorage;
 using NWCBatchExport.Events;
 using System;
@@ -6,11 +7,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace NWCBatchExport;
 
-public partial class FormMain : Form
+public partial class FormMain : System.Windows.Forms.Form
 {
     public FormMain()
     {
@@ -32,7 +34,7 @@ public partial class FormMain : Form
         Text += $" (Версия: {Assembly.GetExecutingAssembly().GetName().Version.ToString()})"; //Версия сборки в названии
 
 #if TEST
-        BackColor = Color.Thistle;
+        BackColor = System.Drawing.Color.Thistle;
         richTextBox1.Text += "ТЕСТОВАЯ ВЕРСИЯ\n";
 #else
         groupBox2.Visible = false;
@@ -56,6 +58,8 @@ public partial class FormMain : Form
 
         Data.UnloadingRoomGeometry = checkBox1.Checked;
         Data.DisablingTrims3DView = checkBox2.Checked;
+        Data.ShowRevitWarnings = checkBox4.Checked;
+        Data.DivideFileIntoLevels = checkBox5.Checked;
 
         progressBar1.Visible = true;
 
@@ -118,20 +122,47 @@ public partial class FormMain : Form
         textBoxPathNWC.Text = Data.PathToNWC;
     }
 
-    //Открытие Файла лога
+    //Сохранение лога в файл
+    private void button_SaveLogs_Click(object sender, EventArgs e)
+    {
+        //Запись лога в файл
+        folderBrowserDialog1.SelectedPath = "";
+        folderBrowserDialog1.SelectedPath = textBoxPathNWC.Text;
+
+        if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+        {
+            DateTime now = DateTime.Now;
+            var pathToFolder = folderBrowserDialog1.SelectedPath;
+            var pathToFile = System.IO.Path.Combine(pathToFolder, $"Log {now.ToString("dd.MM.yyyy HH.mm.ss")}.txt");
+
+            try
+            {
+                File.WriteAllText(pathToFile, richTextBox1.Text);
+                MessageBox.Show("Файл сохранен");
+            }
+            catch
+            {
+                MessageBox.Show("Не удается записать файл лога");
+            }
+        }
+    }
+
+    //Тестовые функции
+    //Открытие папки с логом
     private void Button_OpenLogFile_Click(object sender, EventArgs e)
     {
         string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        var fullPath = Path.Combine(documentsPath, "log.txt");
+        var fullPath = System.IO.Path.Combine(documentsPath, "log.txt");
         Process.Start("explorer.exe", $"/select,\"{fullPath}\"");
     }
-    #endregion
 
+    //Разное для отладки
     private void Button_Tests_Click(object sender, EventArgs e)
-    {
+    {       
         //Data.PathToRVT = textBoxPathRVT.Text;
-        //Data.Tests.Raise();
+        Data.Tests.Raise();
     }
+    #endregion
 
     private void checkBox3_CheckedChanged(object sender, EventArgs e)
     {
@@ -147,4 +178,5 @@ public partial class FormMain : Form
             Button_openNwcFolder.Enabled = true;
         }
     }
+
 }
