@@ -2,9 +2,9 @@
 using System.IO;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
-using NWCBatchExport.DataStorage;
+using ITEM_BatchExport.DataStorage;
 
-namespace NWCBatchExport.FileProcessing;
+namespace ITEM_BatchExport.FileProcessing;
 
 [Transaction(TransactionMode.Manual)]
 internal class RemoveLinks

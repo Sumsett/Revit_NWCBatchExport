@@ -1,11 +1,11 @@
 ﻿using Autodesk.Revit.UI;
+using ITEM_BatchExport.DataStorage;
 using Newtonsoft.Json;
-using NWCBatchExport.DataStorage;
 using System;
 using System.IO;
 using System.Reflection;
 
-namespace NWCBatchExport.AdditionalFunctionality;
+namespace ITEM_BatchExport.AdditionalFunctionality;
 
 internal class Json
 {

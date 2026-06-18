@@ -1,10 +1,10 @@
 using Autodesk.Revit.DB;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
+using ITEM_BatchExport.DataStorage;
+using ITEM_BatchExport.Events;
 using System;
 using System.Linq;
 
-namespace NWCBatchExport.FileProcessing;
+namespace ITEM_BatchExport.FileProcessing;
 
 internal class Export
 {

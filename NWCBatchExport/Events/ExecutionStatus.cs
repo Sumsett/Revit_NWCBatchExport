@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace NWCBatchExport.Events;
+namespace ITEM_BatchExport.Events;
 
 internal delegate void FileBeingProcessed(string fileName);
 internal delegate void ButtonsActive(bool status);

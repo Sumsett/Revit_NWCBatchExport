@@ -2,7 +2,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace NWCBatchExport.FileProcessing;
+namespace ITEM_BatchExport.FileProcessing;
 
 internal class OpenFile
 {

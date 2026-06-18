@@ -1,7 +1,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace NWCBatchExport;
+namespace ITEM_BatchExport;
 
 public class AvailabilityAlways
 {

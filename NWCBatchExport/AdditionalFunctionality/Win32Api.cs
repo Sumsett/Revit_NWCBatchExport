@@ -1,10 +1,10 @@
-﻿using NWCBatchExport.DataStorage;
+﻿using ITEM_BatchExport.DataStorage;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NWCBatchExport.AdditionalFunctionality;
+namespace ITEM_BatchExport.AdditionalFunctionality;
 
 public static class Win32Api
 {

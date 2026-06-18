@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Autodesk.Revit.UI;
 using TaskDialog = Autodesk.Revit.UI.TaskDialog;
 
-namespace NWCBatchExport.Events;
+namespace ITEM_BatchExport.Events;
 
 internal delegate void LoggingToFile(string fileName, string message);
 

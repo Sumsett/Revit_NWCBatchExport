@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
+using ITEM_BatchExport.DataStorage;
+using ITEM_BatchExport.Events;
 
-namespace NWCBatchExport.FileProcessing;
+namespace ITEM_BatchExport.FileProcessing;
 
 internal class Worksets
 {

@@ -1,4 +1,4 @@
-﻿namespace NWCBatchExport.Events;
+﻿namespace ITEM_BatchExport.Events;
 
 internal class SubscribeToEvents
 {

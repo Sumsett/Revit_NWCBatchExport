@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.UI;
-using NWCBatchExport.Events;
+using ITEM_BatchExport.Events;
 
-namespace NWCBatchExport.RevitEvents;
+namespace ITEM_BatchExport.RevitEvents;
 
 public class ExternalUnsubscribeEvents : IExternalEventHandler
 {

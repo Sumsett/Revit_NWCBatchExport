@@ -1,8 +1,8 @@
 ﻿using Autodesk.Revit.UI.Events;
-using NWCBatchExport.AdditionalFunctionality;
-using NWCBatchExport.DataStorage;
+using ITEM_BatchExport.AdditionalFunctionality;
+using ITEM_BatchExport.DataStorage;
 
-namespace NWCBatchExport.Events;
+namespace ITEM_BatchExport.Events;
 
 internal class RevitEventHandler
 {

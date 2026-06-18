@@ -1,13 +1,13 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
-using NWCBatchExport.FileProcessing;
+using ITEM_BatchExport.DataStorage;
+using ITEM_BatchExport.Events;
+using ITEM_BatchExport.FileProcessing;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
-namespace NWCBatchExport.RevitEvents;
+namespace ITEM_BatchExport.RevitEvents;
 
 public class ExternalRemovingLinks : IExternalEventHandler
 {

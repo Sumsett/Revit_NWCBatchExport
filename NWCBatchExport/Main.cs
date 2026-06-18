@@ -1,14 +1,15 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.AdditionalFunctionality;
-using NWCBatchExport.DataStorage;
-using NWCBatchExport.Events;
-using NWCBatchExport.RevitEvents;
+using ITEM_BatchExport.AdditionalFunctionality;
+using ITEM_BatchExport.DataStorage;
+using ITEM_BatchExport.Events;
+using ITEM_BatchExport.RevitEvents;
+using NWCBatchExport;
 using System;
 using System.Threading;
 
-namespace NWCBatchExport;
+namespace ITEM_BatchExport;
 
 [Transaction(TransactionMode.Manual)]
 public class Main : IExternalCommand
@@ -19,7 +20,7 @@ public class Main : IExternalCommand
         commandData.Application.DialogBoxShowing += RevitEventHandler.ApplicationDocumentOpened;
         SubscribeToEvents.All();
 
-        
+
         #region Создаем внешние события Revit
         //Экспорт NWC (Полная форма записи)
         //ExternalExportNwc exportNWC = new ExternalExportNwc();

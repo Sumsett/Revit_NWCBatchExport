@@ -1,4 +1,4 @@
-﻿namespace NWCBatchExport.DataStorage;
+﻿namespace ITEM_BatchExport.DataStorage;
 
 public class SavedJson
 {

@@ -1,9 +1,9 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using NWCBatchExport.Events;
+using ITEM_BatchExport.Events;
 using System.Linq;
 
-namespace NWCBatchExport.RevitEvents;
+namespace ITEM_BatchExport.RevitEvents;
 
 public class ExternalTests : IExternalEventHandler
 {

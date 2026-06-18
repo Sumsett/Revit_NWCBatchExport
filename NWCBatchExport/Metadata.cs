@@ -2,11 +2,11 @@ using ITEM.SDK.Metadata;
 using System;
 using System.Collections.Generic;
 
-namespace NWCBatchExport;
+namespace ITEM_BatchExport;
 
 public class Metadata : ITEMPluginMetadata
 {
-    public override string StringID => "NWCBatchExport";
+    public override string StringID => "ITEM_BatchExport";
 
     public override string Name => "Пакетный экспорт NWC";
 
@@ -31,13 +31,13 @@ public class Metadata : ITEMPluginMetadata
                 "Пакетный экспорт NWC",
                 "Плагин, предназначенный для пакетного экспорта всех файлов в указанной папке в формат .nwc с заданными настройками и для пакетного удаления всех связей .rvt в файле с последующим сохранением",
                 "49c5a8a6-7ab0-421b-b567-19f65281ce4c",
-                "component/NWCBatchExport_icons.png",
+                "component/ITEM_BatchExport_icons.png",
                 IconSourceType.ResourceInAssembly,
                 null,
-                "NWCBatchExport.AvailabilityAlways.IsCommandAvailable"
+                "ITEM_BatchExport.AvailabilityAlways.IsCommandAvailable"
             )
         }
     };
 
-    public override PluginDivisionEnum PluginDivision => PluginDivisionEnum.None;
+    public override PluginDivisionEnum PluginDivision => PluginDivisionEnum.Tools;
 }

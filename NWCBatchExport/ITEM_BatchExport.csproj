@@ -4,7 +4,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<UseWPF>true</UseWPF>
 		<Platforms>x64</Platforms>
-		<TheVersion>1.3.1.0</TheVersion>
+		<TheVersion>1.3.1.4</TheVersion>
 		<LangVersion>latest</LangVersion>
 		<AssemblyVersion>$(TheVersion)</AssemblyVersion>
 		<FileVersion>$(TheVersion)</FileVersion>
@@ -81,9 +81,6 @@
 		<DebugType>none</DebugType>
 		<OutDir>.\bin\Release\2025\</OutDir>
 	</PropertyGroup>
-	<ItemGroup>
-	  <None Remove="NWCBatchExport_icons.png" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="ITEM.SDK.Metadata" Version="1.2.0" />
@@ -91,7 +88,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Resource Include="NWCBatchExport_icons.png" />
+	  <Resource Include="ITEM_BatchExport_icons.png" />
 	</ItemGroup>
 	
 </Project>
